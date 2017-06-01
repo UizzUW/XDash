@@ -1,0 +1,12 @@
+﻿{
+  "supports": {},
+  "dependencies": {
+    "MVPathway": "2.5.6",
+    "MVPathway.Utils": "2.5.10",
+    "Xam.Plugins.Settings": "2.5.8",
+    "Xamarin.Forms": "2.3.4.247"
+  },
+  "frameworks": {
+    ".NETPortable,Version=v4.5,Profile=Profile7": {}
+  }
+}

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XDash.Pages.RadarTestPage">
+  <StackLayout>
+    <Label Text="List of discovered dashers :"/>
+    <ListView x:Name="DashersListView" ItemsSource="Dashers">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <Label Text="{Binding RemoteDeviceClientInfo.GUID}"/>
+            <Label Text="{Binding RemoteDeviceClientInfo.Name}"/>
+            <Label Text="{Binding RemoteDeviceClientInfo.IP}"/>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
+</ContentPage>
