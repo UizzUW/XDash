@@ -1,8 +1,8 @@
 ﻿{
   "supports": {},
   "dependencies": {
-    "MVPathway": "2.5.6",
-    "MVPathway.Utils": "2.5.10",
+    "MVPathway": "3.0.0-alpha1",
+    "MVPathway.Utils": "3.0.0-alpha1",
     "Xam.Plugins.Settings": "2.5.8",
     "Xamarin.Forms": "2.3.4.247"
   },

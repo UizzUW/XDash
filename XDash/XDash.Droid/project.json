@@ -1,6 +1,6 @@
 ﻿{
   "dependencies": {
-    "MVPathway": "2.5.6",
+    "MVPathway": "3.0.0-alpha1",
     "rda.SocketsForPCL": "2.0.2",
     "System.Net.Sockets": "4.3.0"
   },
