@@ -1,27 +1,26 @@
-﻿using MVPathway.MVVM;
-using System.Windows.Input;
+﻿using MVPathway.MVVM.Abstractions;
 using Xamarin.Forms;
-using XDash.Services.Contracts;
+using XDash.Framework.Services.Contracts;
 
 namespace XDash.ViewModels
 {
     class BeaconTestViewModel : BaseViewModel
     {
-        private readonly IBeaconService mBeaconService;
+        private readonly IBeaconService _beaconService;
 
-        private Command mStartBeaconCommand;
+        private Command _startBeaconCommand;
         public Command StartBeaconCommand =>
-            mStartBeaconCommand ?? (mStartBeaconCommand = new Command(
-                async () => await mBeaconService.StartBroadcasting()));
+            _startBeaconCommand ?? (_startBeaconCommand = new Command(
+                async () => await _beaconService.StartBroadcasting()));
 
-        private Command mStopBeaconCommand;
+        private Command _stopBeaconCommand;
         public Command StopBeaconCommand =>
-            mStopBeaconCommand ?? (mStopBeaconCommand = new Command(
-                () => mBeaconService.StopBroadcasting()));
+            _stopBeaconCommand ?? (_stopBeaconCommand = new Command(
+                () => _beaconService.StopBroadcasting()));
 
         public BeaconTestViewModel(IBeaconService beaconService)
         {
-            mBeaconService = beaconService;
+            _beaconService = beaconService;
         }
     }
 }

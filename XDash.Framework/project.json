@@ -1,8 +1,10 @@
 ﻿{
   "supports": {},
   "dependencies": {
-    "Newtonsoft.Json": "10.0.2",
-    "rda.SocketsForPCL": "2.0.2"
+    "MVPathway": "3.0.0-alpha1",
+    "Newtonsoft.Json": "9.0.1",
+    "rda.SocketsForPCL": "2.0.2",
+    "Xam.Plugins.Settings": "2.5.8"
   },
   "frameworks": {
     ".NETPortable,Version=v4.5,Profile=Profile7": {}

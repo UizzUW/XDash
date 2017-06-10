@@ -3,7 +3,7 @@ using XDash.Framework.Services.Contracts;
 
 namespace XDash.Framework.UWP.Services
 {
-    class WindowsPlatformService : IPlatformService
+    public class WindowsPlatformService : IPlatformService
     {
         public OperatingSystem GetOperatingSystem()
         {

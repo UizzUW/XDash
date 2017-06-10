@@ -87,9 +87,9 @@
     <AndroidResource Include="Resources\values\styles.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\XDash.Framework\XDash.Framework.csproj">
-      <Project>{67f9d3a8-f71e-4428-913f-c37ae82cdb24}</Project>
-      <Name>XDash.Framework</Name>
+    <ProjectReference Include="..\XDash.Framework.Droid\XDash.Framework.Droid.csproj">
+      <Project>{5754d8eb-6f0f-4035-9c84-dc8b2f33b8c0}</Project>
+      <Name>XDash.Framework.Droid</Name>
     </ProjectReference>
     <ProjectReference Include="..\XDash\XDash.csproj">
       <Project>{FD2719F7-A5A5-4B9F-A4E9-71ABD30F7B74}</Project>

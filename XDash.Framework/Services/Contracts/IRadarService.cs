@@ -4,7 +4,7 @@ using XDash.Framework.Components.Discovery;
 
 namespace XDash.Framework.Services.Contracts
 {
-    interface IRadarService
+    public interface IRadarService
     {
         Task StartScanning(Action<DasherFoundEventArgs> onFind);
         Task StopScanning();

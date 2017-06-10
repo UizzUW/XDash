@@ -1,22 +1,18 @@
 ﻿using System;
 using System.Threading.Tasks;
 using XDash.Framework.Helpers;
-using System.Collections.Generic;
-using XDash.Framework.Services;
 using Sockets.Plugin;
+using XDash.Framework.Services.Contracts;
+using XDash.Framework.Components.Discovery.Contracts;
 
 namespace XDash.Framework.Components.Discovery
 {
-  public class XDashBeacon : XDashBaseDiscoveryObject
+    public class XDashBeacon : XDashDiscoveryComponent, IXDashBeacon
     {
-        #region Instance members
-    
+        private readonly IBinarySerializer _binarySerializer;
+
         private Timer _broadcastTimer;
         private UdpSocketClient _broadcastClient = new UdpSocketClient();
-
-        #endregion
-
-        #region Properties
 
         private uint _interval = XDashConst.DEFAULT_BEACON_INTERVAL;
         public uint Interval
@@ -54,9 +50,10 @@ namespace XDash.Framework.Components.Discovery
 
         public bool IsBroadcasting { get; private set; }
 
-        #endregion
-
-        #region Public methods
+        public XDashBeacon(IBinarySerializer binarySerializer)
+        {
+            _binarySerializer = binarySerializer;
+        }
 
         public async Task StartBroadcasting()
         {
@@ -80,23 +77,17 @@ namespace XDash.Framework.Components.Discovery
             IsBroadcasting = false;
         }
 
-        #endregion
-
-        #region Private methods
-
         private async Task sendMessage()
         {
-            var dataTransferTable = new Dictionary<string, object>()
+            var dataTransferTable = new DasherFoundEventArgs
             {
-                { XDashConst.Discovery.REMOTE_DEVICE_CLIENT_INFO, Client },
-                { XDashConst.Discovery.SERIAL_DATA, SerialData },
-                { XDashConst.Discovery.IS_BROADCASTING, IsBroadcasting }
+                RemoteDeviceClientInfo = Client,
+                Data = SerialData,
+                IsBroadcasting = IsBroadcasting
             };
-            var serialDtt = DataSerializerService.Serialize(dataTransferTable);
+            var serialDtt = _binarySerializer.Serialize(dataTransferTable);
 
             await _broadcastClient.SendToAsync(serialDtt, AdapterIp, Port);
         }
-
-        #endregion
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace XDash.Services.Contracts
+﻿namespace XDash.Framework.Services.Contracts
 {
     public interface ISettingsService
     {

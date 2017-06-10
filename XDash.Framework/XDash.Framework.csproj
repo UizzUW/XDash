@@ -40,8 +40,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Builder\PathwayBuilderExtensions.cs" />
+    <Compile Include="Components\Discovery\Contracts\IXDashBeacon.cs" />
+    <Compile Include="Components\Discovery\Contracts\IXDashDiscoveryComponent.cs" />
+    <Compile Include="Components\Discovery\Contracts\IXDashRadar.cs" />
     <Compile Include="Components\Discovery\DasherFoundEventArgs.cs" />
-    <Compile Include="Components\Discovery\XDashBaseDiscoveryObject.cs" />
+    <Compile Include="Components\Discovery\XDashDiscoveryComponent.cs" />
     <Compile Include="Components\Discovery\XDashRadar.cs" />
     <Compile Include="Helpers\PortableTimer.cs" />
     <Compile Include="Helpers\XDashHelperMethods.cs" />
@@ -50,14 +54,20 @@
     <Compile Include="Models\XDashClient.cs" />
     <Compile Include="Models\XDashFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BinarySerializer.cs" />
     <Compile Include="Services\Contracts\IBeaconService.cs" />
+    <Compile Include="Services\Contracts\IBinarySerializer.cs" />
     <Compile Include="Services\Contracts\IDeviceInfoService.cs" />
+    <Compile Include="Services\Contracts\IJsonSerializer.cs" />
+    <Compile Include="Services\Contracts\IObjectSerializer.cs" />
     <Compile Include="Services\Contracts\IPlatformService.cs" />
     <Compile Include="Services\Contracts\IRadarService.cs" />
-    <Compile Include="Services\DataSerializerService.cs" />
+    <Compile Include="Services\Contracts\ISettingsService.cs" />
     <Compile Include="Components\Discovery\XDashBeacon.cs" />
     <Compile Include="Helpers\XDashConst.cs" />
     <Compile Include="Services\DeviceInfoService.cs" />
+    <Compile Include="Services\JsonSerializer.cs" />
+    <Compile Include="Services\SettingsService.cs" />
     <Compile Include="Services\XDashBeaconService.cs" />
     <Compile Include="Services\XDashRadarService.cs" />
   </ItemGroup>

@@ -38,7 +38,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Builder\XDashPathwayBuilderExtensions.cs" />
     <Compile Include="Helpers\Const.cs" />
     <Compile Include="Pages\BeaconTestPage.xaml.cs">
       <DependentUpon>BeaconTestPage.xaml</DependentUpon>
@@ -53,14 +52,11 @@
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Contracts\IObjectSerializerService.cs" />
-    <Compile Include="Services\Contracts\ISettingsService.cs" />
-    <Compile Include="Services\SettingsService.cs" />
-    <Compile Include="Services\JsonSerializerService.cs" />
     <Compile Include="ViewModels\BeaconTestViewModel.cs" />
     <Compile Include="ViewModels\MainTestViewModel.cs" />
     <Compile Include="ViewModels\RadarTestViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
+    <Compile Include="XDashAppStart.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">
@@ -94,6 +90,9 @@
       <Generator>MSBuild:CompileMSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\Contracts\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,77 +1,77 @@
-﻿using MVPathway.MVVM;
+﻿using MVPathway.MVVM.Abstractions;
 using Sockets.Plugin.Abstractions;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using XDash.Framework.Models;
-using XDash.Services.Contracts;
+using XDash.Framework.Services.Contracts;
 
 namespace XDash.ViewModels
 {
-  public class SettingsViewModel : BaseViewModel
-  {
-    private readonly IDeviceInfoService mDeviceInfoService;
-
-    public XDashClient DeviceInfo
+    public class SettingsViewModel : BaseViewModel
     {
-      get
-      {
-        return mDeviceInfoService.GetDeviceInfo();
-      }
-    }
+        private readonly IDeviceInfoService _deviceInfoService;
 
-    public string DeviceName
-    {
-      get
-      {
-        return DeviceInfo.Name;
-      }
-      set
-      {
-        if (string.IsNullOrWhiteSpace(value))
+        public XDashClient DeviceInfo
         {
-          return;
+            get
+            {
+                return _deviceInfoService.GetDeviceInfo();
+            }
         }
-        mDeviceInfoService.RenameDevice(value);
-      }
-    }
 
-    private ObservableCollection<ICommsInterface> mInterfaces;
-    public ObservableCollection<ICommsInterface> Interfaces
-    {
-      get
-      {
-        return mInterfaces;
-      }
-      set
-      {
-        mInterfaces = value;
-        OnPropertyChanged(nameof(Interfaces));
-        OnPropertyChanged(nameof(SelectedInterface));
-      }
-    }
+        public string DeviceName
+        {
+            get
+            {
+                return DeviceInfo.Name;
+            }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    return;
+                }
+                _deviceInfoService.RenameDevice(value);
+            }
+        }
 
-    public ICommsInterface SelectedInterface
-    {
-      get
-      {
-        return mDeviceInfoService.SelectedInterface;
-      }
-      set
-      {
-        mDeviceInfoService.SelectedInterface = value;
-        OnPropertyChanged(nameof(SelectedInterface));
-      }
-    }
+        private ObservableCollection<ICommsInterface> mInterfaces;
+        public ObservableCollection<ICommsInterface> Interfaces
+        {
+            get
+            {
+                return mInterfaces;
+            }
+            set
+            {
+                mInterfaces = value;
+                OnPropertyChanged(nameof(Interfaces));
+                OnPropertyChanged(nameof(SelectedInterface));
+            }
+        }
 
-    public SettingsViewModel(IDeviceInfoService deviceInfoService)
-    {
-      mDeviceInfoService = deviceInfoService;
-    }
+        public ICommsInterface SelectedInterface
+        {
+            get
+            {
+                return _deviceInfoService.SelectedInterface;
+            }
+            set
+            {
+                _deviceInfoService.SelectedInterface = value;
+                OnPropertyChanged(nameof(SelectedInterface));
+            }
+        }
 
-    protected override async Task OnNavigatedTo(object parameter)
-    {
-      await base.OnNavigatedTo(parameter);
-      Interfaces = new ObservableCollection<ICommsInterface>(mDeviceInfoService.Interfaces);
+        public SettingsViewModel(IDeviceInfoService deviceInfoService)
+        {
+            _deviceInfoService = deviceInfoService;
+        }
+
+        protected override async Task OnNavigatedTo(object parameter)
+        {
+            await base.OnNavigatedTo(parameter);
+            Interfaces = new ObservableCollection<ICommsInterface>(_deviceInfoService.Interfaces);
+        }
     }
-  }
 }

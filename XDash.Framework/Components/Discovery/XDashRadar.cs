@@ -1,21 +1,20 @@
 ﻿using System.Threading.Tasks;
-using XDash.Framework.Helpers;
-using XDash.Framework.Services;
-using XDash.Framework.Models;
 using Sockets.Plugin;
 using Sockets.Plugin.Abstractions;
+using XDash.Framework.Services.Contracts;
+using XDash.Framework.Components.Discovery.Contracts;
 
 namespace XDash.Framework.Components.Discovery
 {
-    public class XDashRadar : XDashBaseDiscoveryObject
+    public class XDashRadar : XDashDiscoveryComponent, IXDashRadar
     {
-        #region Instance members
-
+        private readonly IBinarySerializer _binarySerializer;
         private readonly UdpSocketReceiver _broadcastReceiver = new UdpSocketReceiver();
 
-        #endregion
-
-        #region Public methods
+        public XDashRadar(IBinarySerializer binarySerializer)
+        {
+            _binarySerializer = binarySerializer;
+        }
 
         public async Task StartScanning()
         {
@@ -28,30 +27,14 @@ namespace XDash.Framework.Components.Discovery
             await _broadcastReceiver.StopListeningAsync();
         }
 
-        #endregion
-
-        #region Private methods
-
         private async void onReceive(object sender, UdpSocketMessageReceivedEventArgs message)
         {
-            var data = DataSerializerService.Deserialize(message.ByteData);
-
-            var eargs = new DasherFoundEventArgs(
-                (XDashClient)data[XDashConst.Discovery.REMOTE_DEVICE_CLIENT_INFO],
-                (byte[])data[XDashConst.Discovery.SERIAL_DATA],
-                (bool)data[XDashConst.Discovery.IS_BROADCASTING]);
+            var eargs = _binarySerializer.Deserialize<DasherFoundEventArgs>(message.ByteData);
             DasherFound?.Invoke(eargs);
 
             await _broadcastReceiver.StartListeningAsync(Port, Interface);
         }
 
-        #endregion
-
-        #region Events
-
-        public delegate void OnDasherFound(DasherFoundEventArgs e);
         public event OnDasherFound DasherFound;
-
-        #endregion
     }
 }

@@ -1,11 +1,12 @@
 ﻿using Sockets.Plugin.Abstractions;
 using System;
+using XDash.Framework.Components.Discovery.Contracts;
 using XDash.Framework.Helpers;
 using XDash.Framework.Models;
 
 namespace XDash.Framework.Components.Discovery
 {
-    public abstract class XDashBaseDiscoveryObject
+    public abstract class XDashDiscoveryComponent : IXDashDiscoveryComponent
     {
         protected string AdapterIp => _interface.IpAddress
                     .Substring(0, _interface.IpAddress.LastIndexOf("."))

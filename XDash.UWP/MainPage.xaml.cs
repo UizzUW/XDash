@@ -1,19 +1,18 @@
 ﻿using MVPathway.Builder;
-using XDash.Services.Contracts;
-using XDash.UWP.Services;
+using XDash.Framework.UWP;
 
 namespace XDash.UWP
 {
-  public sealed partial class MainPage
-  {
-    public MainPage()
+    public sealed partial class MainPage
     {
-      this.InitializeComponent();
+        public MainPage()
+        {
+            InitializeComponent();
 
-      LoadApplication(PathwayFactory.Create<XDash.App>(di =>
-      {
-        di.Register<IPlatformService, WindowsPlatformService>();
-      }));
+            LoadApplication(PathwayFactory.Create<XDash.App>(di =>
+            {
+                di.AddXDashPlatformDependencies();
+            }));
+        }
     }
-  }
 }

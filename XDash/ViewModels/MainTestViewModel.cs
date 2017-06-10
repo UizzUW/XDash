@@ -1,33 +1,32 @@
-﻿using MVPathway;
-using MVPathway.MVVM;
-using MVPathway.Presenters.Abstractions;
+﻿using MVPathway.MVVM.Abstractions;
+using MVPathway.Navigation.Abstractions;
 using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace XDash.ViewModels
 {
-  class MainTestViewModel : BaseViewModel
-  {
-    private readonly IPresenter mPresenter;
-
-    private ICommand mTestBeaconCommand;
-    public ICommand TestBeaconCommand =>
-        mTestBeaconCommand ?? (mTestBeaconCommand = new Command(
-            () => mPresenter.Show<BeaconTestViewModel>()));
-
-    private ICommand mTestRadarCommand;
-    public ICommand TestRadarCommand =>
-        mTestRadarCommand ?? (mTestRadarCommand = new Command(
-            () => mPresenter.Show<RadarTestViewModel>()));
-
-    private ICommand mShowSettingsCommand;
-    public ICommand ShowSettingsCommand =>
-        mShowSettingsCommand ?? (mShowSettingsCommand = new Command(
-            () => mPresenter.Show<SettingsViewModel>()));
-
-    public MainTestViewModel(IPresenter presenter)
+    class MainTestViewModel : BaseViewModel
     {
-      mPresenter = presenter;
+        private readonly INavigator _navigator;
+
+        private ICommand mTestBeaconCommand;
+        public ICommand TestBeaconCommand =>
+            mTestBeaconCommand ?? (mTestBeaconCommand = new Command(
+                () => _navigator.Show<BeaconTestViewModel>()));
+
+        private ICommand mTestRadarCommand;
+        public ICommand TestRadarCommand =>
+            mTestRadarCommand ?? (mTestRadarCommand = new Command(
+                () => _navigator.Show<RadarTestViewModel>()));
+
+        private ICommand mShowSettingsCommand;
+        public ICommand ShowSettingsCommand =>
+            mShowSettingsCommand ?? (mShowSettingsCommand = new Command(
+                () => _navigator.Show<SettingsViewModel>()));
+
+        public MainTestViewModel(INavigator navigator)
+        {
+            _navigator = navigator;
+        }
     }
-  }
 }
