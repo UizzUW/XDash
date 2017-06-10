@@ -1,7 +1,7 @@
 using XDash.Framework.Models;
-using XDash.Services.Contracts;
+using XDash.Framework.Services.Contracts;
 
-namespace XDash.Droid.Services
+namespace XDash.Framework.Droid.Services
 {
     public class AndroidPlatformService : IPlatformService
     {

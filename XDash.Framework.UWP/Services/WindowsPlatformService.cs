@@ -1,7 +1,7 @@
 ﻿using XDash.Framework.Models;
-using XDash.Services.Contracts;
+using XDash.Framework.Services.Contracts;
 
-namespace XDash.UWP.Services
+namespace XDash.Framework.UWP.Services
 {
     class WindowsPlatformService : IPlatformService
     {

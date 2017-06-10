@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using XDash.Framework.Models;
 
-namespace XDash.Services.Contracts
+namespace XDash.Framework.Services.Contracts
 {
   public interface IDeviceInfoService
   {

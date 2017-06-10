@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using XDash.Framework.Components.Discovery;
 
-namespace XDash.Services.Contracts
+namespace XDash.Framework.Services.Contracts
 {
     interface IRadarService
     {

@@ -50,13 +50,21 @@
     <Compile Include="Models\XDashClient.cs" />
     <Compile Include="Models\XDashFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Contracts\IBeaconService.cs" />
+    <Compile Include="Services\Contracts\IDeviceInfoService.cs" />
+    <Compile Include="Services\Contracts\IPlatformService.cs" />
+    <Compile Include="Services\Contracts\IRadarService.cs" />
     <Compile Include="Services\DataSerializerService.cs" />
     <Compile Include="Components\Discovery\XDashBeacon.cs" />
     <Compile Include="Helpers\XDashConst.cs" />
+    <Compile Include="Services\DeviceInfoService.cs" />
+    <Compile Include="Services\XDashBeaconService.cs" />
+    <Compile Include="Services\XDashRadarService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
