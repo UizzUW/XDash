@@ -1,0 +1,10 @@
+﻿{
+  "dependencies": {
+    "MVPathway": "2.6.0",
+    "rda.SocketsForPCL": "2.0.2",
+    "System.Net.Sockets": "4.3.0"
+  },
+  "frameworks": {
+    "MonoAndroid,Version=v6.0": {}
+  }
+}
