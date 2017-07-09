@@ -47,7 +47,6 @@
     <Compile Include="Components\Discovery\DasherFoundEventArgs.cs" />
     <Compile Include="Components\Discovery\XDashDiscoveryComponent.cs" />
     <Compile Include="Components\Discovery\XDashRadar.cs" />
-    <Compile Include="Helpers\PortableTimer.cs" />
     <Compile Include="Helpers\XDashHelperMethods.cs" />
     <Compile Include="Models\OperatingSystem.cs" />
     <Compile Include="Models\XDash.cs" />
@@ -65,6 +64,7 @@
     <Compile Include="Services\Contracts\ISettingsService.cs" />
     <Compile Include="Components\Discovery\XDashBeacon.cs" />
     <Compile Include="Helpers\XDashConst.cs" />
+    <Compile Include="Services\Contracts\IAsyncTimer.cs" />
     <Compile Include="Services\DeviceInfoService.cs" />
     <Compile Include="Services\JsonSerializer.cs" />
     <Compile Include="Services\SettingsService.cs" />

@@ -4,7 +4,9 @@
     "Newtonsoft.Json": "9.0.1",
     "rda.SocketsForPCL": "2.0.2",
     "System.Net.Sockets": "4.3.0",
-    "Xam.Plugins.Settings": "2.5.8"
+    "Xam.Plugins.Settings": "2.5.8",
+    "Xamarin.Forms": "2.3.4.247",
+    "Xamarin.Plugin.FilePicker": "1.2.1"
   },
   "frameworks": {
     "Xamarin.iOS,Version=v1.0": {}

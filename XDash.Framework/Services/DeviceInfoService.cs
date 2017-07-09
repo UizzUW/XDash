@@ -82,17 +82,17 @@ namespace XDash.Framework.Services
 
         public void RenameDevice(string name) => _settingsService.Set(DEVICE_NAME_KEY, name);
 
-        private Guid getGuid()
+        private string getGuid()
         {
             var guid = _settingsService.Get<Guid>(DEVICE_GUID_KEY);
             if (guid != Guid.Empty)
             {
-                return guid;
+                return guid.ToString();
             }
 
             guid = Guid.NewGuid();
             _settingsService.Set(DEVICE_GUID_KEY, guid);
-            return guid;
+            return guid.ToString();
         }
 
         private string getName()

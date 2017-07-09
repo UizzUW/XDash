@@ -8,7 +8,7 @@ namespace XDash.Framework.Components.Discovery.Contracts
         byte[] SerialData { get; set; }
         bool IsBroadcasting { get; }
 
-        Task StartBroadcasting();
-        void StopBroadcasting();
+        void StartBroadcasting();
+        Task StopBroadcasting();
     }
 }

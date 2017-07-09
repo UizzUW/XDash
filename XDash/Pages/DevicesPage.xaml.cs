@@ -2,9 +2,9 @@
 
 namespace XDash.Pages
 {
-    public partial class RadarTestPage : ContentPage
+    public partial class DevicesPage : ContentPage
     {
-        public RadarTestPage()
+        public DevicesPage()
         {
             InitializeComponent();
         }

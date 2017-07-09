@@ -5,6 +5,6 @@ namespace XDash.Framework.Services.Contracts
     public interface IBeaconService
     {
         Task StartBroadcasting();
-        void StopBroadcasting();
+        Task StopBroadcasting();
     }
 }

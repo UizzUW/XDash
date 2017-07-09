@@ -3,60 +3,68 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XDash.Pages.SettingsPage"
              Title="Settings">
-  <StackLayout>
-    <Grid Padding="12" RowSpacing="12">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="Auto"/>
-        <ColumnDefinition Width="*"/>
-      </Grid.ColumnDefinitions>
+    <StackLayout>
+        <Grid Padding="12" RowSpacing="12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-      <Grid.RowDefinitions>
-        <RowDefinition Height="Auto"/>
-        <RowDefinition Height="Auto"/>
-        <RowDefinition Height="Auto"/>
-        <RowDefinition Height="Auto"/>
-        <RowDefinition Height="Auto"/>
-      </Grid.RowDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-      <Label Text="Device info : "
-             Grid.ColumnSpan="2"/>
-      <Label Text="Name"
-             VerticalOptions="Center"
-             Grid.Row="1"/>
-      <Entry Text="{Binding DeviceName}"
-             VerticalOptions="Start"
-             Grid.Row="1"
-             Grid.Column="1"/>
-      <Label Text="IP"
-             Grid.Row="2"/>
-      <Label Text="{Binding SelectedInterface.IpAddress}"
-             Grid.Row="2"
-             Grid.Column="1"/>
-      <Label Text="OS"
-             Grid.Row="3"/>
-      <Label Text="{Binding DeviceInfo.OperatingSystem}"
-             Grid.Row="3"
-             Grid.Column="1"/>
-      <Label Text="XDash Framework"
-             Grid.Row="4"/>
-      <Label Text="{Binding DeviceInfo.FrameworkVersion}"
-             Grid.Row="4"
-             Grid.Column="1"/>
-    </Grid>
+            <Label Text="Device info : "
+                   TextColor="White"
+                   Grid.ColumnSpan="2"/>
+            <Label Text="Name"
+                   TextColor="White"
+                   VerticalOptions="Center"
+                   Grid.Row="1"/>
+            <Entry Text="{Binding DeviceName}"
+                   TextColor="White"
+                   VerticalOptions="Start"
+                   Grid.Row="1"
+                   Grid.Column="1"/>
+            <Label Text="IP"
+                   TextColor="White"
+                   Grid.Row="2"/>
+            <Label Text="{Binding SelectedInterface.IpAddress}"
+                   TextColor="White"
+                   Grid.Row="2"
+                   Grid.Column="1"/>
+            <Label Text="OS"
+                   TextColor="White"
+                   Grid.Row="3"/>
+            <Label Text="{Binding DeviceInfo.OperatingSystem}"
+                   TextColor="White"
+                   Grid.Row="3"
+                   Grid.Column="1"/>
+            <Label Text="XDash Framework"
+                   TextColor="White"
+                   Grid.Row="4"/>
+            <Label Text="{Binding DeviceInfo.FrameworkVersion}"
+                   Grid.Row="4"
+                   Grid.Column="1"/>
+        </Grid>
 
-    <ListView ItemsSource="{Binding Interfaces}"
+        <ListView ItemsSource="{Binding Interfaces}"
               SelectedItem="{Binding SelectedInterface}">
-      <ListView.ItemTemplate>
-        <DataTemplate>
-          <ViewCell>
-            <StackLayout Padding="12" Spacing="12">
-              <Label Text="{Binding Name}"/>
-              <Label Text="{Binding IpAddress}"/>
-            </StackLayout>
-          </ViewCell>
-        </DataTemplate>
-      </ListView.ItemTemplate>
-    </ListView>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="8">
+                            <Label Text="{Binding Name}" TextColor="White"/>
+                            <Label Text="{Binding IpAddress}" TextColor="White"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
-  </StackLayout>
+    </StackLayout>
 </ContentPage>

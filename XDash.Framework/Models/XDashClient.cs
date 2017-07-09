@@ -4,7 +4,7 @@ namespace XDash.Framework.Models
 {
     public struct XDashClient : IEquatable<XDashClient>
     {
-        public Guid Guid { get; set; }
+        public string Guid { get; set; }
         public string Name { get; set; }
         public string Ip { get; set; }
         public OperatingSystem OperatingSystem { get; set; }

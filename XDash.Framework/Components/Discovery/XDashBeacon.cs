@@ -10,9 +10,11 @@ namespace XDash.Framework.Components.Discovery
     public class XDashBeacon : XDashDiscoveryComponent, IXDashBeacon
     {
         private readonly IBinarySerializer _binarySerializer;
+        private readonly IAsyncTimer _timer;
 
-        private Timer _broadcastTimer;
         private UdpSocketClient _broadcastClient = new UdpSocketClient();
+
+        private byte[] _serializedEvent;
 
         private uint _interval = XDashConst.DEFAULT_BEACON_INTERVAL;
         public uint Interval
@@ -50,44 +52,56 @@ namespace XDash.Framework.Components.Discovery
 
         public bool IsBroadcasting { get; private set; }
 
-        public XDashBeacon(IBinarySerializer binarySerializer)
+        public XDashBeacon(IBinarySerializer binarySerializer,
+                           IAsyncTimer timer)
         {
             _binarySerializer = binarySerializer;
+            _timer = timer;
         }
 
-        public async Task StartBroadcasting()
+        public void StartBroadcasting()
         {
             if (IsBroadcasting)
             {
                 return;
             }
-            _broadcastTimer = new Timer((int)Interval);
-            _broadcastTimer.Elapsed += async (sender, e) => await sendMessage();
+
+            var dataTransferTable = new DasherFoundEventArgs
+            {
+                RemoteDeviceClientInfo = Client,
+                Data = SerialData,
+                IsBroadcasting = true
+            };
+            _serializedEvent = _binarySerializer.Serialize(dataTransferTable);
+            _timer.Elapsed += sendMessage;
+            _timer.Start(Interval);
             IsBroadcasting = true;
-            await _broadcastTimer.Start();
         }
 
-        public void StopBroadcasting()
+        public async Task StopBroadcasting()
         {
             if (!IsBroadcasting)
             {
                 return;
             }
-            _broadcastTimer.Stop();
-            IsBroadcasting = false;
-        }
 
-        private async Task sendMessage()
-        {
+            _timer.Elapsed -= sendMessage;
+            _timer.Stop();
+            IsBroadcasting = false;
+
             var dataTransferTable = new DasherFoundEventArgs
             {
                 RemoteDeviceClientInfo = Client,
                 Data = SerialData,
-                IsBroadcasting = IsBroadcasting
+                IsBroadcasting = false
             };
-            var serialDtt = _binarySerializer.Serialize(dataTransferTable);
+            _serializedEvent = _binarySerializer.Serialize(dataTransferTable);
+            await _broadcastClient.SendToAsync(_serializedEvent, AdapterIp, Port);
+        }
 
-            await _broadcastClient.SendToAsync(serialDtt, AdapterIp, Port);
+        private async Task sendMessage()
+        {
+            await _broadcastClient.SendToAsync(_serializedEvent, AdapterIp, Port);
         }
     }
 }

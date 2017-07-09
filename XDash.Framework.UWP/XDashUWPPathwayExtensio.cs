@@ -9,6 +9,7 @@ namespace XDash.Framework.UWP
         public static void AddXDashPlatformDependencies(this IDiContainer container)
         {
             container.Register<IPlatformService, WindowsPlatformService>();
+            container.Register<IAsyncTimer, WindowsAsyncTimer>(false);
         }
     }
 }

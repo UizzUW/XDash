@@ -3,6 +3,7 @@ using MVPathway.Builder.Abstractions;
 using MVPathway.Utils.Presenters;
 using Xamarin.Forms;
 using XDash.Framework.Builder;
+using XDash.Helpers;
 
 namespace XDash
 {
@@ -18,7 +19,7 @@ namespace XDash
         {
             base.Configure(builder);
             builder
-              .UsePresenter<StackPresenter>()
+              .UsePresenter<CustomTabbedPresenter>()
               .UseAppStart<XDashAppStart>()
               .UseXDash();
         }

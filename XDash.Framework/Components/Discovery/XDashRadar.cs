@@ -9,7 +9,7 @@ namespace XDash.Framework.Components.Discovery
     public class XDashRadar : XDashDiscoveryComponent, IXDashRadar
     {
         private readonly IBinarySerializer _binarySerializer;
-        private readonly UdpSocketReceiver _broadcastReceiver = new UdpSocketReceiver();
+        private UdpSocketReceiver _broadcastReceiver;
 
         public XDashRadar(IBinarySerializer binarySerializer)
         {
@@ -18,21 +18,22 @@ namespace XDash.Framework.Components.Discovery
 
         public async Task StartScanning()
         {
+            _broadcastReceiver = new UdpSocketReceiver();
             _broadcastReceiver.MessageReceived += onReceive;
-            await _broadcastReceiver.StartListeningAsync(Port, Interface);
+            await _broadcastReceiver.StartListeningAsync(Port);
         }
 
         public async Task StopScanning()
         {
+            _broadcastReceiver.MessageReceived -= onReceive;
             await _broadcastReceiver.StopListeningAsync();
+            _broadcastReceiver = null;
         }
 
-        private async void onReceive(object sender, UdpSocketMessageReceivedEventArgs message)
+        private void onReceive(object sender, UdpSocketMessageReceivedEventArgs message)
         {
             var eargs = _binarySerializer.Deserialize<DasherFoundEventArgs>(message.ByteData);
             DasherFound?.Invoke(eargs);
-
-            await _broadcastReceiver.StartListeningAsync(Port, Interface);
         }
 
         public event OnDasherFound DasherFound;

@@ -39,22 +39,16 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Const.cs" />
-    <Compile Include="Pages\BeaconTestPage.xaml.cs">
-      <DependentUpon>BeaconTestPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\MainTestPage.xaml.cs">
-      <DependentUpon>MainTestPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\RadarTestPage.xaml.cs">
-      <DependentUpon>RadarTestPage.xaml</DependentUpon>
+    <Compile Include="Helpers\CustomTabbedPresenter.cs" />
+    <Compile Include="Pages\DevicesPage.xaml.cs">
+      <DependentUpon>DevicesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\BeaconTestViewModel.cs" />
-    <Compile Include="ViewModels\MainTestViewModel.cs" />
-    <Compile Include="ViewModels\RadarTestViewModel.cs" />
+    <Compile Include="Services\Contracts\IFilesystemBrowser.cs" />
+    <Compile Include="ViewModels\DevicesViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="XDashAppStart.cs" />
   </ItemGroup>
@@ -74,15 +68,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\BeaconTestPage.xaml">
-      <Generator>MSBuild:CompileMSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\MainTestPage.xaml">
-      <Generator>MSBuild:CompileMSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\RadarTestPage.xaml">
+    <EmbeddedResource Include="Pages\DevicesPage.xaml">
       <Generator>MSBuild:CompileMSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -91,9 +77,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\Contracts\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

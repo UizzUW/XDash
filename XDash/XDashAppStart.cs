@@ -1,6 +1,8 @@
 ﻿using MVPathway.Builder.Abstractions;
 using MVPathway.MVVM.Abstractions;
 using MVPathway.Navigation.Abstractions;
+using MVPathway.Utils.Presenters;
+using MVPathway.Utils.ViewModels.Qualities;
 using XDash.Framework.Services.Contracts;
 using XDash.Pages;
 using XDash.ViewModels;
@@ -27,14 +29,15 @@ namespace XDash
 
         public async void Start()
         {
-            _vmManager.RegisterPageForViewModel<MainTestViewModel, MainTestPage>();
-            _vmManager.RegisterPageForViewModel<BeaconTestViewModel, BeaconTestPage>();
-            _vmManager.RegisterPageForViewModel<RadarTestViewModel, RadarTestPage>();
-            _vmManager.RegisterPageForViewModel<SettingsViewModel, SettingsPage>();
+            _vmManager.RegisterPageForViewModel<DevicesViewModel, DevicesPage>()
+                .AddQuality<IChildQuality>();
+            _vmManager.RegisterPageForViewModel<SettingsViewModel, SettingsPage>()
+                .AddQuality<IChildQuality>();
 
             await _deviceInfoService.Init();
 
-            await _navigator.Show<MainTestViewModel>();
+            await _navigator.ChangePresenter<TabbedPresenter>();
+            await _navigator.Show<SettingsViewModel>();
         }
     }
 }
