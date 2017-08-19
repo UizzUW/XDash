@@ -2,20 +2,11 @@
 <mvp:PathwayApplication xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XDash.App"
-             xmlns:mvp="clr-namespace:MVPathway;assembly=MVPathway">
-  <mvp:PathwayApplication.Resources>
-    <ResourceDictionary>
-      <Color x:Key="backgroundColor">White</Color>
-      <Color x:Key="textColor">Black</Color>
-      <Color x:Key="darkBlueColor">#205A8C</Color>
-      <Color x:Key="lightBlueColor">#C9F5FF</Color>
-
-      <Style TargetType="Label">
-        <Setter Property="TextColor" Value="{StaticResource textColor}" />
-      </Style>
-      <Style TargetType="VisualElement">
-        <Setter Property="BackgroundColor" Value="{StaticResource backgroundColor}" />
-      </Style>
-    </ResourceDictionary>
-  </mvp:PathwayApplication.Resources>
+             xmlns:mvp="clr-namespace:MVPathway;assembly=MVPathway"
+             xmlns:xdashConverters="clr-namespace:XDash.Converters;assembly=XDash">
+    <mvp:PathwayApplication.Resources>
+        <ResourceDictionary>
+            <xdashConverters:LanguageEnumToNameConverter x:Key="LanguageEnumToNameConverter"/>
+        </ResourceDictionary>
+    </mvp:PathwayApplication.Resources>
 </mvp:PathwayApplication>

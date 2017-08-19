@@ -13,9 +13,10 @@ namespace XDash.Framework.Builder
         {
             var b = builder as PathwayBuilder;
 
+            b.UseSettings<ISettingsRepository, SettingsRepository>();
+
             b.Container.Register<IJsonSerializer, JsonSerializer>();
             b.Container.Register<IBinarySerializer, BinarySerializer>();
-            b.Container.Register<ISettingsService, SettingsService>();
             b.Container.Register<IDeviceInfoService, DeviceInfoService>();
 
             b.Container.Register<IXDashBeacon, XDashBeacon>(false);

@@ -4,24 +4,23 @@
              x:Class="XDash.Pages.DevicesPage"
              Title="Devices">
     <StackLayout Orientation="Vertical">
-        <StackLayout Orientation="Horizontal">
-            <Label Text="Make this device visible"
-                   TextColor="White"
+        <StackLayout Orientation="Horizontal" Padding="8">
+            <Label Text="{Binding [Make_This_Device_Visible]}"
                    HorizontalOptions="StartAndExpand"
                    VerticalTextAlignment="Center"/>
             <Switch IsToggled="{Binding IsBeaconEnabled}"/>
         </StackLayout>
 
-        <Label Text="List of discovered dashers :"
-               TextColor="White"/>
-        <ListView x:Name="DashersListView" ItemsSource="{Binding Dashers}">
+        <Label Text="{Binding [List_Of_Discovered_Dashers]}"/>
+        <ListView x:Name="DashersListView" ItemsSource="{Binding Dashers}"
+                  HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Orientation="Vertical">
-                            <Label Text="{Binding Guid}" TextColor="White"/>
-                            <Label Text="{Binding Name}" TextColor="White"/>
-                            <Label Text="{Binding Ip}" TextColor="White"/>
+                        <StackLayout Orientation="Vertical" Padding="8">
+                            <Label Text="{Binding Guid}" FontSize="10" />
+                            <Label Text="{Binding Name}" FontSize="24" />
+                            <Label Text="{Binding Ip}" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

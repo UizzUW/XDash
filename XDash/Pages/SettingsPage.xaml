@@ -16,50 +16,49 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <Label Text="Device info : "
-                   TextColor="White"
-                   Grid.ColumnSpan="2"/>
-            <Label Text="Name"
-                   TextColor="White"
+            <Label Text="{Binding [Device_Info]}"
+                   Grid.Row="0" Grid.ColumnSpan="2"/>
+            <Label Text="{Binding [Language]}"
                    VerticalOptions="Center"
-                   Grid.Row="1"/>
+                   Grid.Row="1" Grid.Column="0" />
+            <Picker Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Languages}"
+                    SelectedItem="{Binding SelectedLanguage}"/>
+            <Label Text="{Binding [Name]}"
+                   VerticalOptions="Center"
+                   Grid.Row="2" Grid.Column="0" />
             <Entry Text="{Binding DeviceName}"
-                   TextColor="White"
                    VerticalOptions="Start"
-                   Grid.Row="1"
-                   Grid.Column="1"/>
-            <Label Text="IP"
-                   TextColor="White"
-                   Grid.Row="2"/>
-            <Label Text="{Binding SelectedInterface.IpAddress}"
-                   TextColor="White"
                    Grid.Row="2"
                    Grid.Column="1"/>
-            <Label Text="OS"
-                   TextColor="White"
-                   Grid.Row="3"/>
-            <Label Text="{Binding DeviceInfo.OperatingSystem}"
-                   TextColor="White"
+            <Label Text="{Binding [ID]}"
+                   Grid.Row="3" Grid.Column="0" />
+            <Label Text="{Binding SelectedInterface.IpAddress}"
                    Grid.Row="3"
                    Grid.Column="1"/>
-            <Label Text="XDash Framework"
-                   TextColor="White"
-                   Grid.Row="4"/>
-            <Label Text="{Binding DeviceInfo.FrameworkVersion}"
+            <Label Text="{Binding [OS]}"
+                   Grid.Row="4" Grid.Column="0" />
+            <Label Text="{Binding DeviceInfo.OperatingSystem}"
                    Grid.Row="4"
+                   Grid.Column="1"/>
+            <Label Text="{Binding [XDash_Version]}"
+                   Grid.Row="5" Grid.Column="0" />
+            <Label Text="{Binding DeviceInfo.FrameworkVersion}"
+                   Grid.Row="5"
                    Grid.Column="1"/>
         </Grid>
 
         <ListView ItemsSource="{Binding Interfaces}"
-              SelectedItem="{Binding SelectedInterface}">
+                  SelectedItem="{Binding SelectedInterface}"
+                  HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Padding="8">
-                            <Label Text="{Binding Name}" TextColor="White"/>
-                            <Label Text="{Binding IpAddress}" TextColor="White"/>
+                            <Label Text="{Binding Name}" />
+                            <Label Text="{Binding IpAddress}" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

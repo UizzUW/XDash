@@ -17,7 +17,7 @@ namespace XDash.Framework.Services
         private const string DEVICE_INFO_KEY = nameof(DEVICE_INFO_KEY);
         private const string SELECTED_COMMS_INTERFACE_KEY = nameof(SELECTED_COMMS_INTERFACE_KEY);
 
-        private readonly ISettingsService _settingsService;
+        private readonly ISettingsRepository _settingsService;
         private readonly IPlatformService _platformService;
 
         public IEnumerable<ICommsInterface> Interfaces { get; private set; }
@@ -51,7 +51,7 @@ namespace XDash.Framework.Services
             }
         }
 
-        public DeviceInfoService(ISettingsService settingsService, IPlatformService platformService)
+        public DeviceInfoService(ISettingsRepository settingsService, IPlatformService platformService)
         {
             _settingsService = settingsService;
             _platformService = platformService;

@@ -25,6 +25,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -33,6 +34,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseUWP|AnyCPU'">
     <OutputPath>bin\ReleaseUWP\</OutputPath>
@@ -42,13 +44,17 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\LanguageEnumToNameConverter.cs" />
     <Compile Include="Helpers\Const.cs" />
     <Compile Include="Helpers\CustomTabbedPresenter.cs" />
+    <Compile Include="Messages\LanguageChangedMessage.cs" />
+    <Compile Include="Models\Enums\Language.cs" />
     <Compile Include="Pages\DevicesPage.xaml.cs">
       <DependentUpon>DevicesPage.xaml</DependentUpon>
     </Compile>
@@ -56,7 +62,20 @@
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Strings\Strings_EN.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings_EN.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Strings\Strings_RO.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings_RO.resx</DependentUpon>
+    </Compile>
     <Compile Include="Services\Contracts\IFilesystemBrowser.cs" />
+    <Compile Include="Services\Contracts\ILocalizer.cs" />
+    <Compile Include="Services\Localizer.cs" />
+    <Compile Include="ViewModels\Base\BaseViewModel.cs" />
     <Compile Include="ViewModels\DevicesViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="XDashAppStart.cs" />
@@ -65,6 +84,14 @@
     <EmbeddedResource Include="App.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings\Strings_EN.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings_EN.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings\Strings_RO.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings_RO.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

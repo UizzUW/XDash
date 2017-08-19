@@ -1,13 +1,17 @@
-﻿using MVPathway;
+﻿using DryIoc;
 using MVPathway.Builder.Abstractions;
+using MVPathway.MVVM.Abstractions;
 using MVPathway.Utils.Presenters;
+using MVPathway.Utils.ViewModels.Qualities;
 using Xamarin.Forms;
 using XDash.Framework.Builder;
-using XDash.Helpers;
+using XDash.Services;
+using XDash.Services.Contracts;
+using XDash.ViewModels;
 
 namespace XDash
 {
-    public partial class App : PathwayApplication
+    public partial class App
     {
         public App()
         {
@@ -19,9 +23,25 @@ namespace XDash
         {
             base.Configure(builder);
             builder
-              .UsePresenter<CustomTabbedPresenter>()
+              .UsePresenter<TabbedPresenter>()
               .UseAppStart<XDashAppStart>()
               .UseXDash();
+        }
+
+        public override void ConfigureServices(IDiContainer container)
+        {
+            base.ConfigureServices(container);
+            container.Register<ILocalizer, Localizer>();
+        }
+
+        public override void ConfigureViewModels(IViewModelManager vmManager)
+        {
+            vmManager.AutoScanAndRegister(GetType().GetAssembly());
+
+            vmManager.ResolveDefinitionForViewModel<DevicesViewModel>()
+                .AddQuality<IChildQuality>();
+            vmManager.ResolveDefinitionForViewModel<SettingsViewModel>()
+                .AddQuality<IChildQuality>();
         }
     }
 }

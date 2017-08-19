@@ -1,9 +1,12 @@
-﻿using MVPathway.MVVM.Abstractions;
+﻿using XDash.ViewModels.Base;
 using Sockets.Plugin.Abstractions;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using MVPathway.Messages.Abstractions;
 using XDash.Framework.Models;
 using XDash.Framework.Services.Contracts;
+using XDash.Models.Enums;
+using XDash.Services.Contracts;
 
 namespace XDash.ViewModels
 {
@@ -11,20 +14,11 @@ namespace XDash.ViewModels
     {
         private readonly IDeviceInfoService _deviceInfoService;
 
-        public XDashClient DeviceInfo
-        {
-            get
-            {
-                return _deviceInfoService.GetDeviceInfo();
-            }
-        }
+        public XDashClient DeviceInfo => _deviceInfoService.GetDeviceInfo();
 
         public string DeviceName
         {
-            get
-            {
-                return DeviceInfo.Name;
-            }
+            get => DeviceInfo.Name;
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
@@ -35,35 +29,45 @@ namespace XDash.ViewModels
             }
         }
 
-        private ObservableCollection<ICommsInterface> mInterfaces;
-        public ObservableCollection<ICommsInterface> Interfaces
+        public ObservableCollection<Language> Languages
+            => new ObservableCollection<Language>(Localizer.SupportedLanguages);
+
+        public Language SelectedLanguage
         {
-            get
-            {
-                return mInterfaces;
-            }
+            get => Localizer.CurrentLanguage;
             set
             {
-                mInterfaces = value;
-                OnPropertyChanged(nameof(Interfaces));
+                Localizer.CurrentLanguage = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private ObservableCollection<ICommsInterface> _interfaces;
+        public ObservableCollection<ICommsInterface> Interfaces
+        {
+            get => _interfaces;
+            set
+            {
+                _interfaces = value;
+                OnPropertyChanged();
                 OnPropertyChanged(nameof(SelectedInterface));
             }
         }
 
         public ICommsInterface SelectedInterface
         {
-            get
-            {
-                return _deviceInfoService.SelectedInterface;
-            }
+            get => _deviceInfoService.SelectedInterface;
             set
             {
                 _deviceInfoService.SelectedInterface = value;
-                OnPropertyChanged(nameof(SelectedInterface));
+                OnPropertyChanged();
             }
         }
 
-        public SettingsViewModel(IDeviceInfoService deviceInfoService)
+        public SettingsViewModel(IDeviceInfoService deviceInfoService,
+                                 ILocalizer localizer,
+                                 IMessenger messenger)
+            : base(localizer, messenger)
         {
             _deviceInfoService = deviceInfoService;
         }

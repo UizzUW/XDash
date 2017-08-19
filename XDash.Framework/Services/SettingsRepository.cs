@@ -3,23 +3,19 @@ using XDash.Framework.Services.Contracts;
 
 namespace XDash.Framework.Services
 {
-    public class SettingsService : ISettingsService
+    public class SettingsRepository : ISettingsRepository
     {
         private readonly IJsonSerializer _jsonSerializer;
 
-        public SettingsService(IJsonSerializer jsonSerializer)
+        public SettingsRepository(IJsonSerializer jsonSerializer)
         {
             _jsonSerializer = jsonSerializer;
         }
 
         public T Get<T>(string key)
         {
-            var xml = CrossSettings.Current.GetValueOrDefault<string>(key);
-            if (xml == null || string.IsNullOrEmpty(xml))
-            {
-                return default(T);
-            }
-            return _jsonSerializer.Deserialize<T>(xml);
+            var json = CrossSettings.Current.GetValueOrDefault(key, string.Empty);
+            return string.IsNullOrEmpty(json) ? default(T) : _jsonSerializer.Deserialize<T>(json);
         }
 
         public void Set<T>(string key, T value)

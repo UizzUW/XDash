@@ -70,13 +70,13 @@
     <Compile Include="Services\Contracts\IObjectSerializer.cs" />
     <Compile Include="Services\Contracts\IPlatformService.cs" />
     <Compile Include="Services\Contracts\IRadarService.cs" />
-    <Compile Include="Services\Contracts\ISettingsService.cs" />
+    <Compile Include="Services\Contracts\ISettingsRepository.cs" />
     <Compile Include="Components\Discovery\XDashBeacon.cs" />
     <Compile Include="Helpers\XDashConst.cs" />
     <Compile Include="Services\Contracts\IAsyncTimer.cs" />
     <Compile Include="Services\DeviceInfoService.cs" />
     <Compile Include="Services\JsonSerializer.cs" />
-    <Compile Include="Services\SettingsService.cs" />
+    <Compile Include="Services\SettingsRepository.cs" />
     <Compile Include="Services\XDashBeaconService.cs" />
     <Compile Include="Services\XDashRadarService.cs" />
   </ItemGroup>

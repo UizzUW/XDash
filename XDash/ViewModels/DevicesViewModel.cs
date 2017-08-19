@@ -1,11 +1,12 @@
-﻿using MVPathway.MVVM.Abstractions;
-using Plugin.FilePicker;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using MVPathway.Messages.Abstractions;
 using Xamarin.Forms;
 using XDash.Framework.Components.Discovery;
 using XDash.Framework.Models;
 using XDash.Framework.Services.Contracts;
+using XDash.Services.Contracts;
+using XDash.ViewModels.Base;
 
 namespace XDash.ViewModels
 {
@@ -17,7 +18,7 @@ namespace XDash.ViewModels
         private bool _isBeaconEnabled;
         public bool IsBeaconEnabled
         {
-            get { return _isBeaconEnabled; }
+            get => _isBeaconEnabled;
             set
             {
                 _isBeaconEnabled = value;
@@ -55,7 +56,10 @@ namespace XDash.ViewModels
         }
 
         public DevicesViewModel(IBeaconService beaconService,
-                                  IRadarService radarService)
+                                IRadarService radarService,
+                                ILocalizer localizer,
+                                IMessenger messenger)
+            : base(localizer, messenger)
         {
             _beaconService = beaconService;
             _radarService = radarService;
