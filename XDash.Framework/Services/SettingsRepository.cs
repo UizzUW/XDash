@@ -1,26 +1,30 @@
-using Plugin.Settings;
+using System;
 using XDash.Framework.Services.Contracts;
 
 namespace XDash.Framework.Services
 {
-    public class SettingsRepository : ISettingsRepository
+    public class SettingsRepository : MVPathway.Settings.SettingsRepository, ISettingsRepository
     {
-        private readonly IJsonSerializer _jsonSerializer;
+        private const string _DEVICE_NAME_KEY = nameof(_DEVICE_NAME_KEY);
+        private const string _DEVICE_GUID_KEY = nameof(_DEVICE_GUID_KEY);
+        private const string _SELECTED_COMMS_INTERFACE_KEY = nameof(_SELECTED_COMMS_INTERFACE_KEY);
 
-        public SettingsRepository(IJsonSerializer jsonSerializer)
+        public Guid Guid
         {
-            _jsonSerializer = jsonSerializer;
+            get => Get<Guid>(_DEVICE_GUID_KEY);
+            set => Set(_DEVICE_GUID_KEY, value);
         }
 
-        public T Get<T>(string key)
+        public string Name
         {
-            var json = CrossSettings.Current.GetValueOrDefault(key, string.Empty);
-            return string.IsNullOrEmpty(json) ? default(T) : _jsonSerializer.Deserialize<T>(json);
+            get => Get<string>(_DEVICE_NAME_KEY);
+            set => Set(_DEVICE_NAME_KEY, value);
         }
 
-        public void Set<T>(string key, T value)
+        public string Ip
         {
-            CrossSettings.Current.AddOrUpdateValue(key, _jsonSerializer.Serialize(value));
+            get => Get<string>(_SELECTED_COMMS_INTERFACE_KEY);
+            set => Set(_SELECTED_COMMS_INTERFACE_KEY, value);
         }
     }
 }

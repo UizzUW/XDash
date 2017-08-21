@@ -5,7 +5,7 @@ using XDash.Framework.Services.Contracts;
 
 namespace XDash.Framework.UWP.Services
 {
-    public class WindowsAsyncTimer : IAsyncTimer
+    public class UwpTimer : ITimer
     {
         private DispatcherTimer _timer;
 
@@ -32,10 +32,7 @@ namespace XDash.Framework.UWP.Services
             _timer = null;
         }
 
-        private async void onTick(object sender, object e)
-        {
-            await Elapsed?.Invoke();
-        }
+        private async void onTick(object sender, object e) => await Elapsed?.Invoke();
 
         public event Func<Task> Elapsed;
     }

@@ -2,7 +2,7 @@
   "supports": {},
   "dependencies": {
     "DryIoc.dll": "2.11.6",
-    "MVPathway": "3.0.0-alpha2",
+    "MVPathway": "3.0.0-alpha3",
     "Newtonsoft.Json": "10.0.3",
     "rda.SocketsForPCL": "2.0.2",
     "Xam.Plugins.Settings": "3.0.1",

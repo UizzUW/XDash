@@ -5,6 +5,7 @@ using MVPathway.Utils.Presenters;
 using MVPathway.Utils.ViewModels.Qualities;
 using Xamarin.Forms;
 using XDash.Framework.Builder;
+using XDash.Helpers;
 using XDash.Services;
 using XDash.Services.Contracts;
 using XDash.ViewModels;
@@ -23,7 +24,7 @@ namespace XDash
         {
             base.Configure(builder);
             builder
-              .UsePresenter<TabbedPresenter>()
+              .UsePresenter<CustomTabbedPresenter>()
               .UseAppStart<XDashAppStart>()
               .UseXDash();
         }

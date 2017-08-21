@@ -10,19 +10,16 @@ namespace XDash.Framework.Components.Discovery
     public class XDashBeacon : XDashDiscoveryComponent, IXDashBeacon
     {
         private readonly IBinarySerializer _binarySerializer;
-        private readonly IAsyncTimer _timer;
+        private readonly ITimer _timer;
 
-        private UdpSocketClient _broadcastClient = new UdpSocketClient();
+        private readonly UdpSocketClient _broadcastClient = new UdpSocketClient();
 
         private byte[] _serializedEvent;
 
         private uint _interval = XDashConst.DEFAULT_BEACON_INTERVAL;
         public uint Interval
         {
-            get
-            {
-                return _interval;
-            }
+            get => _interval;
             set
             {
                 if (IsBroadcasting)
@@ -36,10 +33,7 @@ namespace XDash.Framework.Components.Discovery
         private byte[] _serialData;
         public byte[] SerialData
         {
-            get
-            {
-                return _serialData;
-            }
+            get => _serialData;
             set
             {
                 if (IsBroadcasting)
@@ -53,7 +47,7 @@ namespace XDash.Framework.Components.Discovery
         public bool IsBroadcasting { get; private set; }
 
         public XDashBeacon(IBinarySerializer binarySerializer,
-                           IAsyncTimer timer)
+                           ITimer timer)
         {
             _binarySerializer = binarySerializer;
             _timer = timer;
@@ -68,7 +62,7 @@ namespace XDash.Framework.Components.Discovery
 
             var dataTransferTable = new DasherFoundEventArgs
             {
-                RemoteDeviceClientInfo = Client,
+                RemoteDeviceClient = Client,
                 Data = SerialData,
                 IsBroadcasting = true
             };
@@ -91,7 +85,7 @@ namespace XDash.Framework.Components.Discovery
 
             var dataTransferTable = new DasherFoundEventArgs
             {
-                RemoteDeviceClientInfo = Client,
+                RemoteDeviceClient = Client,
                 Data = SerialData,
                 IsBroadcasting = false
             };

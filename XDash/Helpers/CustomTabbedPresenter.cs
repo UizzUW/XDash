@@ -26,13 +26,13 @@ namespace XDash.Helpers
         {
             await base.Init();
             TabbedPage = new TabbedPage();
-            TabbedPage.CurrentPageChanged += async (s, e) => await onTabChanged(s, e);
             var childPages = _vmManager.ResolvePagesForViewModels(def => def.HasQuality<IChildQuality>());
             foreach (var child in childPages)
             {
                 TabbedPage.Children.Add(child);
                 NavigationPage.SetHasNavigationBar(child, false);
             }
+            TabbedPage.CurrentPageChanged += async (s, e) => await onTabChanged(s, e);
         }
 
         public override async Task OnShow(BaseViewModel viewModel, Page page, NavigationRequestType requestType)

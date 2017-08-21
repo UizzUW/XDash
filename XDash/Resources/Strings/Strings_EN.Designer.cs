@@ -80,6 +80,15 @@ namespace XDash.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        internal static string Language {
+            get {
+                return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to List of discovered dashers :.
         /// </summary>
         internal static string List_Of_Discovered_Dashers {

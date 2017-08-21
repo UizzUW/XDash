@@ -29,23 +29,26 @@
             <Label Text="{Binding [Name]}"
                    VerticalOptions="Center"
                    Grid.Row="2" Grid.Column="0" />
-            <Entry Text="{Binding DeviceName}"
+            <Entry Text="{Binding Client.Name}"
                    VerticalOptions="Start"
                    Grid.Row="2"
                    Grid.Column="1"/>
             <Label Text="{Binding [ID]}"
                    Grid.Row="3" Grid.Column="0" />
+            <Label Text="{Binding Client.Guid}"
+                   Grid.Row="3"
+                   Grid.Column="1"/>
             <Label Text="{Binding SelectedInterface.IpAddress}"
                    Grid.Row="3"
                    Grid.Column="1"/>
             <Label Text="{Binding [OS]}"
                    Grid.Row="4" Grid.Column="0" />
-            <Label Text="{Binding DeviceInfo.OperatingSystem}"
+            <Label Text="{Binding Client.OperatingSystem}"
                    Grid.Row="4"
                    Grid.Column="1"/>
             <Label Text="{Binding [XDash_Version]}"
                    Grid.Row="5" Grid.Column="0" />
-            <Label Text="{Binding DeviceInfo.FrameworkVersion}"
+            <Label Text="{Binding Client.FrameworkVersion}"
                    Grid.Row="5"
                    Grid.Column="1"/>
         </Grid>

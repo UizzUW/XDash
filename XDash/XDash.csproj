@@ -51,6 +51,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\LanguageEnumToNameConverter.cs" />
+    <Compile Include="Converters\OperatingSystemToLogoConverter.cs" />
     <Compile Include="Helpers\Const.cs" />
     <Compile Include="Helpers\CustomTabbedPresenter.cs" />
     <Compile Include="Messages\LanguageChangedMessage.cs" />
@@ -114,6 +115,14 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Images\xdash_droid_nobg_icon.png" />
+    <EmbeddedResource Include="Resources\Images\xdash_ios_nobg_icon.png" />
+    <EmbeddedResource Include="Resources\Images\xdash_linux_nobg_icon.png" />
+    <EmbeddedResource Include="Resources\Images\xdash_mac_nobg_icon.png" />
+    <EmbeddedResource Include="Resources\Images\xdash_nobg_icon.png" />
+    <EmbeddedResource Include="Resources\Images\xdash_windows_nobg_icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

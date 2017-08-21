@@ -3,7 +3,7 @@ using Sockets.Plugin.Abstractions;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using MVPathway.Messages.Abstractions;
-using XDash.Framework.Models;
+using XDash.Framework.Models.Abstractions;
 using XDash.Framework.Services.Contracts;
 using XDash.Models.Enums;
 using XDash.Services.Contracts;
@@ -14,18 +14,15 @@ namespace XDash.ViewModels
     {
         private readonly IDeviceInfoService _deviceInfoService;
 
-        public XDashClient DeviceInfo => _deviceInfoService.GetDeviceInfo();
+        private IXDashClient _client;
 
-        public string DeviceName
+        public IXDashClient Client
         {
-            get => DeviceInfo.Name;
+            get => _client;
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    return;
-                }
-                _deviceInfoService.RenameDevice(value);
+                _client = value;
+                OnPropertyChanged();
             }
         }
 
@@ -54,28 +51,31 @@ namespace XDash.ViewModels
             }
         }
 
+        private ICommsInterface _selectedInterface;
         public ICommsInterface SelectedInterface
         {
-            get => _deviceInfoService.SelectedInterface;
+            get => _selectedInterface;
             set
             {
-                _deviceInfoService.SelectedInterface = value;
+                _selectedInterface = value;
                 OnPropertyChanged();
             }
         }
 
         public SettingsViewModel(IDeviceInfoService deviceInfoService,
+                                 IXDashClient client,
                                  ILocalizer localizer,
                                  IMessenger messenger)
             : base(localizer, messenger)
         {
             _deviceInfoService = deviceInfoService;
+            Client = client;
         }
 
         protected override async Task OnNavigatedTo(object parameter)
         {
             await base.OnNavigatedTo(parameter);
-            Interfaces = new ObservableCollection<ICommsInterface>(_deviceInfoService.Interfaces);
+            Interfaces = new ObservableCollection<ICommsInterface>(await _deviceInfoService.GetInterfaces());
         }
     }
 }

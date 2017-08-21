@@ -123,6 +123,9 @@
   <data name="ID" xml:space="preserve">
     <value>ID</value>
   </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
   <data name="List_Of_Discovered_Dashers" xml:space="preserve">
     <value>List of discovered dashers :</value>
   </data>

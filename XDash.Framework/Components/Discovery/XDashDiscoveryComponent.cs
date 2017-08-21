@@ -2,33 +2,30 @@
 using System;
 using XDash.Framework.Components.Discovery.Contracts;
 using XDash.Framework.Helpers;
-using XDash.Framework.Models;
+using XDash.Framework.Models.Abstractions;
 
 namespace XDash.Framework.Components.Discovery
 {
     public abstract class XDashDiscoveryComponent : IXDashDiscoveryComponent
     {
-        protected string AdapterIp => _interface.IpAddress
-                    .Substring(0, _interface.IpAddress.LastIndexOf("."))
-                    + XDashConst.BROADCAST_SUBNET_SUFFIX;
+        protected string AdapterIp => _interface.IpAddress.Replace(
+            _interface.IpAddress.Remove(0, _interface.IpAddress.LastIndexOf(".", StringComparison.Ordinal)),
+            XDashConst.BROADCAST_SUBNET_SUFFIX);
 
-        public XDashClient Client { get; set; }
+        public IXDashClient Client { get; set; }
 
         private ICommsInterface _interface;
         public ICommsInterface Interface
         {
-            get { return _interface; }
-            set
-            {
-                _interface = value ??
-                    throw new ArgumentNullException("Network interface for XDashDiscoveryObject cannot be null.");
-            }
+            get => _interface;
+            set => _interface = value ??
+                                throw new ArgumentNullException("Network interface for XDashDiscoveryObject cannot be null.");
         }
 
         private int _port = XDashConst.DEFAULT_DISCOVERY_PORT;
         public int Port
         {
-            get { return _port; }
+            get => _port;
             set
             {
                 if (value <= XDashConst.MINIMUM_PORT_VALUE)

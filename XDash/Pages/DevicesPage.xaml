@@ -4,7 +4,7 @@
              x:Class="XDash.Pages.DevicesPage"
              Title="Devices">
     <StackLayout Orientation="Vertical">
-        <StackLayout Orientation="Horizontal" Padding="8">
+        <StackLayout Orientation="Horizontal">
             <Label Text="{Binding [Make_This_Device_Visible]}"
                    HorizontalOptions="StartAndExpand"
                    VerticalTextAlignment="Center"/>
@@ -12,16 +12,34 @@
         </StackLayout>
 
         <Label Text="{Binding [List_Of_Discovered_Dashers]}"/>
-        <ListView x:Name="DashersListView" ItemsSource="{Binding Dashers}"
+        <ListView x:Name="DashersListView"
+                  ItemsSource="{Binding Dashers}"
+                  SelectedItem="{Binding SelectedDasher}"
                   HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Orientation="Vertical" Padding="8">
-                            <Label Text="{Binding Guid}" FontSize="10" />
-                            <Label Text="{Binding Name}" FontSize="24" />
-                            <Label Text="{Binding Ip}" />
-                        </StackLayout>
+                        <Grid Padding="8">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding OperatingSystem, Converter={StaticResource OperatingSystemToLogoConverter}}"
+                                   WidthRequest="64" HeightRequest="64"
+                                   Grid.Row="0" Grid.Column="0"
+                                   Grid.RowSpan="3"/>
+                            <Label Text="{Binding Guid}" FontSize="10"
+                                   Grid.Row="0" Grid.Column="1"/>
+                            <Label Text="{Binding Name}" FontSize="24"
+                                   Grid.Row="1" Grid.Column="1"/>
+                            <Label Text="{Binding Ip}"
+                                   Grid.Row="2" Grid.Column="1"/>
+                        </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

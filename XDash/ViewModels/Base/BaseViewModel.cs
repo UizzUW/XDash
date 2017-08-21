@@ -1,5 +1,4 @@
-﻿using System.ServiceModel.Channels;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using MVPathway.Messages.Abstractions;
 using XDash.Messages;
 using XDash.Services.Contracts;

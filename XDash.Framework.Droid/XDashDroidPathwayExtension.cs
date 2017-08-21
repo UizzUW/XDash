@@ -8,8 +8,8 @@ namespace XDash.Framework.Droid
     {
         public static void AddXDashPlatformDependencies(this IDiContainer container)
         {
-            container.Register<IPlatformService, AndroidPlatformService>();
-            container.Register<IAsyncTimer, DroidAsyncTimer>(false);
+            container.Register<IPlatformService, DroidPlatformService>();
+            container.Register<ITimer, DroidTimer>(false);
         }
     }
 }

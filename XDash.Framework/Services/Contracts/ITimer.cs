@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace XDash.Framework.Services.Contracts
 {
-    public interface IAsyncTimer
+    public interface ITimer
     {
         bool IsEnabled { get; }
 

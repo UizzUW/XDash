@@ -5,7 +5,7 @@ using XDash.Framework.Services.Contracts;
 
 namespace XDash.Framework.Droid.Services
 {
-    public class DroidAsyncTimer : IAsyncTimer
+    public class DroidTimer : ITimer
     {
         private Timer _timer;
 
@@ -29,10 +29,7 @@ namespace XDash.Framework.Droid.Services
             _timer = null;
         }
 
-        private async void onElapsed(object sender, EventArgs e)
-        {
-            await Elapsed?.Invoke();
-        }
+        private async void onElapsed(object sender, EventArgs e) => await Elapsed?.Invoke();
 
         public event Func<Task> Elapsed;
     }

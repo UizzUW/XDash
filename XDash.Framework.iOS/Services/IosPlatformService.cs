@@ -5,9 +5,6 @@ namespace XDash.Framework.iOS.Services
 {
     public class IosPlatformService : IPlatformService
     {
-        public OperatingSystem GetOperatingSystem()
-        {
-            return OperatingSystem.iOS;
-        }
+        public OperatingSystem OS => OperatingSystem.iOS;
     }
 }

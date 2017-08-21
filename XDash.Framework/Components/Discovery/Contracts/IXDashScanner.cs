@@ -4,7 +4,7 @@ namespace XDash.Framework.Components.Discovery.Contracts
 {
     public delegate void OnDasherFound(DasherFoundEventArgs e);
 
-    public interface IXDashRadar : IXDashDiscoveryComponent
+    public interface IXDashScanner : IXDashDiscoveryComponent
     {
         Task StartScanning();
 

@@ -6,12 +6,12 @@ using XDash.Framework.Components.Discovery.Contracts;
 
 namespace XDash.Framework.Components.Discovery
 {
-    public class XDashRadar : XDashDiscoveryComponent, IXDashRadar
+    public class XDashScanner : XDashDiscoveryComponent, IXDashScanner
     {
         private readonly IBinarySerializer _binarySerializer;
         private UdpSocketReceiver _broadcastReceiver;
 
-        public XDashRadar(IBinarySerializer binarySerializer)
+        public XDashScanner(IBinarySerializer binarySerializer)
         {
             _binarySerializer = binarySerializer;
         }

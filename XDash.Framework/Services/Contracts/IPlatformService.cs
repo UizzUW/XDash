@@ -4,6 +4,6 @@ namespace XDash.Framework.Services.Contracts
 {
     public interface IPlatformService
     {
-        OperatingSystem GetOperatingSystem();
+        OperatingSystem OS { get; }
     }
 }
