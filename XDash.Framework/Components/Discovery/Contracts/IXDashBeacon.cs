@@ -4,11 +4,7 @@ namespace XDash.Framework.Components.Discovery.Contracts
 {
     public interface IXDashBeacon : IXDashDiscoveryComponent
     {
-        uint Interval { get; set; }
-        byte[] SerialData { get; set; }
-        bool IsBroadcasting { get; }
-
-        void StartBroadcasting();
-        Task StopBroadcasting();
+        Task StartListening();
+        Task StopListening();
     }
 }

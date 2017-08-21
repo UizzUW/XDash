@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XDash.Pages.DevicesPage"
              Title="Devices">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Scan" Command="{Binding ScanCommand}" />
+    </ContentPage.ToolbarItems>
     <StackLayout Orientation="Vertical">
         <StackLayout Orientation="Horizontal">
             <Label Text="{Binding [Make_This_Device_Visible]}"
@@ -13,8 +16,12 @@
 
         <Label Text="{Binding [List_Of_Discovered_Dashers]}"/>
         <ListView x:Name="DashersListView"
+                  IsVisible="{Binding IsBusy, Converter={StaticResource BoolToNotBoolConverter}}"
                   ItemsSource="{Binding Dashers}"
                   SelectedItem="{Binding SelectedDasher}"
+                  IsPullToRefreshEnabled="True"
+                  RefreshCommand="{Binding ScanCommand}"
+                  IsRefreshing="{Binding IsBusy}"
                   HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -44,5 +51,8 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand"/>
     </StackLayout>
 </ContentPage>

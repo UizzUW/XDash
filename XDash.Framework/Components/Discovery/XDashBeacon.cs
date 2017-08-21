@@ -1,101 +1,53 @@
-﻿using System;
-using System.Threading.Tasks;
-using XDash.Framework.Helpers;
+﻿using System.Threading.Tasks;
 using Sockets.Plugin;
+using Sockets.Plugin.Abstractions;
 using XDash.Framework.Services.Contracts;
 using XDash.Framework.Components.Discovery.Contracts;
+using XDash.Framework.Models.Abstractions;
 
 namespace XDash.Framework.Components.Discovery
 {
     public class XDashBeacon : XDashDiscoveryComponent, IXDashBeacon
     {
         private readonly IBinarySerializer _binarySerializer;
-        private readonly ITimer _timer;
-
-        private readonly UdpSocketClient _broadcastClient = new UdpSocketClient();
-
-        private byte[] _serializedEvent;
-
-        private uint _interval = XDashConst.DEFAULT_BEACON_INTERVAL;
-        public uint Interval
-        {
-            get => _interval;
-            set
-            {
-                if (IsBroadcasting)
-                {
-                    throw new InvalidOperationException("Cannot change timer interval while broadcastin.");
-                }
-                _interval = value;
-            }
-        }
-
-        private byte[] _serialData;
-        public byte[] SerialData
-        {
-            get => _serialData;
-            set
-            {
-                if (IsBroadcasting)
-                {
-                    throw new InvalidOperationException("Cannot change timer interval while broadcasting.");
-                }
-                _serialData = value;
-            }
-        }
-
-        public bool IsBroadcasting { get; private set; }
+        private UdpSocketReceiver _scanRequestReceiver;
 
         public XDashBeacon(IBinarySerializer binarySerializer,
-                           ITimer timer)
+                           ISettingsRepository settingsRepository,
+                           IDeviceInfoService deviceInfoService,
+                           IXDashClient client)
+            : base(settingsRepository, deviceInfoService, client)
         {
             _binarySerializer = binarySerializer;
-            _timer = timer;
         }
 
-        public void StartBroadcasting()
+        public async Task StartListening()
         {
-            if (IsBroadcasting)
-            {
-                return;
-            }
+            IsEnabled = true;
+            _scanRequestReceiver = new UdpSocketReceiver();
+            _scanRequestReceiver.MessageReceived += onReceive;
+            await _scanRequestReceiver.StartListeningAsync(SettingsRepository.BeaconScanPort);
+        }
 
-            var dataTransferTable = new DasherFoundEventArgs
+        public async Task StopListening()
+        {
+            _scanRequestReceiver.MessageReceived -= onReceive;
+            await _scanRequestReceiver.StopListeningAsync();
+            _scanRequestReceiver = null;
+            IsEnabled = false;
+        }
+
+        private async void onReceive(object sender, UdpSocketMessageReceivedEventArgs message)
+        {
+            var request = _binarySerializer.Deserialize<DasherScanEventArgs>(message.ByteData);
+            var response = new DasherScanResponseEventArgs
             {
-                RemoteDeviceClient = Client,
-                Data = SerialData,
-                IsBroadcasting = true
+                RemoteClient = Client,
+                Data = SerialData
             };
-            _serializedEvent = _binarySerializer.Serialize(dataTransferTable);
-            _timer.Elapsed += sendMessage;
-            _timer.Start(Interval);
-            IsBroadcasting = true;
-        }
-
-        public async Task StopBroadcasting()
-        {
-            if (!IsBroadcasting)
-            {
-                return;
-            }
-
-            _timer.Elapsed -= sendMessage;
-            _timer.Stop();
-            IsBroadcasting = false;
-
-            var dataTransferTable = new DasherFoundEventArgs
-            {
-                RemoteDeviceClient = Client,
-                Data = SerialData,
-                IsBroadcasting = false
-            };
-            _serializedEvent = _binarySerializer.Serialize(dataTransferTable);
-            await _broadcastClient.SendToAsync(_serializedEvent, AdapterIp, Port);
-        }
-
-        private async Task sendMessage()
-        {
-            await _broadcastClient.SendToAsync(_serializedEvent, AdapterIp, Port);
+            var serializedResponse = _binarySerializer.Serialize(response);
+            var responder = new UdpSocketClient();
+            await responder.SendToAsync(serializedResponse, request.Scanner.Ip, SettingsRepository.ScanResponsePort);
         }
     }
 }

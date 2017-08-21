@@ -53,7 +53,8 @@
     <Compile Include="Components\Discovery\Contracts\IXDashBeacon.cs" />
     <Compile Include="Components\Discovery\Contracts\IXDashDiscoveryComponent.cs" />
     <Compile Include="Components\Discovery\Contracts\IXDashScanner.cs" />
-    <Compile Include="Components\Discovery\DasherFoundEventArgs.cs" />
+    <Compile Include="Components\Discovery\DasherScanEventArgs.cs" />
+    <Compile Include="Components\Discovery\DasherScanResponseEventArgs.cs" />
     <Compile Include="Components\Discovery\XDashDiscoveryComponent.cs" />
     <Compile Include="Components\Discovery\XDashScanner.cs" />
     <Compile Include="Helpers\XDashHelperMethods.cs" />

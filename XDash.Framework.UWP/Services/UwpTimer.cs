@@ -11,15 +11,15 @@ namespace XDash.Framework.UWP.Services
 
         public bool IsEnabled => _timer.IsEnabled;
 
-        public void Start(uint interval)
+        public void Start(int interval)
         {
             if (_timer != null && _timer.IsEnabled)
             {
                 return;
             }
-            _timer = new DispatcherTimer()
+            _timer = new DispatcherTimer
             {
-                Interval = new TimeSpan(interval)
+                Interval = new TimeSpan(0, 0, 0, interval)
             };
             _timer.Tick += onTick;
             _timer.Start();
@@ -32,7 +32,10 @@ namespace XDash.Framework.UWP.Services
             _timer = null;
         }
 
-        private async void onTick(object sender, object e) => await Elapsed?.Invoke();
+        private async void onTick(object sender, object e)
+        {
+            await Elapsed?.Invoke();
+        }
 
         public event Func<Task> Elapsed;
     }

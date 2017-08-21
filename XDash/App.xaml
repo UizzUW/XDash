@@ -3,9 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XDash.App"
              xmlns:mvp="clr-namespace:MVPathway;assembly=MVPathway"
+             xmlns:mvpConverters="clr-namespace:MVPathway.Utils.Converters;assembly=MVPathway.Utils"
              xmlns:xdashConverters="clr-namespace:XDash.Converters;assembly=XDash">
     <mvp:PathwayApplication.Resources>
         <ResourceDictionary>
+            <mvpConverters:BoolToNotBoolConverter x:Key="BoolToNotBoolConverter"/>
             <xdashConverters:LanguageEnumToNameConverter x:Key="LanguageEnumToNameConverter"/>
             <xdashConverters:OperatingSystemToLogoConverter x:Key="OperatingSystemToLogoConverter" />
         </ResourceDictionary>

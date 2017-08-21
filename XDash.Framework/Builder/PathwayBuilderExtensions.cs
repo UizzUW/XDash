@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using MVPathway.Builder;
 using MVPathway.Builder.Abstractions;
 using MVPathway.MVVM.Abstractions;
-using Sockets.Plugin.Abstractions;
 using XDash.Framework.Components.Discovery;
 using XDash.Framework.Components.Discovery.Contracts;
+using XDash.Framework.Helpers;
 using XDash.Framework.Models;
 using XDash.Framework.Models.Abstractions;
 using XDash.Framework.Services;
@@ -40,6 +40,16 @@ namespace XDash.Framework.Builder
             var platformService = container.Resolve<IPlatformService>();
             var settingsRepository = container.Resolve<ISettingsRepository>();
             var deviceInfoService = container.Resolve<IDeviceInfoService>();
+
+            if (settingsRepository.BeaconScanPort == 0)
+            {
+                settingsRepository.BeaconScanPort = XDashConst.DEFAULT_BEACON_SCAN_PORT;
+            }
+
+            if (settingsRepository.ScanResponsePort == 0)
+            {
+                settingsRepository.ScanResponsePort = XDashConst.DEFAULT_SCAN_RESPONSE_PORT;
+            }
 
             var clientInfo = container.Resolve<IXDashClient>();
 

@@ -11,7 +11,7 @@ namespace XDash.Framework.Droid.Services
 
         public bool IsEnabled => _timer.Enabled;
 
-        public void Start(uint interval)
+        public void Start(int interval)
         {
             if (_timer != null && _timer.Enabled)
             {

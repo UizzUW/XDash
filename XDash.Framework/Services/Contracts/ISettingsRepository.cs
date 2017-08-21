@@ -7,5 +7,7 @@ namespace XDash.Framework.Services.Contracts
         Guid Guid { get; set; }
         string Name { get; set; }
         string Ip { get; set; }
+        int BeaconScanPort { get; set; }
+        int ScanResponsePort { get; set; }
     }
 }

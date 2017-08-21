@@ -10,6 +10,17 @@ namespace XDash.ViewModels.Base
         protected ILocalizer Localizer { get; }
         protected IMessenger Messenger { get; }
 
+        private bool _isBusy;
+        public bool IsBusy
+        {
+            get => _isBusy;
+            set
+            {
+                _isBusy = value;
+                OnPropertyChanged();
+            }
+        }
+
         public string this[string key] => Localizer.GetLocalizedString(key);
 
         public BaseViewModel(ILocalizer localizer, IMessenger messenger)

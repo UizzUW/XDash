@@ -7,7 +7,7 @@ namespace XDash.Framework.Services.Contracts
     {
         bool IsEnabled { get; }
 
-        void Start(uint interval);
+        void Start(int interval);
 
         void Stop();
 

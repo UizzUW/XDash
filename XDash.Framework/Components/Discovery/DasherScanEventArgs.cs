@@ -3,10 +3,9 @@ using XDash.Framework.Models.Abstractions;
 
 namespace XDash.Framework.Components.Discovery
 {
-    public class DasherFoundEventArgs : EventArgs
+    public class DasherScanEventArgs : EventArgs
     {
-        public IXDashClient RemoteDeviceClient { get; set; }
+        public IXDashClient Scanner { get; set; }
         public byte[] Data { get; set; }
-        public bool IsBroadcasting { get; set; }
     }
 }

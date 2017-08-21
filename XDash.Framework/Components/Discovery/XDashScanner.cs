@@ -1,41 +1,85 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Sockets.Plugin;
 using Sockets.Plugin.Abstractions;
 using XDash.Framework.Services.Contracts;
 using XDash.Framework.Components.Discovery.Contracts;
+using XDash.Framework.Models.Abstractions;
 
 namespace XDash.Framework.Components.Discovery
 {
     public class XDashScanner : XDashDiscoveryComponent, IXDashScanner
     {
         private readonly IBinarySerializer _binarySerializer;
-        private UdpSocketReceiver _broadcastReceiver;
+        private readonly IXDashClient _client;
+        private readonly ITimer _timer;
 
-        public XDashScanner(IBinarySerializer binarySerializer)
+        private UdpSocketClient _scanRequester;
+        private UdpSocketReceiver _scanResponseReceiver;
+
+        private TaskCompletionSource<List<IXDashClient>> _tcs;
+        private List<IXDashClient> _scanResults;
+
+        public XDashScanner(IBinarySerializer binarySerializer,
+                            ITimer timer,
+                            ISettingsRepository settingsRepository,
+                            IDeviceInfoService deviceInfoService,
+                            IXDashClient client)
+            : base(settingsRepository, deviceInfoService, client)
         {
             _binarySerializer = binarySerializer;
+            _client = client;
+            _timer = timer;
         }
 
-        public async Task StartScanning()
+        public async Task<List<IXDashClient>> Scan(int timeoutInSeconds = 3)
         {
-            _broadcastReceiver = new UdpSocketReceiver();
-            _broadcastReceiver.MessageReceived += onReceive;
-            await _broadcastReceiver.StartListeningAsync(Port);
+            if (IsEnabled)
+            {
+                throw new InvalidOperationException("Another scan already in progress.");
+            }
+
+            IsEnabled = true;
+
+            _tcs = new TaskCompletionSource<List<IXDashClient>>();
+            _scanResults = new List<IXDashClient>();
+
+            _scanResponseReceiver = new UdpSocketReceiver();
+            _scanResponseReceiver.MessageReceived += onDasherFound;
+            await _scanResponseReceiver.StartListeningAsync(SettingsRepository.ScanResponsePort);
+
+            var scanEvent = new DasherScanEventArgs
+            {
+                Scanner = _client,
+                Data = SerialData
+            };
+            var serializedScanEvent = _binarySerializer.Serialize(scanEvent);
+            _scanRequester = new UdpSocketClient();
+            var ip = await GetAdapterBroadcastIp();
+            await _scanRequester.SendToAsync(serializedScanEvent, ip, SettingsRepository.BeaconScanPort);
+
+            _timer.Elapsed += onFinishedScanning;
+            _timer.Start(timeoutInSeconds);
+
+            return await _tcs.Task;
         }
 
-        public async Task StopScanning()
+        private void onDasherFound(object sender, UdpSocketMessageReceivedEventArgs message)
         {
-            _broadcastReceiver.MessageReceived -= onReceive;
-            await _broadcastReceiver.StopListeningAsync();
-            _broadcastReceiver = null;
+            var scanResponse = _binarySerializer.Deserialize<DasherScanResponseEventArgs>(message.ByteData);
+            _scanResults.Add(scanResponse.RemoteClient);
         }
 
-        private void onReceive(object sender, UdpSocketMessageReceivedEventArgs message)
+        private async Task onFinishedScanning()
         {
-            var eargs = _binarySerializer.Deserialize<DasherFoundEventArgs>(message.ByteData);
-            DasherFound?.Invoke(eargs);
+            _timer.Elapsed -= onFinishedScanning;
+            _timer.Stop();
+            await _scanResponseReceiver.StopListeningAsync();
+            _tcs.SetResult(_scanResults);
+            _scanRequester = null;
+            _scanResponseReceiver = null;
+            IsEnabled = false;
         }
-
-        public event OnDasherFound DasherFound;
     }
 }

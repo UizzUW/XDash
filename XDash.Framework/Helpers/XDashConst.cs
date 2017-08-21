@@ -23,13 +23,14 @@
         /// </summary>
         public const int DEFAULT_TRANSFER_BUFFER_SIZE = 1024;
         /// <summary>
-        /// Default port on which the DashBeacon is broadcasting and the DashBeaconQuery is querying .
+        /// Default port on which the XDashBeacon is listening and the XDashScanner is querying .
         /// </summary>
-        public const int DEFAULT_DISCOVERY_PORT = 5401;
+        public const int DEFAULT_BEACON_SCAN_PORT = 5401;
+
         /// <summary>
-        /// The interval between each broadcast of a DashBeacon .
+        /// Default port on which the XDashBeacon will send the response back to the XDashScanner .
         /// </summary>
-        public const int DEFAULT_BEACON_INTERVAL = 1000;
+        public const int DEFAULT_SCAN_RESPONSE_PORT = 5402;
         /// <summary>
         /// Default port on which DashNodes are transferring receiving data .
         /// </summary>
