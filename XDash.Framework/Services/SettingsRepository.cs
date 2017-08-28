@@ -10,6 +10,9 @@ namespace XDash.Framework.Services
         private const string _SELECTED_COMMS_INTERFACE_KEY = nameof(_SELECTED_COMMS_INTERFACE_KEY);
         private const string _BEACON_SCAN_PORT = nameof(_BEACON_SCAN_PORT);
         private const string _SCAN_RESPONSE_PORT = nameof(_SCAN_RESPONSE_PORT);
+        private const string _TRANSFER_PORT = nameof(_TRANSFER_PORT);
+        private const string _TRANSFER_FEEDBACK_PORT = nameof(_TRANSFER_FEEDBACK_PORT);
+        private const string _DOWNLOADS_FOLDER_PATH = nameof(_DOWNLOADS_FOLDER_PATH);
 
         public Guid Guid
         {
@@ -39,6 +42,24 @@ namespace XDash.Framework.Services
         {
             get => Get<int>(_SCAN_RESPONSE_PORT);
             set => Set(_SCAN_RESPONSE_PORT, value);
+        }
+
+        public int TransferPort
+        {
+            get => Get<int>(_TRANSFER_PORT);
+            set => Set(_TRANSFER_PORT, value);
+        }
+
+        public int TransferFeedbackPort
+        {
+            get => Get<int>(_TRANSFER_FEEDBACK_PORT);
+            set => Set(_TRANSFER_FEEDBACK_PORT, value);
+        }
+
+        public string DownloadsFolderPath
+        {
+            get => Get<string>(_DOWNLOADS_FOLDER_PATH);
+            set => Set(_DOWNLOADS_FOLDER_PATH, value);
         }
     }
 }

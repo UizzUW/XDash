@@ -6,7 +6,7 @@
     "MVPathway.Utils": "3.0.0-alpha4",
     "Newtonsoft.Json": "10.0.3",
     "rda.SocketsForPCL": "2.0.2",
-    "Xam.Plugin.FilePicker": "1.1.0",
+    "System.ValueTuple": "4.4.0",
     "Xam.Plugins.Settings": "3.0.1",
     "Xamarin.Forms": "2.3.4.267"
   },

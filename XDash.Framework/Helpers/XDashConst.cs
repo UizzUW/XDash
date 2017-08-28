@@ -3,7 +3,7 @@
     public static class XDashConst
     {
         // Default general and connectivity constants
-        // DO NOT CHANGE ANYTHING HERE IF YOU DON'T KNOW EXACTLY WHAT YOU ARE DOING !
+        // PLEASE DO NOT CHANGE ANYTHING IN HERE IF YOU DON'T KNOW EXACTLY WHAT YOU ARE DOING !
 
         public const int MINIMUM_PORT_VALUE = 1024;
 
@@ -12,16 +12,20 @@
         /// getting the remote device's name .
         /// </summary>
         public const int DEFAULT_STRING_BUFFER_LENGTH = 256;
+
         /// <summary>
         /// Default length used for defining int buffers in the framework . Used in processes such as
         /// getting the files count or the file size .
         /// </summary>
         public const int DEFAULT_INT_BUFFER_LENGTH = sizeof(int);
+
         public const int DEFAULT_LONG_BUFFER_LENGTH = sizeof(long);
+
         /// <summary>
         /// Default size of a DashNode's data buffer / Default TCP transfer packet size .
         /// </summary>
         public const int DEFAULT_TRANSFER_BUFFER_SIZE = 1024;
+
         /// <summary>
         /// Default port on which the XDashBeacon is listening and the XDashScanner is querying .
         /// </summary>
@@ -31,10 +35,17 @@
         /// Default port on which the XDashBeacon will send the response back to the XDashScanner .
         /// </summary>
         public const int DEFAULT_SCAN_RESPONSE_PORT = 5402;
+
         /// <summary>
-        /// Default port on which DashNodes are transferring receiving data .
+        /// Default port on which XDashSenders are transferring data .
         /// </summary>
         public const int DEFAULT_TRANSFER_PORT = 5403;
+
+        /// <summary>
+        /// Default port on which XDashReceivers are feeding back responses to XDashSenders .
+        /// </summary>
+        public const int DEFAULT_TRANSFER_FEEDBACK_PORT = 5404;
+
         /// <summary>
         /// Broadcast subnet suffix . Used to get the right subnet of the subnetwork on which a speciffic network adapter
         /// is connected .
@@ -72,54 +83,6 @@
 
             // Shared preferences values
             public const string NOT_SET = "NOT_SET";
-        }
-
-        /// <summary>
-        /// Shared preferences status
-        /// </summary>
-        public enum PrefsStatus
-        {
-            PREFS_LOADING,
-            PREFS_STANDBY,
-            PREFS_SAVING
-        }
-
-        /// <summary>
-        /// Possible reasons for the app's termination .
-        /// </summary>
-        public enum ExitErrorCodes
-        {
-            EXIT_NORMAL,
-            EXIT_ALREADY_OPENED,
-            EXIT_UPDATE,
-            EXIT_DISABLE_CONTEXT,
-            EXIT_NO_ADAPTER_SET,
-            EXIT_NO_CONNECTION
-        }
-
-        /// <summary>
-        /// Used to handle the user input regarding a dash approval
-        /// </summary>
-        public static class Handler
-        {
-            // Parameter extra names
-            public const string REMOTE_IP = "REMOTE_IP";
-            public const string FILENAME = "FILENAME";
-            public const string FILESIZE = "FILESIZE";
-            public const string FILECOUNT = "FILECOUNT";
-
-            // Result extra name
-            public const string HANDLE_RESULT = "HANDLE_RESULT";
-        }
-
-        /// <summary>
-        /// Used to pass network data among app components .
-        /// </summary>
-        public static class Discovery
-        {
-            public const string REMOTE_DEVICE_CLIENT_INFO = "REMOTE_DEVICE_CLIENT_INFO";
-            public const string SERIAL_DATA = "SERIAL_DATA";
-            public const string IS_BROADCASTING = "IS_BROADCASTING";
         }
 
         /// <summary>

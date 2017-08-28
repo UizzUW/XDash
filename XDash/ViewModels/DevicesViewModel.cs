@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using MVPathway.Messages.Abstractions;
 using MVPathway.MVVM.Abstractions;
-using Plugin.FilePicker;
+using MVPathway.Navigation.Abstractions;
 using Xamarin.Forms;
 using XDash.Framework.Components.Discovery.Contracts;
+using XDash.Framework.Components.Transfer.Contracts;
 using XDash.Framework.Models;
 using XDash.Framework.Models.Abstractions;
 using XDash.Framework.Services.Contracts;
@@ -17,9 +19,14 @@ namespace XDash.ViewModels
     public class DevicesViewModel : BaseViewModel
     {
         private readonly IDiContainer _container;
+        private readonly INavigator _navigator;
+        private readonly IXDashFilesystem _filesystem;
         private readonly IDeviceInfoService _deviceInfoService;
+
         private IXDashScanner _scanner;
         private IXDashBeacon _beacon;
+        private IXDashSender _sender;
+        private IXDashReceiver _receiver;
 
         private bool _isBeaconEnabled;
         public bool IsBeaconEnabled
@@ -80,6 +87,10 @@ namespace XDash.ViewModels
             set
             {
                 _selectedDasher = value;
+                if (_selectedDasher == null)
+                {
+                    return;
+                }
                 PickFileCommand.Execute(null);
             }
         }
@@ -96,17 +107,41 @@ namespace XDash.ViewModels
 
         private async Task pickFile()
         {
-            var f = await CrossFilePicker.Current.PickFile();
-            CrossFilePicker.Current.OpenFile(f);
+            string path = await _filesystem.ChooseFile();
+
+            _sender = _container.Resolve<IXDashSender>();
+            var dash = new Framework.Models.XDash
+            {
+                Files = new List<XDashFile>
+                {
+                    new XDashFile
+                    {
+                        FullPath = path,
+                        Name = path.Substring(path.LastIndexOf(@"\") + 1, path.Length - path.LastIndexOf(@"\") - 1),
+                        Size = await _filesystem.GetFileSize(path)
+                    }
+                }
+            };
+            var sendResut = await _sender.Send(SelectedDasher, dash);
+            if (sendResut.Status != XDashSendResponseStatus.Success)
+            {
+                await _navigator.DisplayAlertAsync("Error", "Send failed.", "Ok");
+                return;
+            }
+            await _navigator.DisplayAlertAsync("Success", "Gata boss", "Traiasca shefu");
         }
 
         public DevicesViewModel(IDiContainer container,
+                                INavigator navigator,
+                                IXDashFilesystem filesystem,
                                 IDeviceInfoService deviceInfoService,
                                 ILocalizer localizer,
                                 IMessenger messenger)
             : base(localizer, messenger)
         {
             _container = container;
+            _navigator = navigator;
+            _filesystem = filesystem;
             _deviceInfoService = deviceInfoService;
         }
 
@@ -125,7 +160,9 @@ namespace XDash.ViewModels
             }
 
             _beacon = _container.Resolve<IXDashBeacon>();
+            _receiver = _container.Resolve<IXDashReceiver>();
             await _beacon.StartListening();
+            await _receiver.StartReceiving(async dash => await Task.FromResult(true));
         }
 
         public async Task StopListening()
@@ -134,6 +171,8 @@ namespace XDash.ViewModels
             {
                 return;
             }
+            await _receiver.StopReceiving();
+            _receiver = null;
             await _beacon.StopListening();
             _beacon = null;
         }

@@ -7,6 +7,8 @@ using MVPathway.Builder.Abstractions;
 using MVPathway.MVVM.Abstractions;
 using XDash.Framework.Components.Discovery;
 using XDash.Framework.Components.Discovery.Contracts;
+using XDash.Framework.Components.Transfer;
+using XDash.Framework.Components.Transfer.Contracts;
 using XDash.Framework.Helpers;
 using XDash.Framework.Models;
 using XDash.Framework.Models.Abstractions;
@@ -31,6 +33,8 @@ namespace XDash.Framework.Builder
 
             b.Container.Register<IXDashBeacon, XDashBeacon>(false);
             b.Container.Register<IXDashScanner, XDashScanner>(false);
+            b.Container.Register<IXDashSender, XDashSender>(false);
+            b.Container.Register<IXDashReceiver, XDashReceiver>(false);
 
             return builder;
         }
@@ -49,6 +53,16 @@ namespace XDash.Framework.Builder
             if (settingsRepository.ScanResponsePort == 0)
             {
                 settingsRepository.ScanResponsePort = XDashConst.DEFAULT_SCAN_RESPONSE_PORT;
+            }
+
+            if (settingsRepository.TransferPort == 0)
+            {
+                settingsRepository.TransferPort = XDashConst.DEFAULT_TRANSFER_PORT;
+            }
+
+            if (settingsRepository.TransferFeedbackPort == 0)
+            {
+                settingsRepository.TransferFeedbackPort = XDashConst.DEFAULT_TRANSFER_FEEDBACK_PORT;
             }
 
             var clientInfo = container.Resolve<IXDashClient>();

@@ -9,5 +9,8 @@ namespace XDash.Framework.Services.Contracts
         string Ip { get; set; }
         int BeaconScanPort { get; set; }
         int ScanResponsePort { get; set; }
+        int TransferPort { get; set; }
+        int TransferFeedbackPort { get; set; }
+        string DownloadsFolderPath { get; set; }
     }
 }
