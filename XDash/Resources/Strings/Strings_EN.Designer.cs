@@ -71,11 +71,29 @@ namespace XDash.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Devices.
+        /// </summary>
+        internal static string Devices {
+            get {
+                return ResourceManager.GetString("Devices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ID.
         /// </summary>
         internal static string ID {
             get {
                 return ResourceManager.GetString("ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IP.
+        /// </summary>
+        internal static string IP {
+            get {
+                return ResourceManager.GetString("IP", resourceCulture);
             }
         }
         
@@ -121,6 +139,33 @@ namespace XDash.Resources.Strings {
         internal static string OS {
             get {
                 return ResourceManager.GetString("OS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scan.
+        /// </summary>
+        internal static string Scan {
+            get {
+                return ResourceManager.GetString("Scan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send files.
+        /// </summary>
+        internal static string SendFiles {
+            get {
+                return ResourceManager.GetString("SendFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        internal static string Settings {
+            get {
+                return ResourceManager.GetString("Settings", resourceCulture);
             }
         }
         

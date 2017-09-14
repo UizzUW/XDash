@@ -5,7 +5,7 @@ namespace XDash.Framework.Services
 {
     public class BinarySerializer : IBinarySerializer
     {
-        private IJsonSerializer _jsonSerializer;
+        private readonly IJsonSerializer _jsonSerializer;
 
         public BinarySerializer(IJsonSerializer jsonSerializer)
         {

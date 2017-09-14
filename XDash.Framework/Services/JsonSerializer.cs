@@ -1,15 +1,14 @@
 ﻿using Newtonsoft.Json;
-using System.Runtime.Serialization.Formatters;
 using XDash.Framework.Services.Contracts;
 
 namespace XDash.Framework.Services
 {
     public class JsonSerializer : IJsonSerializer
     {
-        private JsonSerializerSettings _settings = new JsonSerializerSettings
+        private readonly JsonSerializerSettings _settings = new JsonSerializerSettings
         {
-            TypeNameHandling = TypeNameHandling.All,
-            TypeNameAssemblyFormat = FormatterAssemblyStyle.Full
+            //TypeNameHandling = TypeNameHandling.All,
+            //TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Full
         };
 
         public string Serialize<T>(T obj)

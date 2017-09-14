@@ -1,4 +1,4 @@
-﻿namespace XDash.Models.Enums
+﻿namespace XDash.Framework.Models
 {
     public enum Language
     {

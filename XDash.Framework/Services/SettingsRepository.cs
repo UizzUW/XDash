@@ -1,4 +1,5 @@
 using System;
+using XDash.Framework.Models;
 using XDash.Framework.Services.Contracts;
 
 namespace XDash.Framework.Services
@@ -13,6 +14,7 @@ namespace XDash.Framework.Services
         private const string _TRANSFER_PORT = nameof(_TRANSFER_PORT);
         private const string _TRANSFER_FEEDBACK_PORT = nameof(_TRANSFER_FEEDBACK_PORT);
         private const string _DOWNLOADS_FOLDER_PATH = nameof(_DOWNLOADS_FOLDER_PATH);
+        private const string _LANGUAGE_KEY = nameof(_LANGUAGE_KEY);
 
         public Guid Guid
         {
@@ -60,6 +62,12 @@ namespace XDash.Framework.Services
         {
             get => Get<string>(_DOWNLOADS_FOLDER_PATH);
             set => Set(_DOWNLOADS_FOLDER_PATH, value);
+        }
+
+        public Language Language
+        {
+            get => Get<Language>(_LANGUAGE_KEY);
+            set => Set(_LANGUAGE_KEY, value);
         }
     }
 }

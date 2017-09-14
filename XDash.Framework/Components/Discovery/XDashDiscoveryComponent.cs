@@ -13,9 +13,8 @@ namespace XDash.Framework.Components.Discovery
         {
             var selectedInterface = await DeviceInfoService.GetSelectedInterface();
             var ip = selectedInterface.IpAddress;
-            return ip.Replace(
-                ip.Remove(0, selectedInterface.IpAddress.LastIndexOf(".", StringComparison.Ordinal)),
-                XDashConst.BROADCAST_SUBNET_SUFFIX);
+            return ip.Substring(0, selectedInterface.IpAddress.LastIndexOf(".", StringComparison.Ordinal)) +
+                   XDashConst.BROADCAST_SUBNET_SUFFIX;
         }
 
         private byte[] _serialData;

@@ -5,5 +5,6 @@ namespace XDash.Framework.Services.Contracts
     public interface IPlatformService
     {
         OperatingSystem OS { get; }
+        void ExitApp();
     }
 }

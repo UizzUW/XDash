@@ -1,4 +1,5 @@
 ﻿using System;
+using XDash.Framework.Models;
 
 namespace XDash.Framework.Services.Contracts
 {
@@ -12,5 +13,6 @@ namespace XDash.Framework.Services.Contracts
         int TransferPort { get; set; }
         int TransferFeedbackPort { get; set; }
         string DownloadsFolderPath { get; set; }
+        Language Language { get; set; }
     }
 }

@@ -11,10 +11,17 @@ namespace XDash.Framework.Services
     public class DeviceInfoService : IDeviceInfoService
     {
         private readonly ISettingsRepository _settingsRepository;
+        private readonly ICacheService _cacheService;
+
+        private readonly object _lock = new object();
 
         public async Task<List<ICommsInterface>> GetInterfaces()
         {
-            return (await CommsInterface.GetAllInterfacesAsync())
+            var interfaces = _cacheService.Interfaces ??
+                                              (_cacheService.Interfaces =
+                                                  CommsInterface.GetAllInterfacesAsync().Result);
+
+            return interfaces
                 .Where(x => x.IsUsable && !x.IsLoopback)
                 .OrderBy(x => x.IpAddress)
                 .ToList<ICommsInterface>();
@@ -40,9 +47,10 @@ namespace XDash.Framework.Services
             _settingsRepository.Ip = commsInterface.IpAddress;
         }
 
-        public DeviceInfoService(ISettingsRepository settingsRepository)
+        public DeviceInfoService(ISettingsRepository settingsRepository, ICacheService cacheService)
         {
             _settingsRepository = settingsRepository;
+            _cacheService = cacheService;
         }
     }
 }

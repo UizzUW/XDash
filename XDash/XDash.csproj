@@ -55,7 +55,7 @@
     <Compile Include="Helpers\Const.cs" />
     <Compile Include="Helpers\CustomTabbedPresenter.cs" />
     <Compile Include="Messages\LanguageChangedMessage.cs" />
-    <Compile Include="Models\Enums\Language.cs" />
+    <Compile Include="MyNavigator.cs" />
     <Compile Include="Pages\DevicesPage.xaml.cs">
       <DependentUpon>DevicesPage.xaml</DependentUpon>
     </Compile>
@@ -79,6 +79,7 @@
     <Compile Include="ViewModels\Base\BaseViewModel.cs" />
     <Compile Include="ViewModels\DevicesViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
+    <Compile Include="ViewModels\ViewObjects\DashInfoViewObject.cs" />
     <Compile Include="XDashAppStart.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -114,7 +115,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Images\xdash_droid_nobg_icon.png" />
     <EmbeddedResource Include="Resources\Images\xdash_ios_nobg_icon.png" />

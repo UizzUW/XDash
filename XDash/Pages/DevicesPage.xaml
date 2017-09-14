@@ -2,20 +2,46 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XDash.Pages.DevicesPage"
-             Title="Devices">
+             x:Name="Self"
+             Title="{Binding [Devices]}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Name="Scan" Command="{Binding ScanCommand}" />
+        <ToolbarItem Text="{Binding [Scan]}" Icon="search.png" Command="{Binding ScanCommand}" />
+        <ToolbarItem Text="{Binding [Settings]}" Icon="settings.png" Command="{Binding OpenSettingsCommand}" />
     </ContentPage.ToolbarItems>
-    <StackLayout Orientation="Vertical">
-        <StackLayout Orientation="Horizontal">
-            <Label Text="{Binding [Make_This_Device_Visible]}"
+    <ScrollView>
+        <StackLayout Orientation="Vertical" Padding="8">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="{Binding [Make_This_Device_Visible]}"
                    HorizontalOptions="StartAndExpand"
                    VerticalTextAlignment="Center"/>
-            <Switch IsToggled="{Binding IsBeaconEnabled}"/>
-        </StackLayout>
+                <Switch IsToggled="{Binding IsBeaconEnabled}" IsEnabled="{Binding IsBusy, Converter={StaticResource BoolToNotBoolConverter}}"/>
+            </StackLayout>
 
-        <Label Text="{Binding [List_Of_Discovered_Dashers]}"/>
-        <ListView x:Name="DashersListView"
+            <Label Text="{Binding [List_Of_Discovered_Dashers]}"/>
+
+            <Grid Padding="8"
+              Margin="0, 8, 0, 8"
+              BackgroundColor="DodgerBlue"
+              IsVisible="{Binding HasIncomingDash}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="{Binding DashInfoViewObject.Text}"
+                   Grid.Row="0" Grid.Column="0"
+                   Grid.ColumnSpan="2"/>
+                <Button Text="Accept" Command="{Binding DashInfoViewObject.AcceptCommand}"
+                    Grid.Row="1" Grid.Column="0" />
+                <Button Text="Decline" Command="{Binding DashInfoViewObject.DeclineCommand}"
+                    Grid.Row="1" Grid.Column="1" />
+            </Grid>
+
+            <ListView x:Name="DashersListView"
                   IsVisible="{Binding IsBusy, Converter={StaticResource BoolToNotBoolConverter}}"
                   ItemsSource="{Binding Dashers}"
                   SelectedItem="{Binding SelectedDasher}"
@@ -23,36 +49,42 @@
                   RefreshCommand="{Binding ScanCommand}"
                   IsRefreshing="{Binding IsBusy}"
                   HasUnevenRows="True">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Grid Padding="8">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Image Source="{Binding OperatingSystem, Converter={StaticResource OperatingSystemToLogoConverter}}"
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Command="{Binding BindingContext.SendFilesCommand, Source={x:Reference Self}}"
+                                      CommandParameter="{Binding .}"
+                                      Text="{Binding BindingContext.[SendFiles], Source={x:Reference Self}}" />
+                            </ViewCell.ContextActions>
+                            <Grid Padding="8">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding OperatingSystem, Converter={StaticResource OperatingSystemToLogoConverter}}"
                                    WidthRequest="64" HeightRequest="64"
                                    Grid.Row="0" Grid.Column="0"
                                    Grid.RowSpan="3"/>
-                            <Label Text="{Binding Guid}" FontSize="10"
+                                <Label Text="{Binding Guid}" FontSize="10"
                                    Grid.Row="0" Grid.Column="1"/>
-                            <Label Text="{Binding Name}" FontSize="24"
+                                <Label Text="{Binding Name}" FontSize="24"
                                    Grid.Row="1" Grid.Column="1"/>
-                            <Label Text="{Binding Ip}"
+                                <Label Text="{Binding Ip}"
                                    Grid.Row="2" Grid.Column="1"/>
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <ActivityIndicator IsVisible="{Binding IsBusy}"
                                HorizontalOptions="FillAndExpand"
                                VerticalOptions="FillAndExpand"/>
-    </StackLayout>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

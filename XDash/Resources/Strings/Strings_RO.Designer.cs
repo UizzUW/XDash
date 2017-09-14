@@ -60,5 +60,122 @@ namespace XDash.Resources.Strings {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Info dispozitiv : .
+        /// </summary>
+        internal static string Device_Info {
+            get {
+                return ResourceManager.GetString("Device_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dispozitive.
+        /// </summary>
+        internal static string Devices {
+            get {
+                return ResourceManager.GetString("Devices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ID.
+        /// </summary>
+        internal static string ID {
+            get {
+                return ResourceManager.GetString("ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IP.
+        /// </summary>
+        internal static string IP {
+            get {
+                return ResourceManager.GetString("IP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Limbă.
+        /// </summary>
+        internal static string Language {
+            get {
+                return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lista dasherilor detectați.
+        /// </summary>
+        internal static string List_Of_Discovered_Dashers {
+            get {
+                return ResourceManager.GetString("List_Of_Discovered_Dashers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permite detectarea acestui dispozitiv.
+        /// </summary>
+        internal static string Make_This_Device_Visible {
+            get {
+                return ResourceManager.GetString("Make_This_Device_Visible", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nume.
+        /// </summary>
+        internal static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SO.
+        /// </summary>
+        internal static string OS {
+            get {
+                return ResourceManager.GetString("OS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scanare.
+        /// </summary>
+        internal static string Scan {
+            get {
+                return ResourceManager.GetString("Scan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trimite fișiere.
+        /// </summary>
+        internal static string SendFiles {
+            get {
+                return ResourceManager.GetString("SendFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setări.
+        /// </summary>
+        internal static string Settings {
+            get {
+                return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Versiune XDash.
+        /// </summary>
+        internal static string XDash_Version {
+            get {
+                return ResourceManager.GetString("XDash_Version", resourceCulture);
+            }
+        }
     }
 }

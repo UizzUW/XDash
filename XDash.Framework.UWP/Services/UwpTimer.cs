@@ -27,6 +27,10 @@ namespace XDash.Framework.UWP.Services
 
         public void Stop()
         {
+            if (_timer == null)
+            {
+                return;
+            }
             _timer.Tick -= onTick;
             _timer.Stop();
             _timer = null;

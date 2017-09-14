@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using Sockets.Plugin;
 using Sockets.Plugin.Abstractions;
 using XDash.Framework.Components.Transfer.Contracts;
+using XDash.Framework.Models;
 using XDash.Framework.Services.Contracts;
-using Xamarin.Forms;
+using static XDash.Framework.Helpers.ExtensionMethods;
 
 namespace XDash.Framework.Components.Transfer
 {
@@ -56,10 +59,19 @@ namespace XDash.Framework.Components.Transfer
         private async Task sendFeedback(byte[] feedback)
         {
             var feedbackSender = new TcpSocketClient();
-            await feedbackSender.ConnectAsync(_remoteClient.RemoteAddress, _settingsRepository.TransferFeedbackPort);
-            await feedbackSender.WriteStream.WriteAsync(feedback, 0, feedback.Length);
-            await feedbackSender.DisconnectAsync();
+            try
+            {
+                await feedbackSender.ConnectAsync(_remoteClient.RemoteAddress,
+                    _settingsRepository.TransferFeedbackPort);
+
+                await feedbackSender.WriteStream.WriteAsync(feedback, 0, feedback.Length);
+                await feedbackSender.DisconnectAsync();
+            }
+            catch { }
         }
+
+        private string _destination;
+        private int _counter;
 
         private async void onDashReceived(object sender, TcpSocketListenerConnectEventArgs e)
         {
@@ -76,48 +88,40 @@ namespace XDash.Framework.Components.Transfer
                     _currentDash = null;
                     return;
                 }
+
+                _destination = _settingsRepository.DownloadsFolderPath;
+                var folderExists = await _filesystem.CheckIfFolderExists(_destination);
+                if (string.IsNullOrEmpty(_destination) || !folderExists)
+                {
+                    await TaskOnUiThread(async () =>
+                        _destination = await _filesystem.ChooseFolder());
+                }
+
+                if (_destination == null)
+                {
+                    await sendFeedback(SerializedFalse);
+                    _currentDash = null;
+                    return;
+                }
+
                 await sendFeedback(SerializedTrue);
+                _counter = 0;
+
                 return;
             }
 
-            var destination = _settingsRepository.DownloadsFolderPath;
-            var folderExists = await _filesystem.CheckIfFolderExists(destination);
-            if (string.IsNullOrEmpty(destination) || !folderExists)
+            await _filesystem.StreamToFile(_currentDash.Files[_counter].Name, _destination, e.SocketClient.ReadStream);
+            await sendFeedback(SerializedTrue);
+
+            _counter++;
+            if (_counter < _currentDash.Files.Length)
             {
-                await TaskOnUiThread(async () =>
-                {
-                    destination = await _filesystem.ChooseFolder();
-                });
+                return;
             }
 
-            foreach (var file in _currentDash.Files)
-            {
-                await _filesystem.StreamToFile(file.Name, destination, e.SocketClient.ReadStream);
-                await sendFeedback(SerializedTrue);
-            }
             await _remoteClient.DisconnectAsync();
             _remoteClient = null;
             _currentDash = null;
-        }
-
-
-        public static async Task TaskOnUiThread(Func<Task> task)
-
-        {
-            var tcs = new TaskCompletionSource<object>();
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                try
-                {
-                    await task();
-                    tcs.SetResult(null);
-                }
-                catch (Exception ex)
-                {
-                    tcs.SetException(ex);
-                }
-            });
-            await tcs.Task;
         }
     }
 }

@@ -3,6 +3,7 @@ using Sockets.Plugin;
 using Sockets.Plugin.Abstractions;
 using XDash.Framework.Services.Contracts;
 using XDash.Framework.Components.Discovery.Contracts;
+using XDash.Framework.Models;
 using XDash.Framework.Models.Abstractions;
 
 namespace XDash.Framework.Components.Discovery
@@ -42,7 +43,7 @@ namespace XDash.Framework.Components.Discovery
             var request = _binarySerializer.Deserialize<DasherScanEventArgs>(message.ByteData);
             var response = new DasherScanResponseEventArgs
             {
-                RemoteClient = Client,
+                RemoteClient = Client as XDashClient,
                 Data = SerialData
             };
             var serializedResponse = _binarySerializer.Serialize(response);

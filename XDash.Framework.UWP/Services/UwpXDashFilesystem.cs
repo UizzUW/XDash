@@ -83,9 +83,25 @@ namespace XDash.Framework.UWP.Services
             picker.FileTypeFilter.Add("*");
 
             var file = await picker.PickSingleFileAsync();
-            var fileSize = (await file.GetBasicPropertiesAsync()).Size;
             StorageApplicationPermissions.FutureAccessList.AddOrReplace(WebUtility.UrlEncode(file.Path), file);
             return file.Path;
+        }
+
+        public async Task<List<string>> ChooseFiles()
+        {
+            var picker = new FileOpenPicker
+            {
+                ViewMode = PickerViewMode.List,
+                SuggestedStartLocation = PickerLocationId.DocumentsLibrary
+            };
+            picker.FileTypeFilter.Add("*");
+
+            var files = await picker.PickMultipleFilesAsync();
+            foreach (var file in files)
+            {
+                StorageApplicationPermissions.FutureAccessList.AddOrReplace(WebUtility.UrlEncode(file.Path), file);
+            }
+            return files.Select(p => p.Path).ToList();
         }
 
         public async Task<Stream> ChooseAndStreamFile()

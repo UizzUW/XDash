@@ -2,8 +2,9 @@
 using System.Linq;
 using System.Resources;
 using MVPathway.Messages.Abstractions;
+using XDash.Framework.Models;
+using XDash.Framework.Services.Contracts;
 using XDash.Messages;
-using XDash.Models.Enums;
 using XDash.Resources.Strings;
 using XDash.Services.Contracts;
 
@@ -11,6 +12,7 @@ namespace XDash.Services
 {
     public class Localizer : ILocalizer
     {
+        private readonly ISettingsRepository _settings;
         private readonly IMessenger _messenger;
 
         private readonly Dictionary<Language, ResourceManager> _resourceManagers = new Dictionary<Language, ResourceManager>()
@@ -21,20 +23,20 @@ namespace XDash.Services
 
         public Language[] SupportedLanguages => _resourceManagers.Keys.ToArray();
 
-        private Language _currentLanguage;
         public Language CurrentLanguage
         {
-            get => _currentLanguage;
+            get => _settings.Language;
             set
             {
-                _currentLanguage = value;
+                _settings.Language = value;
                 _messenger.Send(new LanguageChangedMessage());
             }
         }
 
 
-        public Localizer(IMessenger messenger)
+        public Localizer(ISettingsRepository settings, IMessenger messenger)
         {
+            _settings = settings;
             _messenger = messenger;
         }
 

@@ -83,15 +83,10 @@ namespace XDash.Framework.Components.Transfer
             //    };
             //}
 
-            var feedbackListenenr = new TcpSocketListener();
-            feedbackListenenr.ConnectionReceived += onFeedbackReceived;
-            await feedbackListenenr.StartListeningAsync(_settingsRepository.TransferFeedbackPort);
 
             var result = await feedback();
             if (!result)
             {
-                feedbackListenenr.ConnectionReceived -= onFeedbackReceived;
-                await feedbackListenenr.StopListeningAsync();
                 return new XDashSendResponse
                 {
                     Status = XDashSendResponseStatus.HandshakeRefused
@@ -100,7 +95,6 @@ namespace XDash.Framework.Components.Transfer
 
             try
             {
-                Debug.WriteLine("fooooooooo");
                 Stream crtStream = null;
                 _timer.Elapsed += async () =>
                 {
@@ -109,9 +103,8 @@ namespace XDash.Framework.Components.Transfer
                 _timer.Start(1);
                 foreach (var file in dash.Files)
                 {
-                    await sender.ConnectAsync(client.Ip, _settingsRepository.TransferPort);
-
                     var fileStream = await _filesystem.StreamFile(file.FullPath);
+                    await sender.ConnectAsync(client.Ip, _settingsRepository.TransferPort);
                     crtStream = fileStream;
                     await fileStream.CopyToAsync(sender.WriteStream);
                     crtStream = null;
@@ -125,8 +118,6 @@ namespace XDash.Framework.Components.Transfer
             }
             catch (Exception ex)
             {
-                feedbackListenenr.ConnectionReceived -= onFeedbackReceived;
-                await feedbackListenenr.StopListeningAsync();
                 return new XDashSendResponse
                 {
                     Status = XDashSendResponseStatus.ErrorDuringTransfer,
@@ -134,19 +125,25 @@ namespace XDash.Framework.Components.Transfer
                 };
             }
 
-            feedbackListenenr.ConnectionReceived -= onFeedbackReceived;
-            await feedbackListenenr.StopListeningAsync();
             return new XDashSendResponse
             {
                 Status = XDashSendResponseStatus.Success
             };
         }
 
-        private async Task<bool> feedback(int timeout = 30000)
+        private async Task<bool> feedback()
         {
+            var feedbackListenenr = new TcpSocketListener();
+            feedbackListenenr.ConnectionReceived += onFeedbackReceived;
+            await feedbackListenenr.StartListeningAsync(_settingsRepository.TransferFeedbackPort);
+
             _handshakeTcs = new TaskCompletionSource<bool>();
-            new CancellationTokenSource(timeout).Token.Register(() => _handshakeTcs.TrySetResult(false));
-            return await _handshakeTcs.Task;
+            var result = await _handshakeTcs.Task;
+
+            feedbackListenenr.ConnectionReceived -= onFeedbackReceived;
+            await feedbackListenenr.StopListeningAsync();
+
+            return result;
         }
 
         private async void onFeedbackReceived(object sender, TcpSocketListenerConnectEventArgs e)

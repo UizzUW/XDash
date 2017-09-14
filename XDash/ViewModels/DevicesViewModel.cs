@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using MVPathway.Messages.Abstractions;
 using MVPathway.MVVM.Abstractions;
@@ -8,11 +9,14 @@ using MVPathway.Navigation.Abstractions;
 using Xamarin.Forms;
 using XDash.Framework.Components.Discovery.Contracts;
 using XDash.Framework.Components.Transfer.Contracts;
+using XDash.Framework.Helpers;
 using XDash.Framework.Models;
 using XDash.Framework.Models.Abstractions;
 using XDash.Framework.Services.Contracts;
 using XDash.Services.Contracts;
+using XDash.ViewModels.ViewObjects;
 using BaseViewModel = XDash.ViewModels.Base.BaseViewModel;
+using static XDash.Framework.Helpers.ExtensionMethods;
 
 namespace XDash.ViewModels
 {
@@ -22,6 +26,8 @@ namespace XDash.ViewModels
         private readonly INavigator _navigator;
         private readonly IXDashFilesystem _filesystem;
         private readonly IDeviceInfoService _deviceInfoService;
+        private readonly IPlatformService _platformService;
+        private readonly IXDashClient _client;
 
         private IXDashScanner _scanner;
         private IXDashBeacon _beacon;
@@ -54,6 +60,7 @@ namespace XDash.ViewModels
             {
                 base.IsBusy = value;
                 ScanCommand.ChangeCanExecute();
+                OpenSettingsCommand.ChangeCanExecute();
                 OnPropertyChanged();
             }
         }
@@ -79,90 +86,125 @@ namespace XDash.ViewModels
             }
         }
 
-        private XDashClient _selectedDasher;
+        private IXDashClient _selectedDasher;
 
-        public XDashClient SelectedDasher
+        public IXDashClient SelectedDasher
         {
             get => _selectedDasher;
             set
             {
                 _selectedDasher = value;
-                if (_selectedDasher == null)
-                {
-                    return;
-                }
-                PickFileCommand.Execute(null);
+                OnPropertyChanged();
             }
         }
 
-        private Command _pickFileCommand;
+        private DashInfoViewObject _dashInfoViewObject;
+        public DashInfoViewObject DashInfoViewObject
+        {
+            get => _dashInfoViewObject;
+            set
+            {
+                _dashInfoViewObject = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(HasIncomingDash));
+            }
+        }
 
-        public Command PickFileCommand => _pickFileCommand ?? (_pickFileCommand = new Command(
-                                              async () => await pickFile()));
+        public bool HasIncomingDash => DashInfoViewObject != null;
+
+        public Command<IXDashClient> SendFilesCommand => new Command<IXDashClient>(
+                async client => await onSendFiles(client));
 
         private Command _scanCommand;
-
         public Command ScanCommand => _scanCommand ?? (_scanCommand = new Command(
                                               async () => await scan(), () => !IsBusy));
 
-        private async Task pickFile()
+
+        private Command _openSettingsCommand;
+        public Command OpenSettingsCommand => _openSettingsCommand ?? (_openSettingsCommand = new Command(
+                                          async () => await _navigator.Show<SettingsViewModel>(), () => !IsBusy));
+
+        private async Task onSendFiles(IXDashClient client)
         {
-            string path = await _filesystem.ChooseFile();
+            var paths = await _filesystem.ChooseFiles();
+            if (paths == null || !paths.Any())
+            {
+                return;
+            }
+            var files = paths.Select(async p => new XDashFile
+            {
+                FullPath = p,
+                Name = Device.RuntimePlatform == "Android"
+                ? p.Substring(p.LastIndexOf(@"/") + 1, p.Length - p.LastIndexOf(@"/") - 1)
+                : p.Substring(p.LastIndexOf(@"\") + 1, p.Length - p.LastIndexOf(@"\") - 1),
+                Size = await _filesystem.GetFileSize(p)
+            }).ToList();
+
+            await Task.WhenAll(files);
 
             _sender = _container.Resolve<IXDashSender>();
             var dash = new Framework.Models.XDash
             {
-                Files = new List<XDashFile>
-                {
-                    new XDashFile
-                    {
-                        FullPath = path,
-                        Name = path.Substring(path.LastIndexOf(@"\") + 1, path.Length - path.LastIndexOf(@"\") - 1),
-                        Size = await _filesystem.GetFileSize(path)
-                    }
-                }
+                Sender = client as XDashClient,
+                Files = files.Select(f => f.Result).ToArray()
             };
-            var sendResut = await _sender.Send(SelectedDasher, dash);
+            var sendResut = await _sender.Send(client, dash);
             if (sendResut.Status != XDashSendResponseStatus.Success)
             {
                 await _navigator.DisplayAlertAsync("Error", "Send failed.", "Ok");
                 return;
             }
-            await _navigator.DisplayAlertAsync("Success", "Gata boss", "Traiasca shefu");
+            await _navigator.DisplayAlertAsync("Success", "Send succeeded.", "Ok");
         }
 
         public DevicesViewModel(IDiContainer container,
                                 INavigator navigator,
                                 IXDashFilesystem filesystem,
                                 IDeviceInfoService deviceInfoService,
+                                IPlatformService platformService,
+                                IXDashClient client,
                                 ILocalizer localizer,
                                 IMessenger messenger)
-            : base(localizer, messenger)
+                    : base(localizer, messenger)
         {
             _container = container;
             _navigator = navigator;
             _filesystem = filesystem;
             _deviceInfoService = deviceInfoService;
+            _platformService = platformService;
+            _client = client;
         }
 
         protected override async Task OnNavigatedTo(object parameter)
         {
             await base.OnNavigatedTo(parameter);
-            Dashers = new ObservableCollection<IXDashClient>();
+
+            var selectedInterface = await _deviceInfoService.GetSelectedInterface();
+            if (selectedInterface == null)
+            {
+                var result = await _navigator.DisplayAlertAsync("No network interface selected",
+                    "Please select a network interface first.", "Configure", "Exit app");
+                if (result)
+                {
+                    await _navigator.Show<SettingsViewModel>();
+                }
+                else
+                {
+                    _platformService.ExitApp();
+                }
+                return;
+            }
+
+            //Dashers = new ObservableCollection<IXDashClient>();
+            OnPropertyChanged(nameof(HasIncomingDash));
         }
 
         public async Task StartListening()
         {
-            var selectedInterface = await _deviceInfoService.GetSelectedInterface();
-            if (selectedInterface == null)
-            {
-                throw new InvalidOperationException("Please select network card first.");
-            }
-
             _beacon = _container.Resolve<IXDashBeacon>();
             _receiver = _container.Resolve<IXDashReceiver>();
             await _beacon.StartListening();
-            await _receiver.StartReceiving(async dash => await Task.FromResult(true));
+            await _receiver.StartReceiving(async dash => await onDashReceived(dash));
         }
 
         public async Task StopListening()
@@ -177,14 +219,16 @@ namespace XDash.ViewModels
             _beacon = null;
         }
 
+        private async Task<bool> onDashReceived(Framework.Models.XDash dash)
+        {
+            DashInfoViewObject = new DashInfoViewObject(dash);
+            var result = await DashInfoViewObject.GetResult();
+            DashInfoViewObject = null;
+            return result;
+        }
+
         private async Task scan()
         {
-            var selectedInterface = await _deviceInfoService.GetSelectedInterface();
-            if (selectedInterface == null)
-            {
-                throw new InvalidOperationException("Please select network card first.");
-            }
-
             _scanner = _container.Resolve<IXDashScanner>();
             IsBusy = true;
             var scanResults = await _scanner.Scan();

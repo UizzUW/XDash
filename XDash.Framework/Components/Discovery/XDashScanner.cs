@@ -5,6 +5,7 @@ using Sockets.Plugin;
 using Sockets.Plugin.Abstractions;
 using XDash.Framework.Services.Contracts;
 using XDash.Framework.Components.Discovery.Contracts;
+using XDash.Framework.Models;
 using XDash.Framework.Models.Abstractions;
 
 namespace XDash.Framework.Components.Discovery
@@ -51,7 +52,7 @@ namespace XDash.Framework.Components.Discovery
 
             var scanEvent = new DasherScanEventArgs
             {
-                Scanner = _client,
+                Scanner = _client as XDashClient,
                 Data = SerialData
             };
             var serializedScanEvent = _binarySerializer.Serialize(scanEvent);
@@ -64,7 +65,7 @@ namespace XDash.Framework.Components.Discovery
 
             return await _tcs.Task;
         }
-
+        
         private void onDasherFound(object sender, UdpSocketMessageReceivedEventArgs message)
         {
             var scanResponse = _binarySerializer.Deserialize<DasherScanResponseEventArgs>(message.ByteData);
@@ -76,7 +77,7 @@ namespace XDash.Framework.Components.Discovery
             _timer.Elapsed -= onFinishedScanning;
             _timer.Stop();
             await _scanResponseReceiver.StopListeningAsync();
-            _tcs.SetResult(_scanResults);
+            _tcs.TrySetResult(_scanResults);
             _scanRequester = null;
             _scanResponseReceiver = null;
             IsEnabled = false;

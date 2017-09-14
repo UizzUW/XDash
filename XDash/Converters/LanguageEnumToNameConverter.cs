@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using Xamarin.Forms;
-using XDash.Models.Enums;
+using XDash.Framework.Models;
 
 namespace XDash.Converters
 {

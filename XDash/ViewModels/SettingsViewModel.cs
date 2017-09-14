@@ -3,9 +3,9 @@ using Sockets.Plugin.Abstractions;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using MVPathway.Messages.Abstractions;
+using XDash.Framework.Models;
 using XDash.Framework.Models.Abstractions;
 using XDash.Framework.Services.Contracts;
-using XDash.Models.Enums;
 using XDash.Services.Contracts;
 
 namespace XDash.ViewModels
@@ -13,6 +13,7 @@ namespace XDash.ViewModels
     public class SettingsViewModel : BaseViewModel
     {
         private readonly IDeviceInfoService _deviceInfoService;
+        private readonly ISettingsRepository _settingsRepository;
 
         private IXDashClient _client;
 
@@ -62,12 +63,14 @@ namespace XDash.ViewModels
             }
         }
 
-        public SettingsViewModel(IDeviceInfoService deviceInfoService,
+        public SettingsViewModel(ISettingsRepository settingsRepository,
+                                 IDeviceInfoService deviceInfoService,
                                  IXDashClient client,
                                  ILocalizer localizer,
                                  IMessenger messenger)
             : base(localizer, messenger)
         {
+            _settingsRepository = settingsRepository;
             _deviceInfoService = deviceInfoService;
             Client = client;
         }
@@ -75,7 +78,17 @@ namespace XDash.ViewModels
         protected override async Task OnNavigatedTo(object parameter)
         {
             await base.OnNavigatedTo(parameter);
+            SelectedInterface = await _deviceInfoService.GetSelectedInterface();
             Interfaces = new ObservableCollection<ICommsInterface>(await _deviceInfoService.GetInterfaces());
+        }
+
+        protected override async Task OnNavigatingFrom(object parameter)
+        {
+            await base.OnNavigatingFrom(parameter);
+            await _deviceInfoService.SetSelectedInterface(SelectedInterface);
+            _settingsRepository.Name = Client.Name;
+            _settingsRepository.Ip = SelectedInterface.IpAddress;
+            _settingsRepository.Language = SelectedLanguage;
         }
     }
 }

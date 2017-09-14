@@ -2,13 +2,10 @@
 using MVPathway.Builder.Abstractions;
 using MVPathway.MVVM.Abstractions;
 using MVPathway.Utils.Presenters;
-using MVPathway.Utils.ViewModels.Qualities;
 using Xamarin.Forms;
 using XDash.Framework.Builder;
-using XDash.Helpers;
 using XDash.Services;
 using XDash.Services.Contracts;
-using XDash.ViewModels;
 
 namespace XDash
 {
@@ -24,9 +21,9 @@ namespace XDash
         {
             base.Configure(builder);
             builder
-              .UsePresenter<CustomTabbedPresenter>()
-              .UseAppStart<XDashAppStart>()
-              .UseXDash();
+                .UsePresenter<StackPresenter>()
+                .UseAppStart<XDashAppStart>()
+                .UseXDash();
         }
 
         public override void ConfigureServices(IDiContainer container)
@@ -38,11 +35,8 @@ namespace XDash
         public override void ConfigureViewModels(IViewModelManager vmManager)
         {
             vmManager.AutoScanAndRegister(GetType().GetAssembly());
-
-            vmManager.ResolveDefinitionForViewModel<DevicesViewModel>()
-                .AddQuality<IChildQuality>();
-            vmManager.ResolveDefinitionForViewModel<SettingsViewModel>()
-                .AddQuality<IChildQuality>();
+            //vmManager.RegisterPageForViewModel<DevicesViewModel, DevicesPage>();
+            //vmManager.RegisterPageForViewModel<SettingsViewModel, SettingsPage>();
         }
     }
 }

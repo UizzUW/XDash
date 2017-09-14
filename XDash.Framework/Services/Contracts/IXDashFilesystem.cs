@@ -16,6 +16,7 @@ namespace XDash.Framework.Services.Contracts
         Task<string> ChooseFolder();
         Task<List<string>> ChooseAndEnumerateFolder();
         Task<string> ChooseFile();
+        Task<List<string>> ChooseFiles();
         Task<Stream> ChooseAndStreamFile();
         Task ChooseAndStreamToFile(string filename, Stream stream);
     }

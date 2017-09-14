@@ -1,4 +1,4 @@
-﻿using XDash.Models.Enums;
+﻿using XDash.Framework.Models;
 
 namespace XDash.Services.Contracts
 {

@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-
-namespace XDash.Framework.Models
+﻿namespace XDash.Framework.Models
 {
     public class XDash
     {
+        public XDashClient Sender { get; set; }
         public byte[] SerialData { get; set; }
-        public List<XDashFile> Files { get; set; }
+        public XDashFile[] Files { get; set; }
     }
 }

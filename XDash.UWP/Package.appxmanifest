@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="70de8c06-679e-453d-ba86-d23d0eee09d7" Publisher="CN=uizz" Version="1.0.0.0" />
+  <Identity Name="70de8c06-679e-453d-ba86-d23d0eee09d7" Publisher="CN=uizz" Version="1.0.5.0" />
   <mp:PhoneIdentity PhoneProductId="70de8c06-679e-453d-ba86-d23d0eee09d7" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>XDash.UWP</DisplayName>
@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="XDash.UWP.App">
-      <uap:VisualElements DisplayName="XDash.UWP" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="XDash.UWP" BackgroundColor="transparent">
+      <uap:VisualElements DisplayName="XDash" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="XDash" BackgroundColor="transparent">
         <uap:LockScreen Notification="badge" BadgeLogo="Assets\BadgeLogo.png" />
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square71x71Logo="Assets\Square71x71Logo.png" Square310x310Logo="Assets\Square310x310Logo.png">
         </uap:DefaultTile>

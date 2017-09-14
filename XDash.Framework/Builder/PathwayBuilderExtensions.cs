@@ -25,6 +25,8 @@ namespace XDash.Framework.Builder
 
             b.UseSettings<ISettingsRepository, SettingsRepository>();
 
+            b.Container.Register<ICacheService, CacheService>();
+
             b.Container.Register<IXDashClient, XDashClient>();
 
             b.Container.Register<IJsonSerializer, JsonSerializer>();
