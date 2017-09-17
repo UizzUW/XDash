@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{309257C3-36FA-48EF-BCDC-B808F8F0226A}"
 EndProject
@@ -13,6 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		nuget.config = nuget.config
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XDash.Framework.Droid", "XDash.Framework.Droid\XDash.Framework.Droid.csproj", "{5754D8EB-6F0F-4035-9C84-DC8B2F33B8C0}"
@@ -629,5 +630,8 @@ Global
 		{8596350F-7C23-4C48-BBF2-F37881386CC9} = {1BCC2CAD-EE36-4E86-9CD3-00D990D1F5B4}
 		{0C80B2EB-37B2-4C00-9A5C-E9F2D4538FA7} = {1BCC2CAD-EE36-4E86-9CD3-00D990D1F5B4}
 		{90618F35-1C8F-4775-BBA5-E940B7114BA2} = {B27969EF-4576-4D02-B007-42A59DE6B791}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {626C93FA-DDF3-42B0-A31E-9A787F9C2F0D}
 	EndGlobalSection
 EndGlobal
