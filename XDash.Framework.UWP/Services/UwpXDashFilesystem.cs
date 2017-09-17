@@ -64,6 +64,10 @@ namespace XDash.Framework.UWP.Services
             var picker = new FolderPicker();
             picker.FileTypeFilter.Add("*");
             var folder = await picker.PickSingleFolderAsync();
+            if (folder == null)
+            {
+                return null;
+            }
             StorageApplicationPermissions.FutureAccessList.AddOrReplace(WebUtility.UrlEncode(folder.Path), folder);
             return folder.Path;
         }

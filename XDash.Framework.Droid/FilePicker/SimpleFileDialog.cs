@@ -252,7 +252,7 @@ namespace XDash.Framework.Droid.FilePicker
             //need to make this a variable Save as, Open, Select Directory
             _mTitleView1.Gravity = GravityFlags.CenterVertical;
             //_mTitleView1.SetBackgroundColor(Color.DarkGray); // dark gray 	-12303292
-            _mTitleView1.SetTextColor(Color.Black);
+            _mTitleView1.SetTextColor(Color.White);
             //_mTitleView1.SetPadding((int)SystemHelper.ConvertDpToPixel(_mContext.Resources, 10), (int)SystemHelper.ConvertDpToPixel(_mContext.Resources, 10), 0, (int)SystemHelper.ConvertDpToPixel(_mContext.Resources, 15));
             _mTitleView1.SetTextSize(ComplexUnitType.Dip, 18);
             _mTitleView1.SetTypeface(null, TypefaceStyle.Bold);
@@ -300,7 +300,7 @@ namespace XDash.Framework.Droid.FilePicker
 
             var currentSelection = new TextView(_mContext);
             currentSelection.LayoutParameters = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.WrapContent);
-            currentSelection.SetTextColor(Color.Black);
+            currentSelection.SetTextColor(Color.White);
             currentSelection.Gravity = GravityFlags.CenterVertical;
             currentSelection.Text = "Current selection:";
             //currentSelection.SetPadding((int)SystemHelper.ConvertDpToPixel(_mContext.Resources, 10), (int)SystemHelper.ConvertDpToPixel(_mContext.Resources, 5), 0, (int)SystemHelper.ConvertDpToPixel(_mContext.Resources, 3));
@@ -311,7 +311,7 @@ namespace XDash.Framework.Droid.FilePicker
 
             _mTitleView = new TextView(_mContext);
             _mTitleView.LayoutParameters = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.WrapContent);
-            _mTitleView.SetTextColor(Color.Black);
+            _mTitleView.SetTextColor(Color.White);
             _mTitleView.Gravity = GravityFlags.CenterVertical;
             _mTitleView.Text = title;
             //_mTitleView.SetPadding((int)SystemHelper.ConvertDpToPixel(_mContext.Resources, 10), 0, (int)SystemHelper.ConvertDpToPixel(_mContext.Resources, 10), (int)SystemHelper.ConvertDpToPixel(_mContext.Resources, 5));

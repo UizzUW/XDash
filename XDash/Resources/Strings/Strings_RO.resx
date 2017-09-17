@@ -156,4 +156,43 @@
   <data name="Scan" xml:space="preserve">
     <value>Scanare</value>
   </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="Receive_Failed" xml:space="preserve">
+    <value>Primire eșuată</value>
+  </data>
+  <data name="Receive_Successful" xml:space="preserve">
+    <value>Primire reușită</value>
+  </data>
+  <data name="Send_Failed" xml:space="preserve">
+    <value>Trimitere eșuată</value>
+  </data>
+  <data name="Send_Successful" xml:space="preserve">
+    <value>Trimitere reușită</value>
+  </data>
+  <data name="Accept" xml:space="preserve">
+    <value>Acceptă</value>
+  </data>
+  <data name="Decline" xml:space="preserve">
+    <value>Refuză</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Eroare</value>
+  </data>
+  <data name="Files" xml:space="preserve">
+    <value>Fișiere</value>
+  </data>
+  <data name="Incoming_Dash" xml:space="preserve">
+    <value>Dash incident</value>
+  </data>
+  <data name="Sender" xml:space="preserve">
+    <value>Emițător</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Succes</value>
+  </data>
+  <data name="Total_Size" xml:space="preserve">
+    <value>Mărime totală</value>
+  </data>
 </root>

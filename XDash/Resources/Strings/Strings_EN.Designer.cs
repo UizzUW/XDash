@@ -62,6 +62,24 @@ namespace XDash.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Accept.
+        /// </summary>
+        internal static string Accept {
+            get {
+                return ResourceManager.GetString("Accept", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Decline.
+        /// </summary>
+        internal static string Decline {
+            get {
+                return ResourceManager.GetString("Decline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Device info :.
         /// </summary>
         internal static string Device_Info {
@@ -80,11 +98,38 @@ namespace XDash.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Files.
+        /// </summary>
+        internal static string Files {
+            get {
+                return ResourceManager.GetString("Files", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ID.
         /// </summary>
         internal static string ID {
             get {
                 return ResourceManager.GetString("ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incoming dash.
+        /// </summary>
+        internal static string Incoming_Dash {
+            get {
+                return ResourceManager.GetString("Incoming_Dash", resourceCulture);
             }
         }
         
@@ -134,6 +179,15 @@ namespace XDash.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ok.
+        /// </summary>
+        internal static string Ok {
+            get {
+                return ResourceManager.GetString("Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to OS.
         /// </summary>
         internal static string OS {
@@ -143,11 +197,56 @@ namespace XDash.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Receive failed.
+        /// </summary>
+        internal static string Receive_Failed {
+            get {
+                return ResourceManager.GetString("Receive_Failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Receive succesful.
+        /// </summary>
+        internal static string Receive_Successful {
+            get {
+                return ResourceManager.GetString("Receive_Successful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Scan.
         /// </summary>
         internal static string Scan {
             get {
                 return ResourceManager.GetString("Scan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send failed.
+        /// </summary>
+        internal static string Send_Failed {
+            get {
+                return ResourceManager.GetString("Send_Failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send succesful.
+        /// </summary>
+        internal static string Send_Successful {
+            get {
+                return ResourceManager.GetString("Send_Successful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sender.
+        /// </summary>
+        internal static string Sender {
+            get {
+                return ResourceManager.GetString("Sender", resourceCulture);
             }
         }
         
@@ -166,6 +265,24 @@ namespace XDash.Resources.Strings {
         internal static string Settings {
             get {
                 return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Success.
+        /// </summary>
+        internal static string Success {
+            get {
+                return ResourceManager.GetString("Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total size.
+        /// </summary>
+        internal static string Total_Size {
+            get {
+                return ResourceManager.GetString("Total_Size", resourceCulture);
             }
         }
         

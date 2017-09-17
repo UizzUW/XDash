@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Diagnostics;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MVPathway.Logging.Abstractions;
@@ -20,8 +21,6 @@ namespace XDash.Framework.Components.Transfer
         private readonly IXDashFilesystem _filesystem;
         private readonly ITimer _timer;
         private readonly ILogger _logger;
-
-        private TaskCompletionSource<bool> _handshakeTcs;
 
         public XDashSender(IBinarySerializer binarySerializer,
                            ISettingsRepository settingsRepository,
@@ -83,10 +82,15 @@ namespace XDash.Framework.Components.Transfer
             //    };
             //}
 
+            _cachedFeedback = new List<bool>();
+            _feedbackListener = new TcpSocketListener();
+            _feedbackListener.ConnectionReceived += onFeedbackReceived;
+            await _feedbackListener.StartListeningAsync(_settingsRepository.TransferFeedbackPort);
 
             var result = await feedback();
             if (!result)
             {
+                await _feedbackListener.StopListeningAsync();
                 return new XDashSendResponse
                 {
                     Status = XDashSendResponseStatus.HandshakeRefused
@@ -95,29 +99,30 @@ namespace XDash.Framework.Components.Transfer
 
             try
             {
-                Stream crtStream = null;
-                _timer.Elapsed += async () =>
-                {
-                    Debug.WriteLine($"~~~~~ {crtStream?.Position} PROGRESS ~~~~~ ");
-                };
-                _timer.Start(1);
+                //Stream crtStream = null;
+                //_timer.Elapsed += async () =>
+                //{
+                //    Debug.WriteLine($"~~~~~ {crtStream?.Position} PROGRESS ~~~~~ ");
+                //};
+                //_timer.Start(1);
                 foreach (var file in dash.Files)
                 {
-                    var fileStream = await _filesystem.StreamFile(file.FullPath);
                     await sender.ConnectAsync(client.Ip, _settingsRepository.TransferPort);
-                    crtStream = fileStream;
-                    await fileStream.CopyToAsync(sender.WriteStream);
-                    crtStream = null;
-                    fileStream.Dispose();
+                    using (var fileStream = await _filesystem.StreamFile(file.FullPath))
+                    {
+                        //crtStream = fileStream;
+                        await fileStream.CopyToAsync(sender.WriteStream);
+                        //crtStream = null;
+                    }
 
                     await sender.DisconnectAsync();
-
                     await feedback();
                 }
                 _timer.Stop();
             }
             catch (Exception ex)
             {
+                await _feedbackListener.StopListeningAsync();
                 return new XDashSendResponse
                 {
                     Status = XDashSendResponseStatus.ErrorDuringTransfer,
@@ -125,25 +130,25 @@ namespace XDash.Framework.Components.Transfer
                 };
             }
 
+            await _feedbackListener.StopListeningAsync();
             return new XDashSendResponse
             {
                 Status = XDashSendResponseStatus.Success
             };
         }
 
+        private TcpSocketListener _feedbackListener;
+        private List<bool> _cachedFeedback;
+
         private async Task<bool> feedback()
         {
-            var feedbackListenenr = new TcpSocketListener();
-            feedbackListenenr.ConnectionReceived += onFeedbackReceived;
-            await feedbackListenenr.StartListeningAsync(_settingsRepository.TransferFeedbackPort);
-
-            _handshakeTcs = new TaskCompletionSource<bool>();
-            var result = await _handshakeTcs.Task;
-
-            feedbackListenenr.ConnectionReceived -= onFeedbackReceived;
-            await feedbackListenenr.StopListeningAsync();
-
-            return result;
+            while (_cachedFeedback.Count == 0)
+            {
+                await Task.Delay(1000);
+            }
+            var feedback = _cachedFeedback.First();
+            _cachedFeedback.RemoveAt(0);
+            return feedback;
         }
 
         private async void onFeedbackReceived(object sender, TcpSocketListenerConnectEventArgs e)
@@ -151,7 +156,7 @@ namespace XDash.Framework.Components.Transfer
             var memoryStream = new MemoryStream();
             await e.SocketClient.ReadStream.CopyToAsync(memoryStream);
             var handshakeResult = _binarySerializer.Deserialize<bool>(memoryStream.ToArray());
-            _handshakeTcs.SetResult(handshakeResult);
+            _cachedFeedback.Add(handshakeResult);
         }
     }
 }

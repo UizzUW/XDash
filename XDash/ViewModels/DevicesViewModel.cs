@@ -151,10 +151,10 @@ namespace XDash.ViewModels
             var sendResut = await _sender.Send(client, dash);
             if (sendResut.Status != XDashSendResponseStatus.Success)
             {
-                await _navigator.DisplayAlertAsync("Error", "Send failed.", "Ok");
+                await _navigator.DisplayAlertAsync(this["Error"], this["Send_Failed"], this["Ok"]);
                 return;
             }
-            await _navigator.DisplayAlertAsync("Success", "Send succeeded.", "Ok");
+            await _navigator.DisplayAlertAsync(this["Success"], this["Send_Successful"], this["Ok"]);
         }
 
         public DevicesViewModel(IDiContainer container,
@@ -204,7 +204,9 @@ namespace XDash.ViewModels
             _beacon = _container.Resolve<IXDashBeacon>();
             _receiver = _container.Resolve<IXDashReceiver>();
             await _beacon.StartListening();
-            await _receiver.StartReceiving(async dash => await onDashReceived(dash));
+            await _receiver.StartReceiving(async dash => await onDashReceived(dash),
+                async result => await TaskOnUiThread(async () => await _navigator.DisplayAlertAsync(result ? this["Success"] : this["Error"],
+                result ? this["Receive_Successful"] : this["Receive_Failed"], this["Ok"])));
         }
 
         public async Task StopListening()
@@ -221,7 +223,7 @@ namespace XDash.ViewModels
 
         private async Task<bool> onDashReceived(Framework.Models.XDash dash)
         {
-            DashInfoViewObject = new DashInfoViewObject(dash);
+            DashInfoViewObject = new DashInfoViewObject(Localizer, dash);
             var result = await DashInfoViewObject.GetResult();
             DashInfoViewObject = null;
             return result;

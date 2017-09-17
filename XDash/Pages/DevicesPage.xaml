@@ -21,7 +21,7 @@
 
             <Grid Padding="8"
               Margin="0, 8, 0, 8"
-              BackgroundColor="DodgerBlue"
+              BackgroundColor="#55AA55"
               IsVisible="{Binding HasIncomingDash}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -35,9 +35,9 @@
                 <Label Text="{Binding DashInfoViewObject.Text}"
                    Grid.Row="0" Grid.Column="0"
                    Grid.ColumnSpan="2"/>
-                <Button Text="Accept" Command="{Binding DashInfoViewObject.AcceptCommand}"
+                <Button Text="{Binding [Accept]}" Command="{Binding DashInfoViewObject.AcceptCommand}"
                     Grid.Row="1" Grid.Column="0" />
-                <Button Text="Decline" Command="{Binding DashInfoViewObject.DeclineCommand}"
+                <Button Text="{Binding [Decline]}" Command="{Binding DashInfoViewObject.DeclineCommand}"
                     Grid.Row="1" Grid.Column="1" />
             </Grid>
 

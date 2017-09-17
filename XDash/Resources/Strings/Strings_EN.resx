@@ -156,4 +156,43 @@
   <data name="Scan" xml:space="preserve">
     <value>Scan</value>
   </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="Receive_Failed" xml:space="preserve">
+    <value>Receive failed</value>
+  </data>
+  <data name="Receive_Successful" xml:space="preserve">
+    <value>Receive succesful</value>
+  </data>
+  <data name="Send_Failed" xml:space="preserve">
+    <value>Send failed</value>
+  </data>
+  <data name="Send_Successful" xml:space="preserve">
+    <value>Send succesful</value>
+  </data>
+  <data name="Accept" xml:space="preserve">
+    <value>Accept</value>
+  </data>
+  <data name="Decline" xml:space="preserve">
+    <value>Decline</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Files" xml:space="preserve">
+    <value>Files</value>
+  </data>
+  <data name="Incoming_Dash" xml:space="preserve">
+    <value>Incoming dash</value>
+  </data>
+  <data name="Sender" xml:space="preserve">
+    <value>Sender</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="Total_Size" xml:space="preserve">
+    <value>Total size</value>
+  </data>
 </root>

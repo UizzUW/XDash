@@ -51,7 +51,6 @@ namespace XDash.Framework.Droid.Services
             var fileStream = await StreamFile(fullPath);
             await stream.CopyToAsync(fileStream);
             fileStream.Close();
-            stream.Close();
         }
 
         public async Task<string> ChooseFolder()

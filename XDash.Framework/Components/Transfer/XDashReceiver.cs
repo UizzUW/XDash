@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using Sockets.Plugin;
 using Sockets.Plugin.Abstractions;
 using XDash.Framework.Components.Transfer.Contracts;
-using XDash.Framework.Models;
 using XDash.Framework.Services.Contracts;
 using static XDash.Framework.Helpers.ExtensionMethods;
 
@@ -20,13 +17,13 @@ namespace XDash.Framework.Components.Transfer
 
         private TcpSocketListener _listener;
         private Func<Models.XDash, Task<bool>> _authHandler;
+        private Func<bool, Task> _finishHandler;
 
         private Models.XDash _currentDash;
         private ITcpSocketClient _remoteClient;
 
         private byte[] SerializedTrue { get; }
         private byte[] SerializedFalse { get; }
-
 
         public XDashReceiver(ISettingsRepository settingsRepository,
                              IBinarySerializer binarySerializer,
@@ -40,11 +37,13 @@ namespace XDash.Framework.Components.Transfer
             SerializedFalse = _binarySerializer.Serialize(false);
         }
 
-        public async Task StartReceiving(Func<Models.XDash, Task<bool>> authHandler)
+        public async Task StartReceiving(Func<Models.XDash, Task<bool>> authHandler,
+            Func<bool, Task> finishHandler)
         {
             _listener = new TcpSocketListener();
             _listener.ConnectionReceived += onDashReceived;
             _authHandler = authHandler;
+            _finishHandler = finishHandler;
             await _listener.StartListeningAsync(_settingsRepository.TransferPort);
         }
 
@@ -79,6 +78,7 @@ namespace XDash.Framework.Components.Transfer
             if (_currentDash == null)
             {
                 var memoryStream = new MemoryStream();
+
                 await _remoteClient.ReadStream.CopyToAsync(memoryStream);
                 _currentDash = _binarySerializer.Deserialize<Models.XDash>(memoryStream.ToArray());
                 var result = await _authHandler(_currentDash);
@@ -110,7 +110,7 @@ namespace XDash.Framework.Components.Transfer
                 return;
             }
 
-            await _filesystem.StreamToFile(_currentDash.Files[_counter].Name, _destination, e.SocketClient.ReadStream);
+            await _filesystem.StreamToFile(_currentDash.Files[_counter].Name, _destination, _remoteClient.ReadStream);
             await sendFeedback(SerializedTrue);
 
             _counter++;
@@ -122,6 +122,8 @@ namespace XDash.Framework.Components.Transfer
             await _remoteClient.DisconnectAsync();
             _remoteClient = null;
             _currentDash = null;
+
+            if (_finishHandler != null) await _finishHandler(true);
         }
     }
 }
