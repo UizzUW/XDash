@@ -12,10 +12,10 @@ function ZipFiles( $zipfilename, $sourcedir )
 }
 
 $folderName = Get-ChildItem "$dir\AppxPackages\" | Select-Object -first 1
-$FileName = "$($dir)\$($folderName.Name).zip"
+$FileName = "$($dir)\xdash.zip"
 if (Test-Path $FileName) {
   Remove-Item $FileName
 }
 Write-Host "creating zip of folder $dir\AppxPackages\"
 ZipFiles $FileName "$dir\AppxPackages\";
-Write-Host "created zip file with name $($dir)\$($folderName.Name).zip"
+Write-Host "created zip file with name $($FileName)"
