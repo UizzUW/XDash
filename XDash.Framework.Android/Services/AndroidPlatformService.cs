@@ -5,9 +5,11 @@ namespace XDash.Framework.Droid.Services
 {
     public class AndroidPlatformService : IPlatformService
     {
-        public OperatingSystem GetOperatingSystem()
+        public OperatingSystem OS => OperatingSystem.Android;
+
+        public void ExitApp()
         {
-            return OperatingSystem.Android;
+            throw new System.NotImplementedException();
         }
     }
 }

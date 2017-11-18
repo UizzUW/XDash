@@ -1,14 +1,14 @@
-﻿using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace XDash.Test
 {
-    [TestFixture]
+    [TestClass]
     public class UnitTest1
     {
-        [Test]
-        public void FirstTest()
+        [TestMethod]
+        public void TestMethod1()
         {
-            Assert.AreEqual(true, !false);
+            Assert.AreEqual(!false, true);
         }
     }
 }

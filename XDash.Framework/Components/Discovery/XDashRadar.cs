@@ -3,6 +3,7 @@ using Sockets.Plugin;
 using Sockets.Plugin.Abstractions;
 using XDash.Framework.Services.Contracts;
 using XDash.Framework.Components.Discovery.Contracts;
+using XDash.Framework.Models.Abstractions;
 
 namespace XDash.Framework.Components.Discovery
 {
@@ -11,7 +12,11 @@ namespace XDash.Framework.Components.Discovery
         private readonly IBinarySerializer _binarySerializer;
         private UdpSocketReceiver _broadcastReceiver;
 
-        public XDashRadar(IBinarySerializer binarySerializer)
+        public XDashRadar(IBinarySerializer binarySerializer,
+                          ISettingsRepository settingsRepository,
+                          IDeviceInfoService deviceInfoService,
+                          IXDashClient client)
+            : base(settingsRepository, deviceInfoService, client)
         {
             _binarySerializer = binarySerializer;
         }
@@ -20,7 +25,7 @@ namespace XDash.Framework.Components.Discovery
         {
             _broadcastReceiver = new UdpSocketReceiver();
             _broadcastReceiver.MessageReceived += onReceive;
-            await _broadcastReceiver.StartListeningAsync(Port);
+            await _broadcastReceiver.StartListeningAsync(SettingsRepository.BeaconScanPort);
         }
 
         public async Task StopScanning()

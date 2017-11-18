@@ -14,7 +14,7 @@ namespace XDash.Framework.Services
 
         public T Get<T>(string key)
         {
-            var xml = CrossSettings.Current.GetValueOrDefault<string>(key);
+            var xml = CrossSettings.Current.GetValueOrDefault(key, default(string));
             if (xml == null || string.IsNullOrEmpty(xml))
             {
                 return default(T);

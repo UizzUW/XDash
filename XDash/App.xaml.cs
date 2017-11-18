@@ -17,26 +17,19 @@ namespace XDash
             MainPage = new ContentPage();
         }
 
+
         public override void Configure(IPathwayBuilder builder)
         {
             base.Configure(builder);
+
+            Container.Register<ILocalizer, Localizer>();
+
+            Container.Resolve<IViewModelManager>().AutoScanAndRegister(GetType().GetAssembly());
+
             builder
                 .UsePresenter<StackPresenter>()
                 .UseAppStart<XDashAppStart>()
                 .UseXDash();
-        }
-
-        public override void ConfigureServices(IDiContainer container)
-        {
-            base.ConfigureServices(container);
-            container.Register<ILocalizer, Localizer>();
-        }
-
-        public override void ConfigureViewModels(IViewModelManager vmManager)
-        {
-            vmManager.AutoScanAndRegister(GetType().GetAssembly());
-            //vmManager.RegisterPageForViewModel<DevicesViewModel, DevicesPage>();
-            //vmManager.RegisterPageForViewModel<SettingsViewModel, SettingsPage>();
         }
     }
 }

@@ -28,7 +28,7 @@ namespace XDash.Framework.Services
 
         public async Task StartScanning(Action<DasherFoundEventArgs> onFound)
         {
-            if (_deviceInfoService.SelectedInterface == null)
+            if (await _deviceInfoService.GetSelectedInterface() == null)
             {
                 await _navigator.DisplayAlertAsync("Error", "Please select network card first.", "Ok");
                 return;
@@ -36,8 +36,6 @@ namespace XDash.Framework.Services
 
             _onDasherFound = onFound;
             _radar = _container.Resolve<IXDashRadar>();
-            _radar.Client = _deviceInfoService.GetDeviceInfo();
-            _radar.Interface = _deviceInfoService.SelectedInterface;
             _radar.DasherFound += onDasherFound;
             await _radar.StartScanning();
         }

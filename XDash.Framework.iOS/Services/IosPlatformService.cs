@@ -7,6 +7,7 @@ namespace XDash.Framework.iOS.Services
     public class IosPlatformService : IPlatformService
     {
         public OperatingSystem OS => OperatingSystem.iOS;
+
         public void ExitApp()
         {
             Thread.CurrentThread.Abort();

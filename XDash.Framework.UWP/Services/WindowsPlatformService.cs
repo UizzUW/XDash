@@ -5,9 +5,11 @@ namespace XDash.Framework.UWP.Services
 {
     public class WindowsPlatformService : IPlatformService
     {
-        public OperatingSystem GetOperatingSystem()
+        public OperatingSystem OS => OperatingSystem.Windows;
+
+        public void ExitApp()
         {
-            return OperatingSystem.Windows;
+            throw new System.NotImplementedException();
         }
     }
 }

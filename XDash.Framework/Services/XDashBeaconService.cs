@@ -28,16 +28,14 @@ namespace XDash.Framework.Services
 
         public async Task StartBroadcasting()
         {
-            if (_deviceInfoService.SelectedInterface == null)
+            if (await _deviceInfoService.GetSelectedInterface() == null)
             {
                 await _navigator.DisplayAlertAsync("Error", "Please select network card first.", "Ok");
                 return;
             }
 
             _beacon = _container.Resolve<IXDashBeacon>();
-            _beacon.Client = _deviceInfoService.GetDeviceInfo();
-            _beacon.Interface = _deviceInfoService.SelectedInterface;
-            _beacon.StartBroadcasting();
+            await _beacon.StartListening();
         }
 
         public async Task StopBroadcasting()
@@ -46,7 +44,7 @@ namespace XDash.Framework.Services
             {
                 return;
             }
-            await _beacon.StopBroadcasting();
+            await _beacon.StopListening();
             _beacon = null;
         }
     }

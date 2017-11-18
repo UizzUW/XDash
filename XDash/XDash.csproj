@@ -1,123 +1,18 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FD2719F7-A5A5-4B9F-A4E9-71ABD30F7B74}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XDash</RootNamespace>
-    <AssemblyName>XDash</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
-    <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <LangVersion>latest</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <LangVersion>latest</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseUWP|AnyCPU'">
-    <OutputPath>bin\ReleaseUWP\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <LangVersion>latest</LangVersion>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Converters\LanguageEnumToNameConverter.cs" />
-    <Compile Include="Converters\OperatingSystemToLogoConverter.cs" />
-    <Compile Include="Helpers\Const.cs" />
-    <Compile Include="Helpers\CustomTabbedPresenter.cs" />
-    <Compile Include="Messages\LanguageChangedMessage.cs" />
-    <Compile Include="MyNavigator.cs" />
-    <Compile Include="Pages\DevicesPage.xaml.cs">
-      <DependentUpon>DevicesPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\SettingsPage.xaml.cs">
-      <DependentUpon>SettingsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources\Strings\Strings_EN.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Strings_EN.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Resources\Strings\Strings_RO.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Strings_RO.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Services\Contracts\IFilesystemBrowser.cs" />
-    <Compile Include="Services\Contracts\ILocalizer.cs" />
-    <Compile Include="Services\Localizer.cs" />
-    <Compile Include="ViewModels\Base\BaseViewModel.cs" />
-    <Compile Include="ViewModels\DevicesViewModel.cs" />
-    <Compile Include="ViewModels\SettingsViewModel.cs" />
-    <Compile Include="ViewModels\ViewObjects\DashInfoViewObject.cs" />
-    <Compile Include="XDashAppStart.cs" />
+    <None Remove="Resources\Images\xdash_droid_nobg_icon.png" />
+    <None Remove="Resources\Images\xdash_ios_nobg_icon.png" />
+    <None Remove="Resources\Images\xdash_linux_nobg_icon.png" />
+    <None Remove="Resources\Images\xdash_mac_nobg_icon.png" />
+    <None Remove="Resources\Images\xdash_nobg_icon.png" />
+    <None Remove="Resources\Images\xdash_windows_nobg_icon.png" />
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="App.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Strings\Strings_EN.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Strings_EN.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Strings\Strings_RO.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Strings_RO.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="project.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\XDash.Framework\XDash.Framework.csproj">
-      <Project>{67f9d3a8-f71e-4428-913f-c37ae82cdb24}</Project>
-      <Name>XDash.Framework</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Pages\DevicesPage.xaml">
-      <Generator>MSBuild:CompileMSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\SettingsPage.xaml">
-      <Generator>MSBuild:CompileMSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+
   <ItemGroup>
     <EmbeddedResource Include="Resources\Images\xdash_droid_nobg_icon.png" />
     <EmbeddedResource Include="Resources\Images\xdash_ios_nobg_icon.png" />
@@ -126,12 +21,23 @@
     <EmbeddedResource Include="Resources\Images\xdash_nobg_icon.png" />
     <EmbeddedResource Include="Resources\Images\xdash_windows_nobg_icon.png" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
+  <ItemGroup>
+    <PackageReference Include="MVPathway" Version="3.0.0-alpha5" />
+    <PackageReference Include="MVPathway.Utils" Version="3.0.0-alpha5" />
+    <PackageReference Include="Xamarin.Forms" Version="2.5.0.91635" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\XDash.Framework\XDash.Framework.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="NETStandard.Library" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
 </Project>

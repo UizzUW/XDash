@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using Xamarin.Forms;
-using XDash.Framework.Models;
+using OperatingSystem = XDash.Framework.Models.OperatingSystem;
 
 namespace XDash.Converters
 {

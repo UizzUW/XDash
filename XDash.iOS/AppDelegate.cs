@@ -2,6 +2,8 @@
 using Foundation;
 using UIKit;
 using MVPathway.Builder;
+using XDash.Framework.iOS.Services;
+using XDash.Framework.Services.Contracts;
 
 namespace XDash.iOS
 {
@@ -21,10 +23,10 @@ namespace XDash.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            //LoadApplication(PathwayFactory.Create<XDash.App>(di =>
-            //{
-            //    di.Register<IPlatformService, IosPlatformService>();
-            //}));
+            LoadApplication(PathwayFactory.Create<XDash.App>(di =>
+            {
+                di.Register<IPlatformService, IosPlatformService>();
+            }));
 
             return base.FinishedLaunching(app, options);
         }
