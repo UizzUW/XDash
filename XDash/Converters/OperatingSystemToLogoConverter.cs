@@ -22,7 +22,7 @@ namespace XDash.Converters
                     return ImageSource.FromResource("XDash.Resources.Images.xdash_droid_nobg_icon.png");
                 case OperatingSystem.iOS:
                     return ImageSource.FromResource("XDash.Resources.Images.xdash_ios_nobg_icon.png");
-                case OperatingSystem.Mac:
+                case OperatingSystem.macOS:
                     return ImageSource.FromResource("XDash.Resources.Images.xdash_mac_nobg_icon.png");
                 case OperatingSystem.Linux:
                     return ImageSource.FromResource("XDash.Resources.Images.xdash_linux_nobg_icon.png");

@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 using XDash.Framework.Services.Contracts;
 using Sockets.Plugin;
 using Sockets.Plugin.Abstractions;
+using XDash.Framework.Configuration.Contracts;
 
 namespace XDash.Framework.Services
 {
     public class DeviceInfoService : IDeviceInfoService
     {
-        private readonly ISettingsRepository _settingsRepository;
+        private readonly IConfigurator _configurator;
         private readonly ICacheService _cacheService;
 
         private readonly object _lock = new object();
@@ -29,7 +30,8 @@ namespace XDash.Framework.Services
 
         public async Task<ICommsInterface> GetSelectedInterface()
         {
-            var ip = _settingsRepository.Ip;
+            var options = _configurator.GetConfiguration();
+            var ip = options.Device.Ip;
             var interfaces = await GetInterfaces();
             return interfaces.FirstOrDefault(x => x.IpAddress == ip);
         }
@@ -44,12 +46,15 @@ namespace XDash.Framework.Services
             {
                 throw new ArgumentException("This interface is not available on this device.");
             }
-            _settingsRepository.Ip = commsInterface.IpAddress;
+            var options = _configurator.GetConfiguration();
+            options.Device.Ip = commsInterface.IpAddress;
+            await _configurator.SaveConfiguration(options);
         }
 
-        public DeviceInfoService(ISettingsRepository settingsRepository, ICacheService cacheService)
+        public DeviceInfoService(IConfigurator configurator,
+                                 ICacheService cacheService)
         {
-            _settingsRepository = settingsRepository;
+            _configurator = configurator;
             _cacheService = cacheService;
         }
     }

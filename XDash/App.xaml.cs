@@ -23,7 +23,6 @@ namespace XDash
             base.Configure(builder);
 
             Container.Register<ILocalizer, Localizer>();
-
             Container.Resolve<IViewModelManager>().AutoScanAndRegister(GetType().GetAssembly());
 
             builder

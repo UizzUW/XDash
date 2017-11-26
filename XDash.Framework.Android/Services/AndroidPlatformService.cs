@@ -1,5 +1,7 @@
+using Android.App;
+using Xamarin.Forms;
 using XDash.Framework.Models;
-using XDash.Framework.Services.Contracts;
+using XDash.Framework.Services.Contracts.Platform;
 
 namespace XDash.Framework.Droid.Services
 {
@@ -7,9 +9,11 @@ namespace XDash.Framework.Droid.Services
     {
         public OperatingSystem OS => OperatingSystem.Android;
 
+        public string ConfigurationPath => throw new System.NotImplementedException();
+
         public void ExitApp()
         {
-            throw new System.NotImplementedException();
+            ((Activity)Forms.Context).FinishAffinity();
         }
     }
 }

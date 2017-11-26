@@ -7,13 +7,14 @@ using XDash.Framework.Models;
 using XDash.Framework.Models.Abstractions;
 using XDash.Framework.Services.Contracts;
 using XDash.Services.Contracts;
+using XDash.Framework.Configuration.Contracts;
 
 namespace XDash.ViewModels
 {
     public class SettingsViewModel : BaseViewModel
     {
         private readonly IDeviceInfoService _deviceInfoService;
-        private readonly ISettingsRepository _settingsRepository;
+        private readonly IConfigurator _configurator;
 
         private IXDashClient _client;
 
@@ -63,14 +64,14 @@ namespace XDash.ViewModels
             }
         }
 
-        public SettingsViewModel(ISettingsRepository settingsRepository,
+        public SettingsViewModel(IConfigurator configurator,
                                  IDeviceInfoService deviceInfoService,
                                  IXDashClient client,
                                  ILocalizer localizer,
                                  IMessenger messenger)
             : base(localizer, messenger)
         {
-            _settingsRepository = settingsRepository;
+            _configurator = configurator;
             _deviceInfoService = deviceInfoService;
             Client = client;
         }
@@ -86,9 +87,14 @@ namespace XDash.ViewModels
         {
             await base.OnNavigatingFrom(parameter);
             await _deviceInfoService.SetSelectedInterface(SelectedInterface);
-            _settingsRepository.Name = Client.Name;
-            _settingsRepository.Ip = SelectedInterface.IpAddress;
-            _settingsRepository.Language = SelectedLanguage;
+
+            var options = _configurator.GetConfiguration();
+
+            options.Device.Name = Client.Name;
+            options.Device.Ip = SelectedInterface?.IpAddress;
+            options.Device.Language = SelectedLanguage;
+
+            await _configurator.SaveConfiguration(options);
         }
     }
 }

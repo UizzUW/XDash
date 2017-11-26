@@ -90,6 +90,9 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Content Include="..\XDash.Framework\xdash.config.json">
+      <Link>xdash.config.json</Link>
+    </Content>
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>

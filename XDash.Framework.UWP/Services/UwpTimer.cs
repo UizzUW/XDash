@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
-using XDash.Framework.Services.Contracts;
+using XDash.Framework.Services.Contracts.Platform;
 
 namespace XDash.Framework.UWP.Services
 {

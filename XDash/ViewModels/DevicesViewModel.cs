@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using MVPathway.Messages.Abstractions;
 using MVPathway.MVVM.Abstractions;
@@ -9,7 +7,6 @@ using MVPathway.Navigation.Abstractions;
 using Xamarin.Forms;
 using XDash.Framework.Components.Discovery.Contracts;
 using XDash.Framework.Components.Transfer.Contracts;
-using XDash.Framework.Helpers;
 using XDash.Framework.Models;
 using XDash.Framework.Models.Abstractions;
 using XDash.Framework.Services.Contracts;
@@ -17,6 +14,7 @@ using XDash.Services.Contracts;
 using XDash.ViewModels.ViewObjects;
 using BaseViewModel = XDash.ViewModels.Base.BaseViewModel;
 using static XDash.Framework.Helpers.ExtensionMethods;
+using XDash.Framework.Services.Contracts.Platform;
 
 namespace XDash.ViewModels
 {
@@ -24,15 +22,15 @@ namespace XDash.ViewModels
     {
         private readonly IDiContainer _container;
         private readonly INavigator _navigator;
-        private readonly IXDashFilesystem _filesystem;
+        private readonly IFilesystem _filesystem;
         private readonly IDeviceInfoService _deviceInfoService;
         private readonly IPlatformService _platformService;
         private readonly IXDashClient _client;
 
-        private IXDashScanner _scanner;
-        private IXDashBeacon _beacon;
-        private IXDashSender _sender;
-        private IXDashReceiver _receiver;
+        private IScanner _scanner;
+        private IBeacon _beacon;
+        private IController _sender;
+        private IEndpoint _receiver;
 
         private bool _isBeaconEnabled;
         public bool IsBeaconEnabled
@@ -142,7 +140,7 @@ namespace XDash.ViewModels
 
             await Task.WhenAll(files);
 
-            _sender = _container.Resolve<IXDashSender>();
+            _sender = _container.Resolve<IController>();
             var dash = new Framework.Models.XDash
             {
                 Sender = client as XDashClient,
@@ -159,7 +157,7 @@ namespace XDash.ViewModels
 
         public DevicesViewModel(IDiContainer container,
                                 INavigator navigator,
-                                IXDashFilesystem filesystem,
+                                IFilesystem filesystem,
                                 IDeviceInfoService deviceInfoService,
                                 IPlatformService platformService,
                                 IXDashClient client,
@@ -201,8 +199,8 @@ namespace XDash.ViewModels
 
         public async Task StartListening()
         {
-            _beacon = _container.Resolve<IXDashBeacon>();
-            _receiver = _container.Resolve<IXDashReceiver>();
+            _beacon = _container.Resolve<IBeacon>();
+            _receiver = _container.Resolve<IEndpoint>();
             await _beacon.StartListening();
             await _receiver.StartReceiving(async dash => await onDashReceived(dash),
                 async result => await TaskOnUiThread(async () => await _navigator.DisplayAlertAsync(result ? this["Success"] : this["Error"],
@@ -231,7 +229,7 @@ namespace XDash.ViewModels
 
         private async Task scan()
         {
-            _scanner = _container.Resolve<IXDashScanner>();
+            _scanner = _container.Resolve<IScanner>();
             IsBusy = true;
             var scanResults = await _scanner.Scan();
             IsBusy = false;

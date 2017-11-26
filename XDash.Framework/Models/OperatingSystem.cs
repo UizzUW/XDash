@@ -2,10 +2,11 @@
 {
     public enum OperatingSystem
     {
+        Unknown,
         Windows,
         Android,
         iOS,
         Linux,
-        Mac
+        macOS
     }
 }

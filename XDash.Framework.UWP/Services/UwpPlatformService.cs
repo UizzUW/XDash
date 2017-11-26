@@ -1,12 +1,25 @@
-﻿using Windows.UI.Xaml;
-using XDash.Framework.Models;
-using XDash.Framework.Services.Contracts;
+﻿using System.Net;
+using Windows.ApplicationModel;
+using Windows.Storage.AccessCache;
+using Windows.UI.Xaml;
+using XDash.Framework.Services.Contracts.Platform;
 
 namespace XDash.Framework.UWP.Services
 {
     public class UwpPlatformService : IPlatformService
     {
-        public OperatingSystem OS => OperatingSystem.Windows;
+        public Models.OperatingSystem OS => Models.OperatingSystem.Windows;
+
+        public string ConfigurationPath
+        {
+            get
+            {
+                var root = Package.Current.InstalledLocation;
+                StorageApplicationPermissions.FutureAccessList.AddOrReplace(WebUtility.UrlEncode(root.Path), root);
+                return root.Path;
+            }
+        }
+
         public void ExitApp()
         {
             Application.Current.Exit();

@@ -393,10 +393,9 @@ namespace XDash.Framework.Droid.FilePicker
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
             View v = base.GetView(position, convertView, parent);
-            if (v is TextView)
+            // Enable list item (directory) text wrapping
+            if (v is TextView tv)
             {
-                // Enable list item (directory) text wrapping
-                TextView tv = (TextView)v;
                 tv.LayoutParameters.Height = ViewGroup.LayoutParams.WrapContent;
                 tv.Ellipsize = null;
             }

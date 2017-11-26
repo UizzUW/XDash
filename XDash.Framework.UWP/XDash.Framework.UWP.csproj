@@ -109,15 +109,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\UwpPlatformService.cs" />
     <Compile Include="Services\UwpTimer.cs" />
-    <Compile Include="Services\UwpXDashFilesystem.cs" />
-    <Compile Include="Services\WindowsAsyncTimer.cs" />
-    <Compile Include="Services\WindowsPlatformService.cs" />
+    <Compile Include="Services\UwpFilesystem.cs" />
     <Compile Include="XDashUWPPathwayExtensio.cs" />
     <EmbeddedResource Include="Properties\XDash.Framework.UWP.rd.xml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.0.1</Version>
+      <Version>6.0.2</Version>
     </PackageReference>
     <PackageReference Include="MVPathway">
       <Version>3.0.0-alpha5</Version>

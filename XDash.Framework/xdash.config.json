@@ -1,0 +1,16 @@
+﻿{
+    "Device": {
+        "Guid": "00000000-0000-0000-0000-000000000000",
+        "Name": null,
+        "Language": 0,
+        "DownloadsFolderPath": null
+    },
+    "Discovery": {
+        "ScanPort": 5401,
+        "ScanFeedbackPort": 5402
+    },
+    "Transfer": {
+        "TransferPort": 5403,
+        "TransferFeedbackPort": 5404
+    }
+}
