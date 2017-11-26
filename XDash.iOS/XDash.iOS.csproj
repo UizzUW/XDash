@@ -89,7 +89,6 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Helpers\Settings.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="Entitlements.plist" />
@@ -167,6 +166,16 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\XDash.Framework.Emvy.iOS\XDash.Framework.Emvy.iOS.csproj">
+      <Project>{0578af54-2e09-425a-91c1-a47990ec2ab9}</Project>
+      <Name>XDash.Framework.Emvy.iOS</Name>
+      <IsAppExtension>false</IsAppExtension>
+      <IsWatchApp>false</IsWatchApp>
+    </ProjectReference>
+    <ProjectReference Include="..\XDash.Framework.Emvy\XDash.Framework.Emvy.csproj">
+      <Project>{6574917c-2b29-426c-9451-f34e555bf2cf}</Project>
+      <Name>XDash.Framework.Emvy</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XDash.Framework.iOS\XDash.Framework.iOS.csproj">
       <Project>{e333b316-0fd9-4bc8-a8d3-47ee7ccd4bb6}</Project>
       <Name>XDash.Framework.iOS</Name>

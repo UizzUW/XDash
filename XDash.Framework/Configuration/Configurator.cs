@@ -8,7 +8,7 @@ using XDash.Framework.Services.Contracts.Platform;
 
 namespace XDash.Framework.Configuration
 {
-    class Configurator : IConfigurator
+    public class Configurator : IConfigurator
     {
         private const string _configFileName = "xdash.config.json";
 

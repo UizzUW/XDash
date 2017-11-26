@@ -13,7 +13,6 @@ using XDash.Framework.Services.Contracts;
 using XDash.Services.Contracts;
 using XDash.ViewModels.ViewObjects;
 using BaseViewModel = XDash.ViewModels.Base.BaseViewModel;
-using static XDash.Framework.Helpers.ExtensionMethods;
 using XDash.Framework.Services.Contracts.Platform;
 
 namespace XDash.ViewModels
@@ -203,8 +202,8 @@ namespace XDash.ViewModels
             _receiver = _container.Resolve<IEndpoint>();
             await _beacon.StartListening();
             await _receiver.StartReceiving(async dash => await onDashReceived(dash),
-                async result => await TaskOnUiThread(async () => await _navigator.DisplayAlertAsync(result ? this["Success"] : this["Error"],
-                result ? this["Receive_Successful"] : this["Receive_Failed"], this["Ok"])));
+                async result => await _navigator.DisplayAlertAsync(result ? this["Success"] : this["Error"],
+                result ? this["Receive_Successful"] : this["Receive_Failed"], this["Ok"]));
         }
 
         public async Task StopListening()

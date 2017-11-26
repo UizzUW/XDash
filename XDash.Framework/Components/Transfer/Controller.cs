@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using MVPathway.Logging.Abstractions;
 using Sockets.Plugin;
 using Sockets.Plugin.Abstractions;
 using XDash.Framework.Components.Transfer.Contracts;
@@ -23,19 +22,16 @@ namespace XDash.Framework.Components.Transfer
         private readonly XDashOptions _options;
         private readonly IFilesystem _filesystem;
         private readonly ITimer _timer;
-        private readonly ILogger _logger;
 
         public Controller(IBsonSerializer binarySerializer,
                            IConfigurator configurator,
                            IFilesystem filesystem,
-                           ITimer timer,
-                           ILogger logger)
+                           ITimer timer)
         {
             _binarySerializer = binarySerializer;
             _options = configurator.GetConfiguration();
             _filesystem = filesystem;
             _timer = timer;
-            _logger = logger;
         }
 
         public async Task<XDashSendResponse> Send(IXDashClient client, Models.XDash dash)

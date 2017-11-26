@@ -5,7 +5,6 @@ using Sockets.Plugin;
 using Sockets.Plugin.Abstractions;
 using XDash.Framework.Components.Transfer.Contracts;
 using XDash.Framework.Services.Contracts;
-using static XDash.Framework.Helpers.ExtensionMethods;
 using XDash.Framework.Services.Contracts.Platform;
 using XDash.Framework.Configuration;
 using XDash.Framework.Configuration.Contracts;
@@ -96,8 +95,7 @@ namespace XDash.Framework.Components.Transfer
                 var folderExists = await _filesystem.CheckIfFolderExists(_destination);
                 if (string.IsNullOrEmpty(_destination) || !folderExists)
                 {
-                    await TaskOnUiThread(async () =>
-                        _destination = await _filesystem.ChooseFolder());
+                    _destination = await _filesystem.ChooseFolder();
                 }
 
                 if (_destination == null)

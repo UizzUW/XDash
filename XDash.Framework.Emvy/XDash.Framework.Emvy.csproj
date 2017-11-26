@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MVPathway" Version="3.0.0-alpha5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\XDash.Framework\XDash.Framework.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -9,7 +9,6 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.0" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.0.0" />
-    <PackageReference Include="MVPathway" Version="3.0.0-alpha5" />
     <PackageReference Include="rda.SocketsForPCL" Version="2.0.2" />
   </ItemGroup>
 

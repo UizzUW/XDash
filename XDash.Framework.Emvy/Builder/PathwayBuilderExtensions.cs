@@ -18,7 +18,7 @@ using XDash.Framework.Configuration.Contracts;
 using XDash.Framework.Configuration;
 using System.Net;
 
-namespace XDash.Framework.Builder
+namespace XDash.Framework.Emvy.Builder
 {
     public static class PathwayBuilderExtensions
     {

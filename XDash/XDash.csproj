@@ -29,6 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\XDash.Framework.Emvy\XDash.Framework.Emvy.csproj" />
     <ProjectReference Include="..\XDash.Framework\XDash.Framework.csproj" />
   </ItemGroup>
 

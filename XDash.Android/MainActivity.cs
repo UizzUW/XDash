@@ -3,7 +3,7 @@ using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using MVPathway.Builder;
-using XDash.Framework.Droid;
+using XDash.Framework.Emvy.Droid;
 
 namespace XDash.Droid
 {

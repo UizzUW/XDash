@@ -1,8 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using Xamarin.Forms;
-
-namespace XDash.Framework.Helpers
+﻿namespace XDash.Framework.Helpers
 {
     public static class ExtensionMethods
     {
@@ -24,42 +20,6 @@ namespace XDash.Framework.Helpers
                 return $"{byteCount / iMb:0.##} MB";
             }
             return $"{byteCount / iGb:0.##} GB";
-        }
-
-        public static async Task TaskOnUiThread<T>(Func<Task<T>> task)
-        {
-            var tcs = new TaskCompletionSource<T>();
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                try
-                {
-                    
-                    tcs.SetResult(await task());
-                }
-                catch (Exception ex)
-                {
-                    tcs.SetException(ex);
-                }
-            });
-            await tcs.Task;
-        }
-
-        public static async Task TaskOnUiThread(Func<Task> task)
-        {
-            var tcs = new TaskCompletionSource<object>();
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                try
-                {
-                    await task();
-                    tcs.SetResult(null);
-                }
-                catch (Exception ex)
-                {
-                    tcs.SetException(ex);
-                }
-            });
-            await tcs.Task;
         }
     }
 }

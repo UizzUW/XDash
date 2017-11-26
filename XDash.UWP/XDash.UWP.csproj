@@ -157,9 +157,21 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\XDash.Framework.Emvy.UWP\XDash.Framework.Emvy.UWP.csproj">
+      <Project>{8802f897-6e76-47c6-a10c-9c3c98c55370}</Project>
+      <Name>XDash.Framework.Emvy.UWP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XDash.Framework.Emvy\XDash.Framework.Emvy.csproj">
+      <Project>{6574917c-2b29-426c-9451-f34e555bf2cf}</Project>
+      <Name>XDash.Framework.Emvy</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XDash.Framework.UWP\XDash.Framework.UWP.csproj">
       <Project>{1036ef47-aa0a-4650-817c-7f7a3da4bf12}</Project>
       <Name>XDash.Framework.UWP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XDash.Framework\XDash.Framework.csproj">
+      <Project>{1e06bad3-7c8a-4086-bbe5-eddff2cac9a6}</Project>
+      <Name>XDash.Framework</Name>
     </ProjectReference>
     <ProjectReference Include="..\XDash\XDash.csproj">
       <Project>{f0d01960-6069-4d05-b418-68474325f107}</Project>
