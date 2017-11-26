@@ -1,5 +1,4 @@
 using Android.App;
-using Xamarin.Forms;
 using XDash.Framework.Models;
 using XDash.Framework.Services.Contracts.Platform;
 
@@ -13,7 +12,8 @@ namespace XDash.Framework.Droid.Services
 
         public void ExitApp()
         {
-            ((Activity)Forms.Context).FinishAffinity();
+            // TODO : capture context without forms
+            //((Activity)Forms.Context).FinishAffinity();
         }
     }
 }

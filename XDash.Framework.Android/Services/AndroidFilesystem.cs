@@ -2,7 +2,6 @@
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 using XDash.Framework.Droid.FilePicker;
 using XDash.Framework.Services.Contracts.Platform;
 
@@ -55,8 +54,8 @@ namespace XDash.Framework.Droid.Services
 
         public async Task<string> ChooseFolder()
         {
-            //return await new FilePickerImplementation().PickFolder();
-            var fileDialog = new SimpleFileDialog(Forms.Context, SimpleFileDialog.FileSelectionMode.FolderChoose);
+            // TODO : replace SFD
+            var fileDialog = new SimpleFileDialog(null, SimpleFileDialog.FileSelectionMode.FolderChoose);
             var path = await fileDialog.GetFileOrDirectoryAsync(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath);
             return path;
         }
