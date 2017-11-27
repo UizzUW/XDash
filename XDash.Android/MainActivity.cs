@@ -5,7 +5,7 @@ using Android.OS;
 using MVPathway.Builder;
 using XDash.Framework.Emvy.Droid;
 
-namespace XDash.Droid
+namespace XDash.Android
 {
     [Activity(Label = "XDash", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
