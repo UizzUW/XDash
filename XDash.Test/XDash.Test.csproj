@@ -4,6 +4,8 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <Configurations>Dev;Test;Live</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
