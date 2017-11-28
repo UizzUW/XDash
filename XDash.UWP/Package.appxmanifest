@@ -4,7 +4,7 @@
   <mp:PhoneIdentity PhoneProductId="70de8c06-679e-453d-ba86-d23d0eee09d7" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>XDash.UWP</DisplayName>
-    <PublisherDisplayName>adamp</PublisherDisplayName>
+    <PublisherDisplayName>uizzuw</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
