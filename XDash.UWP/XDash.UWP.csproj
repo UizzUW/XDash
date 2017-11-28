@@ -1,222 +1,224 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-    <PropertyGroup>
-        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-        <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-        <ProjectGuid>{E952C93A-C25B-4846-BF5B-AA88A88E7E87}</ProjectGuid>
-        <OutputType>AppContainerExe</OutputType>
-        <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>XDash.UWP</RootNamespace>
-        <AssemblyName>XDash.UWP</AssemblyName>
-        <DefaultLanguage>en-US</DefaultLanguage>
-        <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-        <TargetPlatformVersion>10.0.16299.0</TargetPlatformVersion>
-        <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
-        <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
-        <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
-        <FileAlignment>512</FileAlignment>
-        <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-        <PackageCertificateKeyFile>XDash.UWP_TemporaryKey.pfx</PackageCertificateKeyFile>
-    </PropertyGroup>
-    <ItemGroup>
-        <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-        <Content Include="..\XDash.Framework\xdash.config.json">
-            <Link>xdash.config.json</Link>
-        </Content>
-        <None Include="project.json" />
-    </ItemGroup>
-    <ItemGroup>
-        <Compile Include="App.xaml.cs">
-            <DependentUpon>App.xaml</DependentUpon>
-        </Compile>
-        <Compile Include="MainPage.xaml.cs">
-            <DependentUpon>MainPage.xaml</DependentUpon>
-        </Compile>
-        <Compile Include="Properties\AssemblyInfo.cs" />
-    </ItemGroup>
-    <ItemGroup>
-        <AppxManifest Include="Package.appxmanifest">
-            <SubType>Designer</SubType>
-        </AppxManifest>
-        <None Include="XDash.UWP_TemporaryKey.pfx" />
-    </ItemGroup>
-    <ItemGroup>
-        <Content Include="Properties\Default.rd.xml" />
-        <Content Include="Assets\LockScreenLogo.scale-100.png" />
-        <Content Include="Assets\LockScreenLogo.scale-125.png" />
-        <Content Include="Assets\LockScreenLogo.scale-150.png" />
-        <Content Include="Assets\LockScreenLogo.scale-200.png" />
-        <Content Include="Assets\LockScreenLogo.scale-400.png" />
-        <Content Include="Assets\SplashScreen.scale-100.png" />
-        <Content Include="Assets\SplashScreen.scale-125.png" />
-        <Content Include="Assets\SplashScreen.scale-150.png" />
-        <Content Include="Assets\SplashScreen.scale-200.png" />
-        <Content Include="Assets\SplashScreen.scale-400.png" />
-        <Content Include="Assets\Square150x150Logo.scale-100.png" />
-        <Content Include="Assets\Square150x150Logo.scale-125.png" />
-        <Content Include="Assets\Square150x150Logo.scale-150.png" />
-        <Content Include="Assets\Square150x150Logo.scale-200.png" />
-        <Content Include="Assets\Square150x150Logo.scale-400.png" />
-        <Content Include="Assets\Square44x44Logo.scale-100.png" />
-        <Content Include="Assets\Square44x44Logo.scale-125.png" />
-        <Content Include="Assets\Square44x44Logo.scale-150.png" />
-        <Content Include="Assets\Square44x44Logo.scale-200.png" />
-        <Content Include="Assets\Square44x44Logo.scale-400.png" />
-        <Content Include="Assets\Square44x44Logo.targetsize-16_altform-unplated.png" />
-        <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
-        <Content Include="Assets\Square44x44Logo.targetsize-32_altform-unplated.png" />
-        <Content Include="Assets\Square44x44Logo.targetsize-48_altform-unplated.png" />
-        <Content Include="Assets\Square44x44Logo.targetsize-256_altform-unplated.png" />
-        <Content Include="Assets\StoreLogo.png" />
-        <Content Include="Assets\Wide310x150Logo.scale-100.png" />
-        <Content Include="Assets\Wide310x150Logo.scale-125.png" />
-        <Content Include="Assets\Wide310x150Logo.scale-150.png" />
-        <Content Include="Assets\Wide310x150Logo.scale-200.png" />
-        <Content Include="Assets\Wide310x150Logo.scale-400.png" />
-        <Content Include="search.png" />
-        <Content Include="settings.png" />
-    </ItemGroup>
-    <ItemGroup>
-        <ApplicationDefinition Include="App.xaml">
-            <Generator>MSBuild:Compile</Generator>
-            <SubType>Designer</SubType>
-        </ApplicationDefinition>
-        <Page Include="MainPage.xaml">
-            <Generator>MSBuild:Compile</Generator>
-            <SubType>Designer</SubType>
-        </Page>
-    </ItemGroup>
-    <ItemGroup>
-        <ProjectReference Include="..\XDash.Framework.Emvy.UWP\XDash.Framework.Emvy.UWP.csproj">
-            <Project>{8802f897-6e76-47c6-a10c-9c3c98c55370}</Project>
-            <Name>XDash.Framework.Emvy.UWP</Name>
-        </ProjectReference>
-        <ProjectReference Include="..\XDash.Framework.Emvy\XDash.Framework.Emvy.csproj">
-            <Project>{6574917c-2b29-426c-9451-f34e555bf2cf}</Project>
-            <Name>XDash.Framework.Emvy</Name>
-        </ProjectReference>
-        <ProjectReference Include="..\XDash.Framework.UWP\XDash.Framework.UWP.csproj">
-            <Project>{1036ef47-aa0a-4650-817c-7f7a3da4bf12}</Project>
-            <Name>XDash.Framework.UWP</Name>
-        </ProjectReference>
-        <ProjectReference Include="..\XDash.Framework\XDash.Framework.csproj">
-            <Project>{1e06bad3-7c8a-4086-bbe5-eddff2cac9a6}</Project>
-            <Name>XDash.Framework</Name>
-        </ProjectReference>
-        <ProjectReference Include="..\XDash\XDash.csproj">
-            <Project>{f0d01960-6069-4d05-b418-68474325f107}</Project>
-            <Name>XDash</Name>
-        </ProjectReference>
-    </ItemGroup>
-    <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
-        <VisualStudioVersion>14.0</VisualStudioVersion>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Dev|ARM'">
-        <OutputPath>bin\ARM\Dev\</OutputPath>
-        <DebugSymbols>true</DebugSymbols>
-        <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
-        <NoWarn>;2008</NoWarn>
-        <DebugType>full</DebugType>
-        <PlatformTarget>ARM</PlatformTarget>
-        <UseVSHostingProcess>false</UseVSHostingProcess>
-        <ErrorReport>prompt</ErrorReport>
-        <Prefer32Bit>true</Prefer32Bit>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Dev|x64'">
-        <OutputPath>bin\x64\Dev\</OutputPath>
-        <DebugSymbols>true</DebugSymbols>
-        <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
-        <NoWarn>;2008</NoWarn>
-        <DebugType>full</DebugType>
-        <PlatformTarget>x64</PlatformTarget>
-        <UseVSHostingProcess>false</UseVSHostingProcess>
-        <ErrorReport>prompt</ErrorReport>
-        <Prefer32Bit>true</Prefer32Bit>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Dev|x86'">
-        <OutputPath>bin\x86\Dev\</OutputPath>
-        <DebugSymbols>true</DebugSymbols>
-        <OutputPath>bin\x86\Debug\</OutputPath>
-        <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
-        <NoWarn>;2008</NoWarn>
-        <DebugType>full</DebugType>
-        <PlatformTarget>x86</PlatformTarget>
-        <UseVSHostingProcess>false</UseVSHostingProcess>
-        <ErrorReport>prompt</ErrorReport>
-        <Prefer32Bit>true</Prefer32Bit>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|ARM'">
-        <OutputPath>bin\ARM\Test\</OutputPath>
-        <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
-        <Optimize>true</Optimize>
-        <NoWarn>;2008</NoWarn>
-        <DebugType>pdbonly</DebugType>
-        <PlatformTarget>ARM</PlatformTarget>
-        <UseVSHostingProcess>false</UseVSHostingProcess>
-        <ErrorReport>prompt</ErrorReport>
-        <Prefer32Bit>true</Prefer32Bit>
-        <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|x64'">
-        <OutputPath>bin\x64\Test\</OutputPath>
-        <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
-        <Optimize>true</Optimize>
-        <NoWarn>;2008</NoWarn>
-        <DebugType>pdbonly</DebugType>
-        <PlatformTarget>x64</PlatformTarget>
-        <UseVSHostingProcess>false</UseVSHostingProcess>
-        <ErrorReport>prompt</ErrorReport>
-        <Prefer32Bit>true</Prefer32Bit>
-        <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|x86'">
-        <OutputPath>bin\x86\Test\</OutputPath>
-        <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
-        <Optimize>true</Optimize>
-        <NoWarn>;2008</NoWarn>
-        <DebugType>pdbonly</DebugType>
-        <PlatformTarget>x86</PlatformTarget>
-        <UseVSHostingProcess>false</UseVSHostingProcess>
-        <ErrorReport>prompt</ErrorReport>
-        <Prefer32Bit>true</Prefer32Bit>
-        <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Live|ARM'">
-        <OutputPath>bin\ARM\Live\</OutputPath>
-        <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
-        <Optimize>true</Optimize>
-        <NoWarn>;2008</NoWarn>
-        <DebugType>pdbonly</DebugType>
-        <PlatformTarget>ARM</PlatformTarget>
-        <UseVSHostingProcess>false</UseVSHostingProcess>
-        <ErrorReport>prompt</ErrorReport>
-        <Prefer32Bit>true</Prefer32Bit>
-        <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Live|x64'">
-        <OutputPath>bin\x64\Live\</OutputPath>
-        <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
-        <Optimize>true</Optimize>
-        <NoWarn>;2008</NoWarn>
-        <DebugType>pdbonly</DebugType>
-        <PlatformTarget>x64</PlatformTarget>
-        <UseVSHostingProcess>false</UseVSHostingProcess>
-        <ErrorReport>prompt</ErrorReport>
-        <Prefer32Bit>true</Prefer32Bit>
-        <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Live|x86'">
-        <OutputPath>bin\x86\Live\</OutputPath>
-        <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
-        <Optimize>true</Optimize>
-        <NoWarn>;2008</NoWarn>
-        <DebugType>pdbonly</DebugType>
-        <PlatformTarget>x86</PlatformTarget>
-        <UseVSHostingProcess>false</UseVSHostingProcess>
-        <ErrorReport>prompt</ErrorReport>
-        <Prefer32Bit>true</Prefer32Bit>
-        <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
-    </PropertyGroup>
-    <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{E952C93A-C25B-4846-BF5B-AA88A88E7E87}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XDash.UWP</RootNamespace>
+    <AssemblyName>XDash.UWP</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.16299.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PackageCertificateKeyFile>XDash.UWP_TemporaryKey.pfx</PackageCertificateKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Content Include="..\XDash.Framework\xdash.config.json">
+      <Link>xdash.config.json</Link>
+    </Content>
+    <None Include="project.json" />
+    <None Include="ZipAppxPackage.ps1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="UpdateAppVersion.ps1" />
+    <None Include="XDash.UWP_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\LockScreenLogo.scale-100.png" />
+    <Content Include="Assets\LockScreenLogo.scale-125.png" />
+    <Content Include="Assets\LockScreenLogo.scale-150.png" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\LockScreenLogo.scale-400.png" />
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\SplashScreen.scale-125.png" />
+    <Content Include="Assets\SplashScreen.scale-150.png" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\SplashScreen.scale-400.png" />
+    <Content Include="Assets\Square150x150Logo.scale-100.png" />
+    <Content Include="Assets\Square150x150Logo.scale-125.png" />
+    <Content Include="Assets\Square150x150Logo.scale-150.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.scale-100.png" />
+    <Content Include="Assets\Square44x44Logo.scale-125.png" />
+    <Content Include="Assets\Square44x44Logo.scale-150.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-16_altform-unplated.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-32_altform-unplated.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-48_altform-unplated.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-256_altform-unplated.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-100.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-125.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-150.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="search.png" />
+    <Content Include="settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XDash.Framework.Emvy.UWP\XDash.Framework.Emvy.UWP.csproj">
+      <Project>{8802f897-6e76-47c6-a10c-9c3c98c55370}</Project>
+      <Name>XDash.Framework.Emvy.UWP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XDash.Framework.Emvy\XDash.Framework.Emvy.csproj">
+      <Project>{6574917c-2b29-426c-9451-f34e555bf2cf}</Project>
+      <Name>XDash.Framework.Emvy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XDash.Framework.UWP\XDash.Framework.UWP.csproj">
+      <Project>{1036ef47-aa0a-4650-817c-7f7a3da4bf12}</Project>
+      <Name>XDash.Framework.UWP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XDash.Framework\XDash.Framework.csproj">
+      <Project>{1e06bad3-7c8a-4086-bbe5-eddff2cac9a6}</Project>
+      <Name>XDash.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XDash\XDash.csproj">
+      <Project>{f0d01960-6069-4d05-b418-68474325f107}</Project>
+      <Name>XDash</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Dev|ARM'">
+    <OutputPath>bin\ARM\Dev\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Dev|x64'">
+    <OutputPath>bin\x64\Dev\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Dev|x86'">
+    <OutputPath>bin\x86\Dev\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|ARM'">
+    <OutputPath>bin\ARM\Test\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|x64'">
+    <OutputPath>bin\x64\Test\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|x86'">
+    <OutputPath>bin\x86\Test\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Live|ARM'">
+    <OutputPath>bin\ARM\Live\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Live|x64'">
+    <OutputPath>bin\x64\Live\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Live|x86'">
+    <OutputPath>bin\x86\Live\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
 </Project>
