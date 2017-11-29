@@ -5,37 +5,37 @@ Cross-platform data transfer application and framework.
 
 ### Apps
 
-| Environment / Platform | Android                                  | UWP                                   | iOS                                   | macOS                                     | Linux                                     | CLI                                           |
+| Environment / Platform | Android_______                           | UWP___________                        | iOS___________                        | macOS_________                            | Linux_________                            | CLI___________                                |
 |-----------------------|-------------------------------------------|---------------------------------------|---------------------------------------|-------------------------------------------|-------------------------------------------|-----------------------------------------------|
-| dev                   | ![r/xdash/dev/droid][r/xdash/dev/droid]   | ![r/xdash/dev/uwp][r/xdash/dev/uwp]   | ![r/xdash/dev/ios][r/xdash/dev/ios]   | ![r/xdash/dev/macos][r/xdash/dev/macos]   | ![r/xdash/dev/linux][r/xdash/dev/linux]   | ![r/xdash/dev/netcore][r/xdash/dev/netcore]   | 
+| dev                   | ![r/xdash/dev/droid] [r/xdash/dev/droid]  | ![r/xdash/dev/uwp] [r/xdash/dev/uwp]  | ![r/xdash/dev/ios] [r/xdash/dev/ios]  | ![r/xdash/dev/macos] [r/xdash/dev/macos]  | ![r/xdash/dev/linux] [r/xdash/dev/linux]  | ![r/xdash/dev/netcore] [r/xdash/dev/netcore]  | 
 | test                  | ![r/xdash/test/droid][r/xdash/test/droid] | ![r/xdash/test/uwp][r/xdash/test/uwp] | ![r/xdash/test/ios][r/xdash/test/ios] | ![r/xdash/test/macos][r/xdash/test/macos] | ![r/xdash/test/linux][r/xdash/test/linux] | ![r/xdash/test/netcore][r/xdash/test/netcore] |
 | live                  | ![r/xdash/live/droid][r/xdash/live/droid] | ![r/xdash/live/uwp][r/xdash/live/uwp] | ![r/xdash/live/ios][r/xdash/live/ios] | ![r/xdash/live/macos][r/xdash/live/macos] | ![r/xdash/live/linux][r/xdash/live/linux] | ![r/xdash/live/netcore][r/xdash/live/netcore] |
 
 ### Framework
 
-| Environment / Platform                        | netstandard2.0                                                | Android                                           | UWP                                           | iOS                                           | macOS                                             | Linux                                             | netocre2.0                                            |
+| Environment / Platform                        | netstandard2.0                                                | Android_______                                    | UWP___________                                | iOS___________                                | macOS_________                                    | Linux_________                                    | netocre2.0____                                        |
 |-----------------------------------------------|---------------------------------------------------------------|---------------------------------------------------|-----------------------------------------------|-----------------------------------------------|---------------------------------------------------|---------------------------------------------------|-------------------------------------------------------|
-| dev ([uizz-experimental][uizz-experimental])  | ![r/xdash/fwk/dev/netstandard][r/xdash/fwk/dev/netstandard]   | ![r/xdash/fwk/dev/droid][r/xdash/fwk/dev/droid]   | ![r/xdash/fwk/dev/uwp][r/xdash/fwk/dev/uwp]   | ![r/xdash/fwk/dev/ios][r/xdash/fwk/dev/ios]   | ![r/xdash/fwk/dev/macos][r/xdash/fwk/dev/macos]   | ![r/xdash/fwk/dev/linux][r/xdash/fwk/dev/linux]   | ![r/xdash/fwk/dev/netcore][r/xdash/fwk/dev/netcore]   | 
-| test ([xdash-test][xdash-test])               | ![r/xdash/fwk/test/netstandard][r/xdash/fwk/dev/netstandard]  | ![r/xdash/fwk/test/droid][r/xdash/fwk/test/droid] | ![r/xdash/fwk/test/uwp][r/xdash/fwk/test/uwp] | ![r/xdash/fwk/test/ios][r/xdash/fwk/test/ios] | ![r/xdash/fwk/test/macos][r/xdash/fwk/test/macos] | ![r/xdash/fwk/test/linux][r/xdash/fwk/test/linux] | ![r/xdash/fwk/test/netcore][r/xdash/fwk/test/netcore] |
-| live ([nuget.org][nuget-org])                 | ![r/xdash/fwk/live/netstandard][r/xdash/fwk/dev/netstandard]  | ![r/xdash/fwk/live/droid][r/xdash/fwk/live/droid] | ![r/xdash/fwk/live/uwp][r/xdash/fwk/live/uwp] | ![r/xdash/fwk/live/ios][r/xdash/fwk/live/ios] | ![r/xdash/fwk/live/macos][r/xdash/fwk/live/macos] | ![r/xdash/fwk/live/linux][r/xdash/fwk/live/linux] | ![r/xdash/fwk/live/netcore][r/xdash/fwk/live/netcore] |
+| dev ([uizz-experimental][uizz-experimental])  | ![r/xdash/dev/fwk/netstandard] [r/xdash/dev/fwk/netstandard]  | ![r/xdash/dev/fwk/droid] [r/xdash/dev/fwk/droid]  | ![r/xdash/dev/fwk/uwp] [r/xdash/dev/fwk/uwp]  | ![r/xdash/dev/fwk/ios] [r/xdash/dev/fwk/ios]  | ![r/xdash/dev/fwk/macos] [r/xdash/dev/fwk/macos]  | ![r/xdash/dev/fwk/linux] [r/xdash/dev/fwk/linux]  | ![r/xdash/dev/fwk/netcore] [r/xdash/dev/fwk/netcore]  | 
+| test ([xdash-test][xdash-test])               | ![r/xdash/test/fwk/netstandard][r/xdash/test/fwk/netstandard] | ![r/xdash/test/fwk/droid][r/xdash/test/fwk/droid] | ![r/xdash/test/fwk/uwp][r/xdash/test/fwk/uwp] | ![r/xdash/test/fwk/ios][r/xdash/test/fwk/ios] | ![r/xdash/test/fwk/macos][r/xdash/test/fwk/macos] | ![r/xdash/test/fwk/linux][r/xdash/test/fwk/linux] | ![r/xdash/test/fwk/netcore][r/xdash/test/fwk/netcore] |
+| live ([nuget.org][nuget-org])                 | ![r/xdash/live/fwk/netstandard][r/xdash/live/fwk/netstandard] | ![r/xdash/live/fwk/droid][r/xdash/live/fwk/droid] | ![r/xdash/live/fwk/uwp][r/xdash/live/fwk/uwp] | ![r/xdash/live/fwk/ios][r/xdash/live/fwk/ios] | ![r/xdash/live/fwk/macos][r/xdash/live/fwk/macos] | ![r/xdash/live/fwk/linux][r/xdash/live/fwk/linux] | ![r/xdash/live/fwk/netcore][r/xdash/live/fwk/netcore] |
 
 ## Build status
 
 ### Apps
 
-| Environment / Platform | Android                                  | UWP                                   | iOS                                   | macOS                                     | Linux                                     | CLI                                           |
+| Environment / Platform | Android_______                           | UWP___________                        | iOS___________                        | macOS_________                            | Linux_________                            | CLI___________                                |
 |-----------------------|-------------------------------------------|---------------------------------------|---------------------------------------|-------------------------------------------|-------------------------------------------|-----------------------------------------------|
-| dev                   | ![b/xdash/dev/droid][b/xdash/dev/droid]   | ![b/xdash/dev/uwp][b/xdash/dev/uwp]   | ![b/xdash/dev/ios][b/xdash/dev/ios]   | ![b/xdash/dev/macos][b/xdash/dev/macos]   | ![b/xdash/dev/linux][b/xdash/dev/linux]   | ![b/xdash/dev/netcore][b/xdash/dev/netcore]   | 
+| dev                   | ![b/xdash/dev/droid] [b/xdash/dev/droid]  | ![b/xdash/dev/uwp] [b/xdash/dev/uwp]  | ![b/xdash/dev/ios] [b/xdash/dev/ios]  | ![b/xdash/dev/macos] [b/xdash/dev/macos]  | ![b/xdash/dev/linux] [b/xdash/dev/linux]  | ![b/xdash/dev/netcore] [b/xdash/dev/netcore]  | 
 | test                  | ![b/xdash/test/droid][b/xdash/test/droid] | ![b/xdash/test/uwp][b/xdash/test/uwp] | ![b/xdash/test/ios][b/xdash/test/ios] | ![b/xdash/test/macos][b/xdash/test/macos] | ![b/xdash/test/linux][b/xdash/test/linux] | ![b/xdash/test/netcore][b/xdash/test/netcore] |
 | live                  | ![b/xdash/live/droid][b/xdash/live/droid] | ![b/xdash/live/uwp][b/xdash/live/uwp] | ![b/xdash/live/ios][b/xdash/live/ios] | ![b/xdash/live/macos][b/xdash/live/macos] | ![b/xdash/live/linux][b/xdash/live/linux] | ![b/xdash/live/netcore][b/xdash/live/netcore] |
 
 ### Framework
 
-| Environment / Platform                        | netstandard2.0                                                | Android                                           | UWP                                           | iOS                                           | macOS                                             | Linux                                             | netocre2.0                                            |
+| Environment / Platform                        | netstandard2.0                                                | Android_______                                    | UWP___________                                | iOS___________                                | macOS_________                                    | Linux_________                                    | netocre2.0____                                        |
 |-----------------------------------------------|---------------------------------------------------------------|---------------------------------------------------|-----------------------------------------------|-----------------------------------------------|---------------------------------------------------|---------------------------------------------------|-------------------------------------------------------|
-| dev ([uizz-experimental][uizz-experimental])  | ![b/xdash/fwk/dev/netstandard][b/xdash/fwk/dev/netstandard]   | ![b/xdash/fwk/dev/droid][b/xdash/fwk/dev/droid]   | ![b/xdash/fwk/dev/uwp][b/xdash/fwk/dev/uwp]   | ![b/xdash/fwk/dev/ios][b/xdash/fwk/dev/ios]   | ![b/xdash/fwk/dev/macos][b/xdash/fwk/dev/macos]   | ![b/xdash/fwk/dev/linux][b/xdash/fwk/dev/linux]   | ![b/xdash/fwk/dev/netcore][b/xdash/fwk/dev/netcore]   | 
-| test ([xdash-test][xdash-test])               | ![b/xdash/fwk/test/netstandard][b/xdash/fwk/dev/netstandard]  | ![b/xdash/fwk/test/droid][b/xdash/fwk/test/droid] | ![b/xdash/fwk/test/uwp][b/xdash/fwk/test/uwp] | ![b/xdash/fwk/test/ios][b/xdash/fwk/test/ios] | ![b/xdash/fwk/test/macos][b/xdash/fwk/test/macos] | ![b/xdash/fwk/test/linux][b/xdash/fwk/test/linux] | ![b/xdash/fwk/test/netcore][b/xdash/fwk/test/netcore] |
-| live ([nuget.org][nuget-org])                 | ![b/xdash/fwk/live/netstandard][b/xdash/fwk/dev/netstandard]  | ![b/xdash/fwk/live/droid][b/xdash/fwk/live/droid] | ![b/xdash/fwk/live/uwp][b/xdash/fwk/live/uwp] | ![b/xdash/fwk/live/ios][b/xdash/fwk/live/ios] | ![b/xdash/fwk/live/macos][b/xdash/fwk/live/macos] | ![b/xdash/fwk/live/linux][b/xdash/fwk/live/linux] | ![b/xdash/fwk/live/netcore][b/xdash/fwk/live/netcore] |
+| dev ([uizz-experimental][uizz-experimental])  | ![b/xdash/dev/fwk/netstandard] [b/xdash/dev/fwk/netstandard]  | ![b/xdash/dev/fwk/droid] [b/xdash/dev/fwk/droid]  | ![b/xdash/dev/fwk/uwp] [b/xdash/dev/fwk/uwp]  | ![b/xdash/dev/fwk/ios] [b/xdash/dev/fwk/ios]  | ![b/xdash/dev/fwk/macos] [b/xdash/dev/fwk/macos]  | ![b/xdash/dev/fwk/linux] [b/xdash/dev/fwk/linux]  | ![b/xdash/dev/fwk/netcore] [b/xdash/dev/fwk/netcore]  | 
+| test ([xdash-test][xdash-test])               | ![b/xdash/test/fwk/netstandard][b/xdash/dev/fwk/netstandard]  | ![b/xdash/test/fwk/droid][b/xdash/test/fwk/droid] | ![b/xdash/test/fwk/uwp][b/xdash/test/fwk/uwp] | ![b/xdash/test/fwk/ios][b/xdash/test/fwk/ios] | ![b/xdash/test/fwk/macos][b/xdash/test/fwk/macos] | ![b/xdash/test/fwk/linux][b/xdash/test/fwk/linux] | ![b/xdash/test/fwk/netcore][b/xdash/test/fwk/netcore] |
+| live ([nuget.org][nuget-org])                 | ![b/xdash/live/fwk/netstandard][b/xdash/dev/fwk/netstandard]  | ![b/xdash/live/fwk/droid][b/xdash/live/fwk/droid] | ![b/xdash/live/fwk/uwp][b/xdash/live/fwk/uwp] | ![b/xdash/live/fwk/ios][b/xdash/live/fwk/ios] | ![b/xdash/live/fwk/macos][b/xdash/live/fwk/macos] | ![b/xdash/live/fwk/linux][b/xdash/live/fwk/linux] | ![b/xdash/live/fwk/netcore][b/xdash/live/fwk/netcore] |
 
 [uizz-experimental]: https://www.myget.org/F/uizz-experimental/api/v3/index.json
 [xdash-test]: https://www.myget.org/F/xdash-test/api/v3/index.json
@@ -53,93 +53,101 @@ Cross-platform data transfer application and framework.
 [b/xdash/test/uwp]: https://uizz.visualstudio.com/_apis/public/build/definitions/0693d9f8-6ad5-479a-9a20-84b3ff321d32/11/badge
 [b/xdash/live/uwp]: https://uizz.visualstudio.com/_apis/public/build/definitions/0693d9f8-6ad5-479a-9a20-84b3ff321d32/12/badge
 
-[b/xdash/dev/ios]: REPLACE_ME
-[b/xdash/test/ios]: REPLACE_ME
-[b/xdash/live/ios]: REPLACE_ME
+[b/xdash/dev/ios]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[b/xdash/test/ios]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[b/xdash/live/ios]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
 
-[b/xdash/dev/macos]: REPLACE_ME
-[b/xdash/test/macos]: REPLACE_ME
-[b/xdash/live/macos]: REPLACE_ME
+[b/xdash/dev/macos]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[b/xdash/test/macos]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[b/xdash/live/macos]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
 
-[b/xdash/dev/linux]: REPLACE_ME
-[b/xdash/test/linux]: REPLACE_ME
-[b/xdash/live/linux]: REPLACE_ME
+[b/xdash/dev/linux]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[b/xdash/test/linux]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[b/xdash/live/linux]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
 
-[b/xdash/dev/netcore]: REPLACE_ME
-[b/xdash/test/netcore]: REPLACE_ME
-[b/xdash/live/netcore]: REPLACE_ME
+[b/xdash/dev/netcore]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[b/xdash/test/netcore]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[b/xdash/live/netcore]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
 
-[b/xdash/fwk/dev/droid]: REPLACE_ME
-[b/xdash/fwk/test/droid]: REPLACE_ME
-[b/xdash/fwk/live/droid]: REPLACE_ME
-
-[b/xdash/fwk/dev/uwp]: REPLACE_ME
-[b/xdash/fwk/test/uwp]: REPLACE_ME
-[b/xdash/fwk/live/uwp]: REPLACE_ME
-
-[b/xdash/fwk/dev/ios]: REPLACE_ME
-[b/xdash/fwk/test/ios]: REPLACE_ME
-[b/xdash/fwk/live/ios]: REPLACE_ME
-
-[b/xdash/fwk/dev/macos]: REPLACE_ME
-[b/xdash/fwk/test/macos]: REPLACE_ME
-[b/xdash/fwk/live/macos]: REPLACE_ME
-
-[b/xdash/fwk/dev/linux]: REPLACE_ME
-[b/xdash/fwk/test/linux]: REPLACE_ME
-[b/xdash/fwk/live/linux]: REPLACE_ME
-
-[b/xdash/fwk/dev/netcore]: REPLACE_ME
-[b/xdash/fwk/test/netcore]: REPLACE_ME
-[b/xdash/fwk/live/netcore]: REPLACE_ME
-
-
-
-
-[r/xdash/dev/droid]: REPLACE_ME
-[r/xdash/test/droid]: REPLACE_ME
-[r/xdash/live/droid]: REPLACE_ME
+[b/xdash/dev/fwk/netstandard]: https://uizz.visualstudio.com/_apis/public/build/definitions/0693d9f8-6ad5-479a-9a20-84b3ff321d32/13/badge
+[b/xdash/test/fwk/netstandard]: https://uizz.visualstudio.com/_apis/public/build/definitions/0693d9f8-6ad5-479a-9a20-84b3ff321d32/14/badge
+[b/xdash/live/fwk/netstandard]: https://uizz.visualstudio.com/_apis/public/build/definitions/0693d9f8-6ad5-479a-9a20-84b3ff321d32/15/badge
  
-[r/xdash/dev/uwp]: REPLACE_ME
-[r/xdash/test/uwp]: REPLACE_ME
-[r/xdash/live/uwp]: REPLACE_ME
+[b/xdash/dev/fwk/droid]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[b/xdash/test/fwk/droid]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[b/xdash/live/fwk/droid]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+
+[b/xdash/dev/fwk/uwp]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[b/xdash/test/fwk/uwp]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[b/xdash/live/fwk/uwp]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+
+[b/xdash/dev/fwk/ios]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[b/xdash/test/fwk/ios]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[b/xdash/live/fwk/ios]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+
+[b/xdash/dev/fwk/macos]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[b/xdash/test/fwk/macos]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[b/xdash/live/fwk/macos]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+
+[b/xdash/dev/fwk/linux]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[b/xdash/test/fwk/linux]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[b/xdash/live/fwk/linux]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+
+[b/xdash/dev/fwk/netcore]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[b/xdash/test/fwk/netcore]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[b/xdash/live/fwk/netcore]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+
+
+
+
+[r/xdash/dev/droid]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[r/xdash/test/droid]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[r/xdash/live/droid]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
  
-[r/xdash/dev/ios]: REPLACE_ME
-[r/xdash/test/ios]: REPLACE_ME
-[r/xdash/live/ios]: REPLACE_ME
+[r/xdash/dev/uwp]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[r/xdash/test/uwp]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[r/xdash/live/uwp]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
  
-[r/xdash/dev/macos]: REPLACE_ME
-[r/xdash/test/macos]: REPLACE_ME
-[r/xdash/live/macos]: REPLACE_ME
+[r/xdash/dev/ios]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[r/xdash/test/ios]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[r/xdash/live/ios]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
  
-[r/xdash/dev/linux]: REPLACE_ME
-[r/xdash/test/linux]: REPLACE_ME
-[r/xdash/live/linux]: REPLACE_ME
+[r/xdash/dev/macos]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[r/xdash/test/macos]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[r/xdash/live/macos]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
  
-[r/xdash/dev/netcore]: REPLACE_ME
-[r/xdash/test/netcore]: REPLACE_ME
-[r/xdash/live/netcore]: REPLACE_ME
+[r/xdash/dev/linux]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[r/xdash/test/linux]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[r/xdash/live/linux]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+ 
+[r/xdash/dev/netcore]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[r/xdash/test/netcore]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[r/xdash/live/netcore]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
 
-[r/xdash/fwk/dev/droid]: REPLACE_ME
-[r/xdash/fwk/test/droid]: REPLACE_ME
-[r/xdash/fwk/live/droid]: REPLACE_ME
-
-[r/xdash/fwk/dev/uwp]: REPLACE_ME
-[r/xdash/fwk/test/uwp]: REPLACE_ME
-[r/xdash/fwk/live/uwp]: REPLACE_ME
-
-[r/xdash/fwk/dev/ios]: REPLACE_ME
-[r/xdash/fwk/test/ios]: REPLACE_ME
-[r/xdash/fwk/live/ios]: REPLACE_ME
-
-[r/xdash/fwk/dev/macos]: REPLACE_ME
-[r/xdash/fwk/test/macos]: REPLACE_ME
-[r/xdash/fwk/live/macos]: REPLACE_ME
-
-[r/xdash/fwk/dev/linux]: REPLACE_ME
-[r/xdash/fwk/test/linux]: REPLACE_ME
-[r/xdash/fwk/live/linux]: REPLACE_ME
-
-[r/xdash/fwk/dev/netcore]: REPLACE_ME
-[r/xdash/fwk/test/netcore]: REPLACE_ME
-[r/xdash/fwk/live/netcore]: REPLACE_ME
+[r/xdash/dev/fwk/netstandard]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[r/xdash/test/fwk/netstandard]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[r/xdash/live/fwk/netstandard]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+ 
+[r/xdash/dev/fwk/droid]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[r/xdash/test/fwk/droid]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[r/xdash/live/fwk/droid]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+ 
+[r/xdash/dev/fwk/uwp]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[r/xdash/test/fwk/uwp]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[r/xdash/live/fwk/uwp]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+ 
+[r/xdash/dev/fwk/ios]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[r/xdash/test/fwk/ios]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[r/xdash/live/fwk/ios]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+ 
+[r/xdash/dev/fwk/macos]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[r/xdash/test/fwk/macos]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[r/xdash/live/fwk/macos]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+ 
+[r/xdash/dev/fwk/linux]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[r/xdash/test/fwk/linux]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[r/xdash/live/fwk/linux]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+ 
+[r/xdash/dev/fwk/netcore]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[r/xdash/test/fwk/netcore]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[r/xdash/live/fwk/netcore]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
