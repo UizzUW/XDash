@@ -50,8 +50,8 @@ Cross-platform data transfer application and framework.
 [b/xdash/live/droid]: https://uizz.visualstudio.com/_apis/public/build/definitions/0693d9f8-6ad5-479a-9a20-84b3ff321d32/10/badge
 
 [b/xdash/dev/uwp]: https://uizz.visualstudio.com/_apis/public/build/definitions/0693d9f8-6ad5-479a-9a20-84b3ff321d32/8/badge
-[b/xdash/test/uwp]: REPLACE_ME
-[b/xdash/live/uwp]: REPLACE_ME
+[b/xdash/test/uwp]: https://uizz.visualstudio.com/_apis/public/build/definitions/0693d9f8-6ad5-479a-9a20-84b3ff321d32/11/badge
+[b/xdash/live/uwp]: https://uizz.visualstudio.com/_apis/public/build/definitions/0693d9f8-6ad5-479a-9a20-84b3ff321d32/12/badge
 
 [b/xdash/dev/ios]: REPLACE_ME
 [b/xdash/test/ios]: REPLACE_ME
