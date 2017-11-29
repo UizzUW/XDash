@@ -3,6 +3,18 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Configurations>Dev;Test;Live</Configurations>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Mihai Pirvu</Authors>
+    <Company />
+    <Description>Cross-platform network discovery and data transfer framework.</Description>
+    <Copyright></Copyright>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/UizzUW/XDash/master/LICENSE.md</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/UizzUW/XDash</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/UizzUW/XDash</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReleaseNotes>dev</PackageReleaseNotes>
+    <Version>1.0.0-dev.1</Version>
+    <PackageTags>xdash cross platform network discovery data transfer framework</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

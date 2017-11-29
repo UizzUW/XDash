@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XDash.Android", "XDash.Android\XDash.Android.csproj", "{41AE94D8-50AC-4126-998C-C462FA371659}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -74,6 +74,22 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		LICENSE.md = LICENSE.md
 		nuget.config = nuget.config
 		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Artwork", "Artwork", "{FBDF65AB-D966-44B6-AEAE-9A00158014F0}"
+	ProjectSection(SolutionItems) = preProject
+		Artwork\xdash.png = Artwork\xdash.png
+		Artwork\xdash_droid.png = Artwork\xdash_droid.png
+		Artwork\xdash_droid_nobg.png = Artwork\xdash_droid_nobg.png
+		Artwork\xdash_ios.png = Artwork\xdash_ios.png
+		Artwork\xdash_ios_nobg.png = Artwork\xdash_ios_nobg.png
+		Artwork\xdash_linux.png = Artwork\xdash_linux.png
+		Artwork\xdash_linux_nobg.png = Artwork\xdash_linux_nobg.png
+		Artwork\xdash_mac.png = Artwork\xdash_mac.png
+		Artwork\xdash_mac_nobg.png = Artwork\xdash_mac_nobg.png
+		Artwork\xdash_nobg.png = Artwork\xdash_nobg.png
+		Artwork\xdash_windows.png = Artwork\xdash_windows.png
+		Artwork\xdash_windows_nobg.png = Artwork\xdash_windows_nobg.png
 	EndProjectSection
 EndProject
 Global
@@ -561,6 +577,7 @@ Global
 		{D5CE145E-AF2F-43D3-803A-946701104D47} = {23B624C5-5BFB-4089-A30A-ACACAD80F99E}
 		{0578AF54-2E09-425A-91C1-A47990EC2AB9} = {23B624C5-5BFB-4089-A30A-ACACAD80F99E}
 		{8802F897-6E76-47C6-A10C-9C3C98C55370} = {23B624C5-5BFB-4089-A30A-ACACAD80F99E}
+		{FBDF65AB-D966-44B6-AEAE-9A00158014F0} = {BDACE9DB-0E0C-44E4-BC57-878B3481B82C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {ABCE21BA-3EE8-48DA-A207-C3883E7F2CD3}
