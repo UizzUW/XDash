@@ -50,6 +50,8 @@ namespace XDash.CLI
             {
                 syntax.DefineOption("n|name", ref address, "The addressee to greet");
             });
+
+            Console.WriteLine("Hello!");
         }
     }
 }
