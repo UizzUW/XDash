@@ -16,6 +16,7 @@
     <Version>1.0.0-dev.1</Version>
     <PackageTags>xdash cross platform network discovery data transfer framework</PackageTags>
     <PackageIconUrl>https://raw.githubusercontent.com/UizzUW/XDash/master/Artwork/xdash_nobg.png</PackageIconUrl>
+    <PackageId>XDash.Framework</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
