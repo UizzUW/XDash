@@ -3,6 +3,19 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <Configurations>Dev;Test;Live</Configurations>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>XDash.Framework.Core</PackageId>
+    <Version>1.0.0-dev.1</Version>
+    <Authors>Mihai Pirvu</Authors>
+    <Company></Company>
+    <Description>.NET Core platform dependencies for XDash.Framework.</Description>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/UizzUW/XDash/master/LICENSE.md</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/UizzUW/XDash</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/UizzUW/XDash/master/Artwork/xdash_nobg.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/UizzUW/XDash</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>xdash cross platform network discovery data transfer framework netcore</PackageTags>
+    <PackageReleaseNotes>dev</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
