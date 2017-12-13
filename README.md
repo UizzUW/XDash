@@ -41,8 +41,8 @@ Cross-platform data transfer application and framework.
 
 Join the conversation on our [Gitter][xdash-gitter]. From dev talks to bugfixing, we have it all!
 
-[xdash-dev]: https://www.myget.org/F/uizz-experimental/api/v3/index.json
-[xdash-test]: https://www.myget.org/F/xdash-test/api/v3/index.json
+[xdash-dev]: https://uizz.pkgs.visualstudio.com/_packaging/xdash-dev/nuget/v3/index.json
+[xdash-test]: https://uizz.pkgs.visualstudio.com/_packaging/xdash-test/nuget/v3/index.json
 [nuget-org]: https://api.nuget.org/v3/index.json
 [xdash-gitter]: https://gitter.im/xdashchat
 
@@ -74,7 +74,7 @@ Join the conversation on our [Gitter][xdash-gitter]. From dev talks to bugfixing
 [b/xdash/test/fwk/netstandard]: https://uizz.visualstudio.com/_apis/public/build/definitions/0693d9f8-6ad5-479a-9a20-84b3ff321d32/14/badge
 [b/xdash/live/fwk/netstandard]: https://uizz.visualstudio.com/_apis/public/build/definitions/0693d9f8-6ad5-479a-9a20-84b3ff321d32/15/badge
  
-[b/xdash/dev/fwk/droid]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[b/xdash/dev/fwk/droid]: https://uizz.visualstudio.com/_apis/public/build/definitions/0693d9f8-6ad5-479a-9a20-84b3ff321d32/20/badge
 [b/xdash/test/fwk/droid]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
 [b/xdash/live/fwk/droid]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
 
