@@ -125,16 +125,16 @@ Join the conversation on our [Gitter][xdash-gitter]. From dev talks to bugfixing
 [r/xdash/test/netcore]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
 [r/xdash/live/netcore]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
 
-[r/xdash/dev/fwk/netstandard]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
-[r/xdash/test/fwk/netstandard]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[r/xdash/dev/fwk/netstandard]: https://img.shields.io/myget/uizz-experimental/v/XDash.Framework.svg
+[r/xdash/test/fwk/netstandard]: https://img.shields.io/myget/xdash-test/v/XDash.Framework.svg
 [r/xdash/live/fwk/netstandard]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
  
-[r/xdash/dev/fwk/droid]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
-[r/xdash/test/fwk/droid]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[r/xdash/dev/fwk/droid]: https://img.shields.io/myget/uizz-experimental/v/XDash.Framework.Android.svg
+[r/xdash/test/fwk/droid]: https://img.shields.io/myget/xdash-test/v/XDash.Framework.Android.svg
 [r/xdash/live/fwk/droid]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
  
-[r/xdash/dev/fwk/uwp]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
-[r/xdash/test/fwk/uwp]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[r/xdash/dev/fwk/uwp]: https://img.shields.io/myget/uizz-experimental/v/XDash.Framework.UWP.svg
+[r/xdash/test/fwk/uwp]: https://img.shields.io/myget/xdash-test/v/XDash.Framework.UWP.svg
 [r/xdash/live/fwk/uwp]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
  
 [r/xdash/dev/fwk/ios]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
@@ -149,6 +149,6 @@ Join the conversation on our [Gitter][xdash-gitter]. From dev talks to bugfixing
 [r/xdash/test/fwk/linux]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
 [r/xdash/live/fwk/linux]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
  
-[r/xdash/dev/fwk/netcore]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
-[r/xdash/test/fwk/netcore]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[r/xdash/dev/fwk/netcore]: https://img.shields.io/myget/uizz-experimental/v/XDash.Framework.Core.svg
+[r/xdash/test/fwk/netcore]: https://img.shields.io/myget/xdash-test/v/XDash.Framework.Core.svg
 [r/xdash/live/fwk/netcore]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
