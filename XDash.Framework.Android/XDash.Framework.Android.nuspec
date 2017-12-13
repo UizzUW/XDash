@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+    <metadata>
+        <id>XDash.Framework.Android</id>
+        <version>1.0.0-dev.1</version>
+        <title>XDash.Framework.Android</title>
+        <authors>Mihai Pirvu</authors>
+        <owners>Mihai Pirvu</owners>
+        <licenseUrl>https://raw.githubusercontent.com/UizzUW/XDash/master/LICENSE.md</licenseUrl>
+        <projectUrl>https://github.com/UizzUW/XDash</projectUrl>
+        <iconUrl>https://raw.githubusercontent.com/UizzUW/XDash/master/Artwork/xdash_nobg.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Android platform dependencies for XDash.Framework.</description>
+        <releaseNotes>dev</releaseNotes>
+        <tags>xdash cross platform network discovery data transfer framework android</tags>
+    </metadata>
+</package>
