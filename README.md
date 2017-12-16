@@ -78,9 +78,9 @@ Join the conversation on our [Gitter][xdash-gitter]. From dev talks to bugfixing
 [b/xdash/test/fwk/droid]: https://uizz.visualstudio.com/_apis/public/build/definitions/0693d9f8-6ad5-479a-9a20-84b3ff321d32/21/badge
 [b/xdash/live/fwk/droid]: https://uizz.visualstudio.com/_apis/public/build/definitions/0693d9f8-6ad5-479a-9a20-84b3ff321d32/22/badge
 
-[b/xdash/dev/fwk/uwp]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
-[b/xdash/test/fwk/uwp]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
-[b/xdash/live/fwk/uwp]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
+[b/xdash/dev/fwk/uwp]: https://uizz.visualstudio.com/_apis/public/build/definitions/0693d9f8-6ad5-479a-9a20-84b3ff321d32/25/badge
+[b/xdash/test/fwk/uwp]: https://uizz.visualstudio.com/_apis/public/build/definitions/0693d9f8-6ad5-479a-9a20-84b3ff321d32/26/badge
+[b/xdash/live/fwk/uwp]: https://uizz.visualstudio.com/_apis/public/build/definitions/0693d9f8-6ad5-479a-9a20-84b3ff321d32/27/badge
 
 [b/xdash/dev/fwk/ios]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
 [b/xdash/test/fwk/ios]: https://img.shields.io/vso/build/larsbrinkhoff/953a34b9-5966-4923-a48a-c41874cfb5f5/1.svg
