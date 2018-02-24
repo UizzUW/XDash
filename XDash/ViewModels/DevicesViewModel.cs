@@ -176,7 +176,7 @@ namespace XDash.ViewModels
         {
             await base.OnNavigatedTo(parameter);
 
-            var selectedInterface = await _deviceInfoService.GetSelectedInterface();
+            var selectedInterface = _deviceInfoService.GetSelectedInterface();
             if (selectedInterface == null)
             {
                 var result = await _navigator.DisplayAlertAsync("No network interface selected",

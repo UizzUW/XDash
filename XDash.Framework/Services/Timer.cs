@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
-using System.Timers;
-using XDash.Framework.Services.Contracts.Platform;
+using XDash.Framework.Services.Contracts;
 
-namespace XDash.Framework.Droid.Services
+namespace XDash.Framework.Services
 {
-    public class AndroidTimer : ITimer
+    public class Timer : ITimer
     {
-        private Timer _timer;
+        private System.Timers.Timer _timer;
 
         public bool IsEnabled => _timer.Enabled;
 
@@ -17,7 +16,7 @@ namespace XDash.Framework.Droid.Services
             {
                 return;
             }
-            _timer = new Timer(interval * 1000);
+            _timer = new System.Timers.Timer(interval * 1000);
             _timer.Elapsed += onElapsed;
             _timer.Start();
         }

@@ -5,7 +5,7 @@ using OperatingSystem = XDash.Framework.Models.OperatingSystem;
 
 namespace XDash.Framework.Core.Services
 {
-    class CorePlatformService : IPlatformService
+    public class CorePlatformService : IPlatformService
     {
         public OperatingSystem OS
         {
@@ -27,7 +27,7 @@ namespace XDash.Framework.Core.Services
             }
         }
 
-        public string ConfigurationPath => Environment.CurrentDirectory;
+        public string ConfigurationPath => AppContext.BaseDirectory;
 
         public void ExitApp()
         {

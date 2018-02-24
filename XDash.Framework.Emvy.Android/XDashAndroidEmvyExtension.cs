@@ -10,7 +10,6 @@ namespace XDash.Framework.Emvy.Droid
         public static void AddXDashPlatformDependencies(this IDiContainer container)
         {
             container.Register<IPlatformService, AndroidPlatformService>();
-            container.Register<ITimer, AndroidTimer>(false);
             container.Register<IFilesystem, AndroidFilesystem>();
             container.ConfigureXDashClientInfo();
         }

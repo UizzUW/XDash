@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Sockets.Plugin;
-using Sockets.Plugin.Abstractions;
 using XDash.Framework.Components.Transfer.Contracts;
 using XDash.Framework.Models;
 using XDash.Framework.Models.Abstractions;
@@ -13,6 +9,7 @@ using XDash.Framework.Services.Contracts;
 using XDash.Framework.Services.Contracts.Platform;
 using XDash.Framework.Configuration.Contracts;
 using XDash.Framework.Configuration;
+using System.Net.Sockets;
 
 namespace XDash.Framework.Components.Transfer
 {
@@ -22,6 +19,7 @@ namespace XDash.Framework.Components.Transfer
         private readonly XDashOptions _options;
         private readonly IFilesystem _filesystem;
         private readonly ITimer _timer;
+        private NetworkStream _endpointStream;
 
         public Controller(IBsonSerializer binarySerializer,
                            IConfigurator configurator,
@@ -36,8 +34,10 @@ namespace XDash.Framework.Components.Transfer
 
         public async Task<XDashSendResponse> Send(IXDashClient client, Models.XDash dash)
         {
-            var sender = new TcpSocketClient();
-            await sender.ConnectAsync(client.Ip, _options.Transfer.TransferPort);
+            var tcpClient = new TcpClient();
+            await tcpClient.ConnectAsync(client.Ip, _options.Transfer.TransferPort);
+            _endpointStream = tcpClient.GetStream();
+
             //try
             //{
             //    await connectTask;
@@ -59,8 +59,8 @@ namespace XDash.Framework.Components.Transfer
             //}
 
             var serializedData = _binarySerializer.Serialize(dash);
-            await sender.WriteStream.WriteAsync(serializedData, 0, serializedData.Length, new CancellationTokenSource(3000).Token);
-            await sender.DisconnectAsync();
+            await _endpointStream.WriteAsync(serializedData, 0, serializedData.Length, new CancellationTokenSource(3000).Token);
+
             //try
             //{
             //    await handshakeTask;
@@ -81,15 +81,11 @@ namespace XDash.Framework.Components.Transfer
             //    };
             //}
 
-            _cachedFeedback = new List<bool>();
-            _feedbackListener = new TcpSocketListener();
-            _feedbackListener.ConnectionReceived += onFeedbackReceived;
-            await _feedbackListener.StartListeningAsync(_options.Transfer.TransferFeedbackPort);
-
             var result = await feedback();
             if (!result)
             {
-                await _feedbackListener.StopListeningAsync();
+                _endpointStream.Close();
+                tcpClient.Close();
                 return new XDashSendResponse
                 {
                     Status = XDashSendResponseStatus.HandshakeRefused
@@ -106,22 +102,21 @@ namespace XDash.Framework.Components.Transfer
                 //_timer.Start(1);
                 foreach (var file in dash.Files)
                 {
-                    await sender.ConnectAsync(client.Ip, _options.Transfer.TransferPort);
                     using (var fileStream = await _filesystem.StreamFile(file.FullPath))
                     {
                         //crtStream = fileStream;
-                        await fileStream.CopyToAsync(sender.WriteStream);
+                        await fileStream.CopyToAsync(_endpointStream);
                         //crtStream = null;
                     }
 
-                    await sender.DisconnectAsync();
                     await feedback();
                 }
                 _timer.Stop();
             }
             catch (Exception ex)
             {
-                await _feedbackListener.StopListeningAsync();
+                _endpointStream.Close();
+                tcpClient.Close();
                 return new XDashSendResponse
                 {
                     Status = XDashSendResponseStatus.ErrorDuringTransfer,
@@ -129,33 +124,21 @@ namespace XDash.Framework.Components.Transfer
                 };
             }
 
-            await _feedbackListener.StopListeningAsync();
+            _endpointStream.Close();
+            tcpClient.Close();
             return new XDashSendResponse
             {
                 Status = XDashSendResponseStatus.Success
             };
         }
 
-        private TcpSocketListener _feedbackListener;
-        private List<bool> _cachedFeedback;
 
         private async Task<bool> feedback()
         {
-            while (_cachedFeedback.Count == 0)
-            {
-                await Task.Delay(1000);
-            }
-            var feedback = _cachedFeedback.First();
-            _cachedFeedback.RemoveAt(0);
-            return feedback;
-        }
-
-        private async void onFeedbackReceived(object sender, TcpSocketListenerConnectEventArgs e)
-        {
             var memoryStream = new MemoryStream();
-            await e.SocketClient.ReadStream.CopyToAsync(memoryStream);
+            await _endpointStream.CopyToAsync(memoryStream);
             var handshakeResult = _binarySerializer.Deserialize<bool>(memoryStream.ToArray());
-            _cachedFeedback.Add(handshakeResult);
+            return handshakeResult;
         }
     }
 }

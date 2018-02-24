@@ -10,7 +10,6 @@ namespace XDash.Framework.Emvy.iOS
         public static void AddXDashPlatformDependencies(this IDiContainer container)
         {
             container.Register<IPlatformService, IosPlatformService>();
-            container.Register<ITimer, IosTimer>(false);
             container.Register<IFilesystem, IosFilesystem>();
             container.ConfigureXDashClientInfo();
         }

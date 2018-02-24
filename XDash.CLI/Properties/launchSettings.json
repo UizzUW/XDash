@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "XDash.CLI": {
+      "commandName": "Project",
+      "commandLineArgs": "scanner"
+    }
+  }
+}

@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using Sockets.Plugin;
+using System.Net.NetworkInformation;
 
 namespace XDash.Framework.Services.Contracts
 {
     public interface ICacheService
     {
-        List<CommsInterface> Interfaces { get; set; }
+        NetworkInterface[] Interfaces { get; set; }
     }
 }

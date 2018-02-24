@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace XDash.Framework.Services.Contracts.Platform
+namespace XDash.Framework.Services.Contracts
 {
     public interface ITimer
     {

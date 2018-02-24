@@ -1,5 +1,4 @@
 ﻿using XDash.ViewModels.Base;
-using Sockets.Plugin.Abstractions;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using MVPathway.Messages.Abstractions;
@@ -8,6 +7,8 @@ using XDash.Framework.Models.Abstractions;
 using XDash.Framework.Services.Contracts;
 using XDash.Services.Contracts;
 using XDash.Framework.Configuration.Contracts;
+using System.Net.NetworkInformation;
+using XDash.Framework.Helpers;
 
 namespace XDash.ViewModels
 {
@@ -41,8 +42,8 @@ namespace XDash.ViewModels
             }
         }
 
-        private ObservableCollection<ICommsInterface> _interfaces;
-        public ObservableCollection<ICommsInterface> Interfaces
+        private ObservableCollection<NetworkInterface> _interfaces;
+        public ObservableCollection<NetworkInterface> Interfaces
         {
             get => _interfaces;
             set
@@ -53,8 +54,8 @@ namespace XDash.ViewModels
             }
         }
 
-        private ICommsInterface _selectedInterface;
-        public ICommsInterface SelectedInterface
+        private NetworkInterface _selectedInterface;
+        public NetworkInterface SelectedInterface
         {
             get => _selectedInterface;
             set
@@ -79,8 +80,8 @@ namespace XDash.ViewModels
         protected override async Task OnNavigatedTo(object parameter)
         {
             await base.OnNavigatedTo(parameter);
-            SelectedInterface = await _deviceInfoService.GetSelectedInterface();
-            Interfaces = new ObservableCollection<ICommsInterface>(await _deviceInfoService.GetInterfaces());
+            SelectedInterface = _deviceInfoService.GetSelectedInterface();
+            Interfaces = new ObservableCollection<NetworkInterface>(_deviceInfoService.GetInterfaces());
         }
 
         protected override async Task OnNavigatingFrom(object parameter)
@@ -91,7 +92,7 @@ namespace XDash.ViewModels
             var options = _configurator.GetConfiguration();
 
             options.Device.Name = Client.Name;
-            options.Device.Ip = SelectedInterface?.IpAddress;
+            options.Device.Ip = SelectedInterface?.GetValidIPv4();
             options.Device.Language = SelectedLanguage;
 
             await _configurator.SaveConfiguration(options);

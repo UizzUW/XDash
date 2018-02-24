@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using XDash.Framework.Components.Discovery.Contracts;
 using XDash.Framework.Configuration;
 using XDash.Framework.Configuration.Contracts;
@@ -11,11 +10,11 @@ namespace XDash.Framework.Components.Discovery
 {
     public abstract class DiscoveryNode : IDiscoveryNode
     {
-        public async Task<string> GetAdapterBroadcastIp()
+        public string GetAdapterBroadcastIp()
         {
-            var selectedInterface = await DeviceInfoService.GetSelectedInterface();
-            var ip = selectedInterface.IpAddress;
-            return ip.Substring(0, selectedInterface.IpAddress.LastIndexOf(".", StringComparison.Ordinal)) +
+            var selectedInterface = DeviceInfoService.GetSelectedInterface();
+            var ip = selectedInterface.GetValidIPv4();
+            return ip.Substring(0, ip.LastIndexOf(".", StringComparison.Ordinal)) +
                    XDashConst.BROADCAST_SUBNET_SUFFIX;
         }
 
@@ -35,17 +34,20 @@ namespace XDash.Framework.Components.Discovery
 
         public bool IsEnabled { get; protected set; }
 
+        protected IDeviceInfoService DeviceInfoService { get; }
         protected XDashOptions Options { get; }
         protected IXDashClient Client { get; }
-        protected IDeviceInfoService DeviceInfoService { get; }
+        protected ILogger Logger { get; }
 
         protected DiscoveryNode(IDeviceInfoService deviceInfoService,
                                 IConfigurator configurator,
-                                IXDashClient client)
+                                IXDashClient client,
+                                ILogger logger)
         {
             DeviceInfoService = deviceInfoService;
             Options = configurator.GetConfiguration();
             Client = client;
+            Logger = logger;
         }
     }
 }

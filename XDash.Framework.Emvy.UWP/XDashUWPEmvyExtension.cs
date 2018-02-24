@@ -11,7 +11,6 @@ namespace XDash.Framework.Emvy.UWP
         {
             container.Register<IFilesystem, UwpFilesystem>();
             container.Register<IPlatformService, UwpPlatformService>();
-            container.Register<ITimer, UwpTimer>(false);
             container.ConfigureXDashClientInfo();
         }
     }
